@@ -2,13 +2,13 @@ import sqlite3 as sql
 import hashlib
 
 #CONNECT DATABASE
-DATA = "data/data.db"
+DATA = "../data/data.db"
 
 #Initialize databases. Only works once.
 def initializeTables():
     db = sql.connect(DATA)
     c = db.cursor()
-    c.execute("CREATE TABLE IF NOT EXISTS accounts (username TEXT NOT NULL, password TEXT NOT NULL, userID INTEGER PRIMARY KEY autoincrement), money INTEGER, level INTEGER, exp INTEGER)")
+    c.execute("CREATE TABLE IF NOT EXISTS accounts (username TEXT NOT NULL, password TEXT NOT NULL, userID INTEGER PRIMARY KEY autoincrement, money INTEGER, level INTEGER, exp INTEGER)")
     c.execute("CREATE TABLE IF NOT EXISTS events (userID INTEGER, goals TEXT NOT NULL)")
     c.execute("CREATE TABLE IF NOT EXISTS items (userID INTEGER, item TEXT NOT NULL)")
     db.commit()
@@ -50,3 +50,5 @@ def changePass(username,oldpass,newpass):
         return True
     else:
         return False
+
+initializeTables()
