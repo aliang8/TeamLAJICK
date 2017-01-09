@@ -1,6 +1,6 @@
 #import flask
 from flask import Flask, render_template, session, redirect, url_for
-from utils import functions
+from utils import functions, login
 import sqlite3
 import hashlib
 
@@ -12,13 +12,33 @@ app.secret_key = '1'
 def dashboard():
     return
 
-@app.route()
+@app.route("", methods = ['GET', 'POST'])
 def login():
+    message = ""
+    if request.method == 'POST':
+        username = request.form['user']
+        password = request.form['pass']
+
+        #Attempt to login
+        if 'login' in request.form:
+            if (login.login(username, password)):
+                return #Success
+            else:
+                return #Fail
+
+        #Attempt to register
+        if 'register' in request.form:
+            if (login.register(username, password)):
+                return #Success
+            else:
+                return #Fail
+            
     return
 
 @app.route()
 def logout():
-    return
+    session.pop('username')
+    return redirect(url_for())
 
 @app.route()
 def profile():
@@ -26,4 +46,5 @@ def profile():
 
 if __name__ == "__main__":
     app.debug = True
+    login.initializeTables()
     app.run()
