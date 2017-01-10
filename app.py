@@ -5,40 +5,38 @@ import sqlite3
 import hashlib
 
 app = Flask(__name__)
-app.secret_key = '1'
+app.secret_key = 'life^2'
 
+@app.route("/", methods=['POST','GET'])
+def new():
+    return render_template('home.html')
 
-@app.route()
-def dashboard():
-    return
+@app.route("/<message>", methods=['POST','GET'])
+def home(message):
+    return render_template('home.html',message=message)
 
-@app.route("", methods = ['GET', 'POST'])
-def login():
-    message = ""
+@app.route("/authenticate/", methods = ['POST','GET'])
+def authenticate():
     if request.method == 'POST':
         username = request.form['user']
         password = request.form['pass']
-
-        #Attempt to login
+        hashpass = hashlib.sha224(password).hexdigest()
         if 'login' in request.form:
-            if (login.login(username, password)):
-                return #Success
+            if functions.login(username,password):
+                session['username'] = username
+                return redirect(url_for("form"))
             else:
-                return #Fail
-
-        #Attempt to register
-        if 'register' in request.form:
-            if (login.register(username, password)):
-                return #Success
+                return redirect(url_for("home",message = "Login failed"))
+        else:
+            if functions.register(username,password):
+                return redirect(url_for("home",message = "Registration successful"))
             else:
-                return #Fail
-            
-    return
+                return redirect(url_for("home",message = "Registration failed"))
 
-@app.route()
+@app.route("/logout/")
 def logout():
     session.pop('username')
-    return redirect(url_for())
+    return redirect(url_for("home",message = "Logout successful"))
 
 @app.route()
 def profile():
