@@ -1,24 +1,100 @@
 <!DOCTYPE html>
 <html>
+
   <head>
-    <title>Login</title>
+    <title>MyDay</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/home.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" type="text/css" href="../static/default.css">  -->
   </head>
-  <body>
-    <h3>Login</h3>
-    <form action="/" method="POST">
-      <label for="user" name="user">Username</label>
-      <input name="user" type="text" class="form-control" placeholder="User">
-      <label for="pass" name="pass">Password</label>
-      <input name="pass" type="password" class="form-control">
-      <button type="submit" name="login" class="btn btn-default">Login</button>
-    </form>
-    <h3>Register</h3>
-    <form action="/" method = "POST">
-      <label for="user" name="user">Username</label>
-      <input name="user" type="text" class="form-control" placeholder="User">
-      <label for="pass" name="pass">Password</label>
-      <input name="pass" type="password" class="form-control">
-      <button type="submit" name="register" class="btn btn-default">Register</button>  
-    </form>
-  </body>
+
+  <body class="nl-blurred">
+    <div id="full">
+      <div id="pop-wrap">
+      <button type="button" id="pop" class="btn btn-secondary" data-container="body" data-toggle="popover" data-trigger="hover" data-content="MyDay helps you discover awesome, personalized places and events to go to. MyDay is designed & developed by Anthony Liang, Nancy Cao, Constantine Athanitis and Xinhui Xu."data-placement="bottom">
+	about
+      </button>
+      </div>
+      <p id="msg">{{message}}<p>
+      <div id="box">
+      <h1 id="brand">MyDay</h1>
+      <p id="form-group-home">
+      <!-- Button trigger modal -->
+
+      <button type="button" class="btn btn-link btn-login" data-toggle="modal" data-target="#login">
+        login /
+      </button>
+
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-link btn-signup" data-toggle="modal" data-target="#signup">
+        / sign up
+      </button>
+      </p>
+      </div> <!--box-->
+      
+      <!-- Modal -->
+      <div class="modal fade" id="login">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title" id="myModalLabel">Good to see you again!</h4>
+            </div>
+            <div class="modal-body">
+              <form action="/authenticate/" method="POST">
+                <input class="form-field" placeholder="Username" type="text" name="user">
+                <br>
+                <input class="form-field" placeholder="Password" type="password" name="pass">
+                <hr>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <input type="submit" name="login" value="Login" class="btn btn-secondary">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="signup">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title" id="myModalLabel">Nice to meet you!</h4>
+            </div>
+            <div class="modal-body">
+              <form action="/authenticate/" method="POST">
+                <input class="form-field" placeholder="Username" type="text" name="user">
+                <br>
+                <input class="form-field" placeholder="Password" type="password" name="pass">
+                <hr>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <input type="submit" name="register" value="Register" class="btn btn-secondary">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script>
+  $('#login').modal('hide');
+  $('#signup').modal('hide');
+</script>
+<script>
+  $(document).ready(function(){
+  $('[data-toggle="popover"]').popover();
+  });
+</script>
+</body>
+
 </html>
