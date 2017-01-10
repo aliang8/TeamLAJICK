@@ -23,16 +23,20 @@ def getUserInfo(user):
 def getUserGoals(user):
     db = sql.connect(DATA)
     c = db.cursor()
-    data = c.execute("SELECT * FROM events WHERE username = ?", (user,))
+    userID = getUserID(user)
+    data = c.execute("SELECT * FROM events WHERE userID = ?", (userID,))
     goals = data.fetchall()
-    ##return goals
+    return goals
 
-#insert new user goal
-def newGoal(user, goal):
+#one function for removing and inserting user goals
+def goalie(user, goal, method):
     db = sql.connect(DATA)
     c = db.cursor()
     userID = getUserID(user)
-    data = c.execute("INSERT INTO events VALUES (?,?)", (userID, goal,))
+    if method == "insert":
+        data = c.execute("INSERT INTO events VALUES (?,?)", (userID, goal,))
+    elif method == "delete":
+        data = c.execute("DELETE FROM events WHERE userID = ? AND goal = ?", (userID, goal,)) 
     db.commit()
     db.close()
  
@@ -51,4 +55,6 @@ def updateInfo(user,infoType,update):
     db.close()
 
 
-newGoal('Anthony','eat fruits')
+updateInfo('Anthony','money','4')
+goalie('Anthony','do hwk','insert')
+print getUserGoals('Anthony')
