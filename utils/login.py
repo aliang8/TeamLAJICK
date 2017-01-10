@@ -52,3 +52,4 @@ def changePass(username,oldpass,newpass):
         return False
 
 initializeTables()
+register('j', '1111')

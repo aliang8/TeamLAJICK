@@ -55,6 +55,6 @@ def updateInfo(user,infoType,update):
     db.close()
 
 
-updateInfo('Anthony','money','4')
-goalie('Anthony','do hwk','insert')
-print getUserGoals('Anthony')
+updateInfo('j','money','4')
+goalie('j','do hwk','insert')
+print getUserGoals('j')
