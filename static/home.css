@@ -1,0 +1,86 @@
+#full {
+    background-image: url(full.jpg);
+    height: 100vh;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#pop-wrap {
+    position: absolute;
+    top:1.5em;
+    left:1.5em;
+}
+#pop {
+    border-color: white;
+    color: white;
+}
+#box {
+    border: 2px solid white;
+    padding-top: 3%;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-bottom: 2.5%;
+}
+#form-group-home {
+    margin-top: 2.25em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#msg {
+    text-transform: uppercase;
+    
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+@font-face {
+    font-family: "Simply Glamorous";
+    src: url(SIMPLYGLAMOROUS.TTF);
+}
+
+.btn-link {
+    color: white;
+    font-size: 1.5em;
+}
+
+.btn-link:focus, .btn-link:hover {
+    color: white;
+}
+
+.btn-secondary {
+    padding: 6px 24px;
+    background-color: transparent;
+    border-color: black;
+}
+
+.modal-content {
+    border-radius: 2px;
+}
+
+#brand {
+    
+    font-family: "Simply Glamorous";
+    color: white;
+    text-align: center;
+    font-size: 8em;
+    font-weight: bold;
+ }
+
+.form-field {
+    color: black;
+    font-weight: bold;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    width: 100%;
+    background-color: transparent;
+    height: 3em;
+    border-bottom: 1px solid black;
+}
+
+.btn-login {
+}
