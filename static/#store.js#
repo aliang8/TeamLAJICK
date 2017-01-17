@@ -1,3 +1,0 @@
-$(document).ready(function(){
-    $('.text_container').addClass("hidden");
-    $('.text_container'
