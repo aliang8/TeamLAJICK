@@ -9,7 +9,6 @@
         <link href="../static/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="../static/css/core.css" rel="stylesheet" type="text/css" />
         <link href="../static/css/menu.css" rel="stylesheet" type="text/css" />
-	<link href="../static/store.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
         <script src="../static/js/modernizr.min.js"></script>
 	
@@ -90,35 +89,7 @@
 	  </div> <!-- end navbar-custom -->
 	</header>
         <!-- End Navigation Bar-->
-	<div id="content" >
-	  <table>
-	    `<tr>
-	      <th id="equipment">Equipment</th>
-	      <th id="usermade">User-Made</th>
-	      <th id="tbd">IRL</th>
-	    </tr>
-	    <tr>
-	      <td>
-		<div class="text-container">
-		  <div id="equip">
-		    <h3>Equipment</h3>
-		    <p>Things</p>
-		  </div>
-		  <div id="user">
-		    <h3>User-Made</h3>
-		    <ul>
-		    </ul>
-		    <button id="add">Add</button>
-		  </div>
-		  <div id="irl">
-		    <h3>Real Life</h3>
-		    <p>Coming Soon!</p>
-		  </div>
-		</div>
-	      </td>
-	    </tr>
-	  </table>
-	</div>
+	
 
 	  
         <!-- jQuery  -->
