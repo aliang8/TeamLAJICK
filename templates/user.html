@@ -13,62 +13,7 @@
     <!-- Navigation Bar-->
     <div class="container">
       <div id="navigation">
-	<!-- Button trigger modal -->
-    <button type="button" class="btn btn-link btn-login" data-toggle="modal" data-target="#login">
-      login /
-    </button>
-    
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-link btn-signup" data-toggle="modal" data-target="#signup">
-      / sign up
-    </button>
-    <!-- Modal -->
-    <div class="modal fade" id="login">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <h4 class="modal-title" id="myModalLabel">Good to see you again!</h4>
-          </div>
-          <div class="modal-body">
-            <form action="/authenticate/" method="POST">
-              <input class="form-field" placeholder="Username" type="text" name="user">
-              <br>
-              <input class="form-field" placeholder="Password" type="password" name="pass">
-              <hr>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <input type="submit" name="login" value="Login" class="btn btn-secondary">
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Modal -->
-    <div class="modal fade" id="signup">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <h4 class="modal-title" id="myModalLabel">Nice to meet you!</h4>
-          </div>
-          <div class="modal-body">
-            <form action="/authenticate/" method="POST">
-              <input class="form-field" placeholder="Username" type="text" name="user">
-              <br>
-              <input class="form-field" placeholder="Password" type="password" name="pass">
-              <hr>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <input type="submit" name="register" value="Register" class="btn btn-secondary">
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+
         <!-- Navigation Menu-->
         <ul class="nav nav-tabs">
 	  <li class="active"><a data-toggle="tab" href="#myprofile">My Profile</a></li>
@@ -77,6 +22,74 @@
 	  <li><a data-toggle="tab" href="#store">Store</a></li>
 	  <li><a data-toggle="tab" href="#workshop">Workshop</a></li>
 	  <li><a data-toggle="tab" href="#about">About</a></li>
+
+	  
+	</ul>
+
+	<ul class="nav nav-tabs navbar-right pull-right">
+	  <li><a href="#login">
+	      <!-- Button trigger modal -->
+	      <button type="button" class="btn btn-link btn-login" data-toggle="modal" data-target="#login">
+		login /
+	      </button>
+    
+	      
+	      <!-- Modal -->
+	      <div class="modal fade" id="login">
+		<div class="modal-dialog" role="document">
+		  <div class="modal-content">
+		    <div class="modal-header">
+		      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		      </button>
+		      <h4 class="modal-title" id="myModalLabel">Good to see you again!</h4>
+		    </div>
+		    <div class="modal-body">
+		      <form action="/authenticate/" method="POST">
+			<input class="form-field" placeholder="Username" type="text" name="user">
+			<br>
+			<input class="form-field" placeholder="Password" type="password" name="pass">
+			<hr>
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			<input type="submit" name="login" value="Login" class="btn btn-secondary">
+		      </form>
+		    </div>
+		  </div>
+		</div>
+	      </div>
+	      
+	      
+	  </a></li>
+	  <li><a href="#signup">
+	      <!-- Button trigger modal -->
+	      <button type="button" class="btn btn-link btn-signup" data-toggle="modal" data-target="#signup">
+		/ sign up
+	      </button>
+	      <!-- Modal -->
+	      <div class="modal fade" id="signup">
+		<div class="modal-dialog" role="document">
+		  <div class="modal-content">
+		    <div class="modal-header">
+		      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		      </button>
+		      <h4 class="modal-title" id="myModalLabel">Nice to meet you!</h4>
+		    </div>
+		    <div class="modal-body">
+		      <form action="/authenticate/" method="POST">
+			<input class="form-field" placeholder="Username" type="text" name="user">
+			<br>
+			<input class="form-field" placeholder="Password" type="password" name="pass">
+			<hr>
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			<input type="submit" name="register" value="Register" class="btn btn-secondary">
+		      </form>
+		    </div>
+		  </div>
+		</div>
+	      </div>
+	      
+	  </a></li>
 	</ul>
       </div>
     </div> <!-- end container -->
@@ -113,11 +126,7 @@
     <!-- jQuery  -->
     <script src="../static/js/jquery.min.js"></script>
     <script src="../static/js/bootstrap.min.js"></script>
-    <script>
-      $('#leaderboard').click(function(e){
-      e.preventDefault()
-      $(this).tab('show')
-    </script>
+   
     <script>
       $('#login').modal('hide');
       $('#signup').modal('hide');
