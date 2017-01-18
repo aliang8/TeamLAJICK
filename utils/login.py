@@ -2,7 +2,7 @@ import sqlite3 as sql
 import hashlib
 
 #CONNECT DATABASE
-DATA = "../data/data.db"
+DATA = "data/data.db"
 
 #Initialize databases. Only works once.
 def initializeTables():
