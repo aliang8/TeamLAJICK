@@ -2,7 +2,7 @@ import sqlite3 as sql
 import hashlib
 
 #CONNECT DATABASE                                                                                                       
-DATA = "../data/data.db"
+DATA = "data/data.db"
 
 def getUserID(user):
     db = sql.connect(DATA)
@@ -54,7 +54,3 @@ def updateInfo(user,infoType,update):
     db.commit()
     db.close()
 
-
-updateInfo('j','money','4')
-goalie('j','do hwk','insert')
-print getUserGoals('j')

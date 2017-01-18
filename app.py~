@@ -9,7 +9,7 @@ app.secret_key = 'life^2'
 
 @app.route("/", methods=['POST','GET'])
 def new():
-    return render_template('dashboard.html')
+    return render_template('home.html')
 
 @app.route("/<message>", methods=['POST','GET'])
 def home(message):
@@ -37,6 +37,10 @@ def authenticate():
 def logout():
     session.pop('username')
     return redirect(url_for("home",message = "Logout successful"))
+
+@app.route()
+def profile():
+    return
 
 if __name__ == "__main__":
     app.debug = True
