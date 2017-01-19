@@ -42,8 +42,9 @@
       </div>
       <div id="store" class="tab-pane fade">
 	<h3>Store</h3>
-	 <div class="container">
-      <h2>Activate Carousel with JavaScript</h2>
+	 
+
+     
       <div id="myCarousel" class="carousel slide">
 	<!-- Indicators -->
 	<ol class="carousel-indicators">
@@ -52,6 +53,7 @@
 	  <li class="item3"></li>
 	  <li class="item4"></li>
 	</ol>
+	
 	
 	<!-- Wrapper for slides -->
 	<div class="carousel-inner" role="listbox">
@@ -99,7 +101,7 @@
 	  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 	  <span class="sr-only">Next</span>
 	</a>
-      </div>
+     
     </div>
 	
       </div>

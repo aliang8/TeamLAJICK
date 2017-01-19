@@ -31,19 +31,7 @@ $(document).ready(function(){
 });
 
 
-var addReward = function(e){
-    var li = document.createElement("li");
-    //var name = prompt("Reward Name:");
-    /var cost = prompt("Reward Value:");
-    //var button = "<button id=\"obtain\">purchase</button>";
-    //button.addEventListener("click", purchase(cost));
-    //button.addEventListener("click", deleteItem);
-    li.innerHTML = "Reward: " //+ name + ", Costs: " + cost + button
-    li.addEventListener("mouseover", headerChange);
-    li.addEventListener("mouseout", restoreHead);
-    var ol = document.getElementById("rewards");
-    ol.appendChild(li);
-}
+
 
 var deleteReward = function(e){
     var li.reward =this;
