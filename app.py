@@ -1,5 +1,5 @@
 #import flask
-from flask import Flask, render_template, session, redirect, url_for
+from flask import Flask, render_template, session, redirect, url_for, request
 from utils import functions, login
 import sqlite3
 import hashlib
@@ -11,7 +11,7 @@ app.secret_key = 'life^2'
 def new():
     return render_template('dashboard.html')
 
-@app.route("/<message>", methods=['POST','GET'])
+@app.route("/home/", methods=['POST','GET'])
 def home(message):
     return render_template('dashboard.html',message=message)
 
@@ -22,13 +22,13 @@ def authenticate():
         password = request.form['pass']
         hashpass = hashlib.sha224(password).hexdigest()
         if 'login' in request.form:
-            if functions.login(username,password):
+            if login.login(username,password):
                 session['username'] = username
-                return redirect(url_for("form"))
+                return redirect(url_for("home"))
             else:
                 return redirect(url_for("home",message = "Login failed"))
         else:
-            if functions.register(username,password):
+            if login.register(username,password):
                 return redirect(url_for("home",message = "Registration successful"))
             else:
                 return redirect(url_for("home",message = "Registration failed"))
