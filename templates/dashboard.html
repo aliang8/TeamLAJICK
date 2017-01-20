@@ -143,7 +143,8 @@
 		<center>
 		
 		  <h2>Rewards</h2>
-		  <ul id="rewards"> </ul>
+		  <ul id="rewards">
+		  </ul>
 		  <button id="add_reward">New Reward</button>
 		</center>
 	      </div>
@@ -188,6 +189,30 @@
       $('#login').modal('hide');
       $('#signup').modal('hide');
     </script>
+    <script>
+      $(document).ready(function(){
+    // Activate Carousel
+    $("#myCarousel").carousel();
+    
+    // Enable Carousel Indicators
+    $(".item1").click(function(){
+        $("#myCarousel").carousel(0);
+    });
+    $(".item2").click(function(){
+        $("#myCarousel").carousel(1);
+    });
+    $(".item3").click(function(){
+        $("#myCarousel").carousel(2);
+    });
 
+    // Enable Carousel Controls
+    $(".left").click(function(){
+        $("#myCarousel").carousel("prev");
+    });
+    $(".right").click(function(){
+        $("#myCarousel").carousel("next");
+    });
+});
+    </script>
   </body>
 </html>
