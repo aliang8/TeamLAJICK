@@ -1,0 +1,31 @@
+#columns {
+    -webkit-column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    column-count: 3;
+    -webkit-column-rule-style: solid; /* Chrome, Safari, Opera */
+    -moz-column-rule-style: solid; /* Firefox */
+    column-rule-style: solid;
+}
+
+
+#columnpiece1 {
+    float:left;
+    margin:0;
+    width:33%;
+}
+
+#columnpiece2 {
+    float:left;
+    margin:0;
+    width:33%;
+}
+
+#columnpiece3 {
+    float:left;
+    margin:0;
+    width:33%;
+}
+
+.clearfix { zoom: 1; }
+.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
+.clearfix:after { clear: both; }
