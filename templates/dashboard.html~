@@ -160,11 +160,9 @@
 		<center>
 		
 		  <h2>Rewards</h2>
-		  <input id="reward_name" type="text">Reward</input>
-		  <input id="reward_cost" type="text">Price</input>
-		  <button id="add_reward">New Reward</button>
 		  <ul id="rewards">
 		  </ul>
+		  <button id="add_reward">New Reward</button>
 		</center>
 	      </div>
 	      
@@ -211,7 +209,7 @@
     <script>
       $(document).ready(function(){
     // Activate Carousel
-    $("#myCarousel").carousel({interval: false});
+    $("#myCarousel").carousel();
     
     // Enable Carousel Indicators
     $(".item1").click(function(){
@@ -231,11 +229,7 @@
     $(".right").click(function(){
         $("#myCarousel").carousel("next");
     });
-      });
-      $('.carousel-indicators li').each(function(){
-    $(this).carousel('pause');
-      });
-      $('.carousel-indicators .active').removeClass('active')
+});
     </script>
   </body>
 </html>

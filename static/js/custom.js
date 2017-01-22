@@ -7,7 +7,11 @@ $('#myTabs a').click(function (e) {
 var addReward = function(e){
     var li = document.createElement("li");
     li.setAttribute("id", "reward")
-    li.innerHTML = "<button id='purchase'>hello</button>";
+    var name = document.getElementById("reward_name");
+    name = name.value;
+    var price = document.getElementById("reward_cost");
+    price = price.value;
+    li.innerHTML = "Reward: " + name + " Price: " + price + "<button id='purchase'>hello</button>";
     var ol = document.getElementById("rewards");
     ol.appendChild(li);
 }
