@@ -8,24 +8,16 @@
 }
 
 
-#columnpiece1 {
-    float:left;
-    margin:0;
-    width:33%;
+#to-dos {
+    text-align:center;
+
 }
 
-#columnpiece2 {
-    float:left;
-    margin:0;
-    width:33%;
+#habits {
+    text-align:center;
 }
 
-#columnpiece3 {
-    float:left;
-    margin:0;
-    width:33%;
+#goals {
+    text-align:center;
 }
 
-.clearfix { zoom: 1; }
-.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
-.clearfix:after { clear: both; }
