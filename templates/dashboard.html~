@@ -25,22 +25,16 @@
 	    
 	    
 	    
-	    {% if login == 0 %}
 	    <li class="active"><a data-toggle="tab" href="#myprofile">My Profile</a></li>
-	    {% endif %}
-	    
 	    <li><a data-toggle="tab" href="#leaderboard">Leaderboard</a></li>
-	    
-	    {% if login == 0 %}
-	    <li><a data-toggle="tab" href="#quests">Quests</a></li>	
+	    <li><a data-toggle="tab" href="#quests">Quests</a></li>	  
 	    <li><a data-toggle="tab" href="#store">Store</a></li>
-	    {% endif %}
-	    
 	    <li><a data-toggle="tab" href="#workshop">Workshop</a></li>
 	    <li class="pull right"><a data-toggle="tab" href="#about">About</a></li>
 
 	  </ul>
 	  <ul class="nav nav-tabs pull-right">
+	    <li> hello </li>
 	    
 	    <li><a href="#login">
 		<!-- Button trigger modal -->
@@ -121,64 +115,26 @@
 	<h3>Leaderboard</h3>
 	<p>Some content in menu 1.</p>
       </div>
-
-
-      <!--Quests-->
       <div id="quests" class="tab-pane fade">
 	<h3>Quests</h3>
 	<div id="contentBox" class="clearfix" style="margin:0px auto; width:80%">
-	  <div class="row">
-	    <div class="col-xs-6 col-sm-4">
-	      <div id="to-dos">
-
-	      To-dos
-	      <br>
-	      <div id="todoButton">
-	      	+
-	      </div>
-	      
-	      <hr>
-	      
-	      
-	      <!--Jinja-->
-			<ul>
-			  {% for item in goals %}
-			  	<div>
- 			  	 <li class="todoitem"><a href="{{ user.url }}">{{ user.username }}</a></li>
- 			   </div>
-			  {% endfor %}
- 			</ul>
-
-	      
-	      </div>
+	  <div id="columns">
+	    <div id="columnpiece1">
+	      CONTENT col1col1col1col1col1col1col1col1col1col1col1col1col1col1col1col1col1col1col1col1col1col1col1col1col1col1col1col1col1col1col1
 	    </div>
-	    <div class="col-xs-6 col-sm-4">
-	      <div id="habits">
-
-		Habits
-		<hr>
-
-
-		
-	      </div>
+	    
+	    <div id="columnpiece2">
+	      CONTENT col2col2col2col2col2col2col2col2col2col2col2col2col2col2col2col2col2col2col2col2col2col2col2col2col2col2col2col2col2
 	    </div>
-	    <!-- Add clearfix for only the required viewport -->
-	    <div class="clearfix visible-xs"></div>
-	    <div class="col-xs-6 col-sm-4">
-	      <div id="goals">
-		Goals
-		<hr>
-
-
-		
-		
-	      </div>
+	    
+	    <div id="columnpiece3">
+	      CONTENT col3col3col3col3col3col3col3col3col3col3col3col3col3col3col3col3col3col3col3col3col3col3col3col3col3col3col3col3col3col3col3
 	    </div>
+	    
+	    
 	  </div>
 	</div> 
       </div>
-
-      
       <div id="store" class="tab-pane fade">
 	<h3>Store</h3>
 	<p>Buy our equipment. Make your own rewards.</p>
@@ -204,11 +160,9 @@
 		<center>
 		
 		  <h2>Rewards</h2>
-		  <input id="reward_name" type="text">Reward</input>
-		  <input id="reward_cost" type="text">Price</input>
-		  <button id="add_reward">New Reward</button>
 		  <ul id="rewards">
 		  </ul>
+		  <button id="add_reward">New Reward</button>
 		</center>
 	      </div>
 	      
@@ -235,49 +189,7 @@
       </div>
       <div id="workshop" class="tab-pane fade">
 	<h3>Workshop</h3>
-	<div id="contentBox" class="clearfix" style="margin:0px auto; width:80%">
-	  <div class="row">
-	    <div class="col-xs-6 col-sm-4">
-	      <div id="to-dos">
-
-	      To-dos
-	      <div>
-	      	
-	      	
-	      </div>
-	      <hr>
-	      
-	      <!--Jinja-->
-
-
-	      
-	      </div>
-	    </div>
-	    <div class="col-xs-6 col-sm-4">
-	      <div id="habits">
-
-		Habits
-		<hr>
-
-
-		
-	      </div>
-	    </div>
-	    <!-- Add clearfix for only the required viewport -->
-	    <div class="clearfix visible-xs"></div>
-	    <div class="col-xs-6 col-sm-4">
-	      <div id="goals">
-		Goals
-		<hr>
-
-
-		
-		
-	      </div>
-	    </div>
-	  </div>
-	</div>
-
+	<p>Some content in menu 2.</p>
       </div>
       <div id="about" class="tab-pane fade">
 	<h3>About</h3>
@@ -297,7 +209,7 @@
     <script>
       $(document).ready(function(){
     // Activate Carousel
-    $("#myCarousel").carousel({interval: false});
+    $("#myCarousel").carousel();
     
     // Enable Carousel Indicators
     $(".item1").click(function(){
@@ -317,11 +229,7 @@
     $(".right").click(function(){
         $("#myCarousel").carousel("next");
     });
-      });
-      $('.carousel-indicators li').each(function(){
-    $(this).carousel('pause');
-      });
-      $('.carousel-indicators .active').removeClass('active')
+});
     </script>
   </body>
 </html>
