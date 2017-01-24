@@ -1,0 +1,51 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700,400italic,700italic)
+
+.navbar-custom{
+	font-family: 'Lato', sans-serif;
+	display: block;
+	font-size: 14px;
+	line-height: 1.428571429;
+	color: #333;
+}
+
+.toolbar-nav{
+	white-space: nowrap;
+	float: left;
+	padding: .618em;
+}
+
+.toolbar-button{
+	list-style: none;
+	display: inline-block;
+	margin-right: .618em;
+	margin: 0;
+	padding: 0;
+}
+
+.site-header{
+	display: table;
+	height: 10.5em;
+	width: 100%;
+}
+
+h1{
+	color: red;
+}
+
+.hero-stats{
+	background-color: #cfdbde;
+	margin: 0;
+	display: table-cell;
+	vertical-align: middle;
+	border-right: 1px solid #bacbcf;
+	width: 75%;
+}
+
+.hero-stats .meter-label{
+	float: left;
+	background-color: #b0c3c7 !important;
+	text-shadow: -1px -1px 1px #2f3f42, 1px -1px 1px #2f3f42, -1px 1px 1px #2f3f42, 1px 1px 1px #2f3f42;
+	width: 2.618em;
+	text-align: center;
+	margin-right: .618em;
+}
