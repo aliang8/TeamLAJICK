@@ -28,10 +28,6 @@
 	width: 100%;
 }
 
-h1{
-	color: red;
-}
-
 .hero-stats{
 	background-color: #cfdbde;
 	margin: 0;
@@ -41,11 +37,71 @@ h1{
 	width: 75%;
 }
 
+.hero-stats .health{
+	background: #fcf0f0;
+	color: #250808;
+}
+
+.hero-stats .health .bar{
+	background: #da5353;
+	border-color: #6f1818;
+}
+
+.hero-stats .meter{
+	position: relative;
+	overflow: hidden;
+	border: 1px solid #fff;
+	height: 1.618em;
+	margin: 0 0 1em;
+	outline: #999 solid 1px;
+}
+
+.hero-stats .meter-text{
+	position: absolute;
+	top: 0;
+	line-height: 1.618;
+	white-space: nowrap;
+}
+
+.hero-stats .meter-text.value{
+	right: .382em;
+}
+
 .hero-stats .meter-label{
+	padding: .382em, .618em !important;
 	float: left;
 	background-color: #b0c3c7 !important;
 	text-shadow: -1px -1px 1px #2f3f42, 1px -1px 1px #2f3f42, -1px 1px 1px #2f3f42, 1px 1px 1px #2f3f42;
 	width: 2.618em;
+	outline: #999 solid 1px;
 	text-align: center;
 	margin-right: .618em;
+	border: 1px solid #fff;
+	font-size: .8em;
+	line-height: 1;
+	color: #fff;
+	letter-spacing: .0618em;
+	font-weight: 700;
 }
+
+.hero-stats .experience{
+	background: #fffbf0;
+	color: #2e2200;
+}
+
+.hero-stats .experience .bar{
+	background: #ffcc35
+	border-color #8a6700;
+}
+
+.hero-stats .experience .meter-text span a{
+	color: #5c4400;
+}
+
+
+
+
+
+
+
+
