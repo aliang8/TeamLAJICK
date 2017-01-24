@@ -13,7 +13,9 @@ def new():
 
 @app.route("/home/", methods=['POST','GET'])
 def home(message):
-    return render_template('dashboard.html',message=message)
+    username = request.form['user']
+    gold = functions.getUserInfo('j')[0]
+    return render_template('dashboard.html',message=message, gold=gold)
 
 @app.route("/authenticate/", methods = ['POST','GET'])
 def authenticate():

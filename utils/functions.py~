@@ -54,4 +54,3 @@ def updateInfo(user,infoType,update):
     db.commit()
     db.close()
 
-print(getUserInfo('j'))
