@@ -9,13 +9,11 @@ app = Flask(__name__)
 app.secret_key = 'life^2'
 
 
-<<<<<<< HEAD
+
 @app.route("/home/", methods=['POST','GET'])
 def home(message):
-    username = request.form['user']
-    gold = functions.getUserInfo('j')[0]
-    return render_template('dashboard.html',message=message, gold=gold)
-=======
+    return render_template('dashboard.html',message=message)
+
     
 @app.route("/", methods=['POST','GET'])
 def home():
@@ -45,7 +43,7 @@ def home():
         
         
     return render_template('dashboard.html', login = 0)
->>>>>>> 5078885646e304de0442f24dc362b2febd75ff02
+
 
 @app.route("/authenticate/", methods = ['POST','GET'])
 def authenticate():
