@@ -1,5 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700,400italic,700italic)
 
+/* NAVBAR STUFF */
+
 .navbar-custom{
 	font-family: 'Lato', sans-serif;
 	display: block;
@@ -22,6 +24,15 @@
 	padding: 0;
 }
 
+.header-wrap{
+	width: 1280px;
+	padding: 46px 0 0;
+	border-bottom: 1px solid rgba(0,0,0,.2);
+	background-color:#c5d3d6;
+}
+
+/* PROFILE BAR */
+
 .site-header{
 	display: table;
 	height: 10.5em;
@@ -29,6 +40,7 @@
 }
 
 .hero-stats{
+	padding: 1.1em 1em 0;
 	background-color: #cfdbde;
 	margin: 0;
 	display: table-cell;
@@ -67,7 +79,7 @@
 	right: .382em;
 }
 
-.hero-stats .meter-label{
+.hero-stats .meter-label, .herobox .avatar-level, .herobox .avatar-name{
 	padding: .382em, .618em !important;
 	float: left;
 	background-color: #b0c3c7 !important;
@@ -97,6 +109,57 @@
 .hero-stats .experience .meter-text span a{
 	color: #5c4400;
 }
+
+.herobox{
+	height: 10.5em;
+	width: 10em;
+	margin: 0;
+	position: relative;
+	cursor: pointer;
+	padding-top: 2em;
+	background: #c5d3d6;
+}
+
+.herobox .avatar-name{
+	max-width: 132px;
+	top: 4px;
+	left: 4px;
+	position: absolute;
+}
+
+.herobox .character-sprites{
+	width: 6.4em;
+	height: 6.4em;
+	margin: 0 auto;
+}
+
+.herobox .avatar-level{
+	bottom: 4px;
+	right: 4px;
+	position: absolute;
+}
+
+.herobox-wrap{
+	display: table-cell;
+	vertical-align: middle;
+	width: 10em;
+	height: 10.5em;
+}
+
+/* GENERAL PAGE LAYOUT */
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
