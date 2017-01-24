@@ -19,26 +19,89 @@ def getUserInfo(user):
     stats = data.fetchall()
     return stats[0]
 
-#return the user's goals in a tuple
-def getUserGoals(user):
+def getUserEvents(user):
     db = sql.connect(DATA)
     c = db.cursor()
     userID = getUserID(user)
     data = c.execute("SELECT * FROM events WHERE userID = ?", (userID,))
     goals = data.fetchall()
     return goals
-
-#one function for removing and inserting user goals
-def goalie(user, goal, method):
+    
+#return the user's goals in a tuple
+def getUserToDos(user):
     db = sql.connect(DATA)
     c = db.cursor()
     userID = getUserID(user)
-    if method == "insert":
-        data = c.execute("INSERT INTO events VALUES (?,?)", (userID, goal,))
-    elif method == "delete":
-        data = c.execute("DELETE FROM events WHERE userID = ? AND goal = ?", (userID, goal,)) 
+    data = c.execute("SELECT * FROM events WHERE userID = ? and todo = 1", (userID,))
+    todos = data.fetchall()
+    return todos
+    
+#return the user's goals in a tuple
+def getUserHabits(user):
+    db = sql.connect(DATA)
+    c = db.cursor()
+    userID = getUserID(user)
+    data = c.execute("SELECT * FROM events WHERE userID = ? and habit = 1", (userID,))
+    habits = data.fetchall()
+    return habits
+
+#return the user's goals in a tuple
+def getUserGoals(user):
+    db = sql.connect(DATA)
+    c = db.cursor()
+    userID = getUserID(user)
+    data = c.execute("SELECT * FROM events WHERE userID = ? and goal = 1", (userID,))
+    goals = data.fetchall()
+    return goals
+    
+
+
+def insertToDo(user, goal):
+    db = sql.connect(DATA)
+    c = db.cursor()
+    userID = getUserID(user)
+    
+    data = c.execute("INSERT INTO events VALUES (?,1,0,0,?)", (userID, goal,))
+    
     db.commit()
     db.close()
+    return goal
+
+def insertHabit(user, goal):
+    db = sql.connect(DATA)
+    c = db.cursor()
+    userID = getUserID(user)
+    
+    data = c.execute("INSERT INTO events VALUES (?,0,1,0,?)", (userID, goal,))
+    
+    db.commit()
+    db.close()
+    return goal
+
+#one function for removing and inserting user goals
+def insertGoal(user, goal):
+    db = sql.connect(DATA)
+    c = db.cursor()
+    userID = getUserID(user)
+
+    data = c.execute("INSERT INTO events VALUES (?,0,0,1,?)", (userID, goal,))
+
+    db.commit()
+    db.close()
+    return goal
+    
+def deleteGoal(user, goalID):
+    db = sql.connect(DATA)
+    c = db.cursor()
+    userID = getUserID(user)
+    
+    data = c.execute("DELETE FROM events WHERE goalID = ?", goalID)
+    
+    db.commit()
+    db.close()
+     
+
+ 
  
 #update and insert user info
 def updateInfo(user,infoType,update):

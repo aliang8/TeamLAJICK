@@ -21,3 +21,16 @@
     text-align:center;
 }
 
+#todoButton:hover{
+    background-color: #DADFE1;
+}
+
+.row {
+    background-color : #FF0000;
+    
+}
+
+.clearfix { zoom: 1; }
+.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
+.clearfix:after { clear: both; }
+.carousel-indicators li{display:none;}
