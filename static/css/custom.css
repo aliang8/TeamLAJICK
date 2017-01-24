@@ -21,3 +21,12 @@
     text-align:center;
 }
 
+#todoButton:hover{
+    background-color: #DADFE1;
+}
+
+.row {
+    background-color : #FF0000;
+    
+}
+

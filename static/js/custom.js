@@ -15,3 +15,13 @@ var addReward = function(e){
 
 var reward_button = document.getElementById("add_reward");
 reward_button.addEventListener("click", addReward);
+
+
+var addToDo = function(e){
+  
+  var item = document.createElement("li");
+  var.class = "todoitem";
+  
+  
+  
+}

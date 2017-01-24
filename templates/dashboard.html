@@ -25,10 +25,17 @@
 	    
 	    
 	    
+	    {% if login == 0 %}
 	    <li class="active"><a data-toggle="tab" href="#myprofile">My Profile</a></li>
+	    {% endif %}
+	    
 	    <li><a data-toggle="tab" href="#leaderboard">Leaderboard</a></li>
-	    <li><a data-toggle="tab" href="#quests">Quests</a></li>	  
+	    
+	    {% if login == 0 %}
+	    <li><a data-toggle="tab" href="#quests">Quests</a></li>	
 	    <li><a data-toggle="tab" href="#store">Store</a></li>
+	    {% endif %}
+	    
 	    <li><a data-toggle="tab" href="#workshop">Workshop</a></li>
 	    <li class="pull right"><a data-toggle="tab" href="#about">About</a></li>
 
@@ -125,10 +132,22 @@
 	      <div id="to-dos">
 
 	      To-dos
+	      <br>
+	      <div id="todoButton">
+	      	+
+	      </div>
+	      
 	      <hr>
 	      
+	      
 	      <!--Jinja-->
-
+			<ul>
+			  {% for item in goals %}
+			  	<div>
+ 			  	 <li class="todoitem"><a href="{{ user.url }}">{{ user.username }}</a></li>
+ 			   </div>
+			  {% endfor %}
+ 			</ul>
 
 	      
 	      </div>
@@ -220,6 +239,10 @@
 	      <div id="to-dos">
 
 	      To-dos
+	      <div>
+	      	
+	      	
+	      </div>
 	      <hr>
 	      
 	      <!--Jinja-->
