@@ -3,8 +3,17 @@ $('#myTabs a').click(function (e) {
   $(this).tab('show');
 })
 
-var removeReward = function(e){
-    this.parentNode.remove();
+var purchase = function(e){
+    var price = this.parentNode.childNode["reward_cost"].innerHTML;
+    var balance = document.getElementById("balance").innerHTML;
+    price = parseInt(price);
+    balance = parseInt(balance);
+    alert(balance);
+    if(balance >= price){
+  	var transaction = balance - price;
+	balance.innerHTML = transaction.toString();
+	this.parentNode.remove();
+    }
 }
 
 var addReward = function(e){
@@ -20,11 +29,11 @@ var addReward = function(e){
     var reward_list = document.getElementById("rewards");
     var rewards = reward_list.getElementsByClassName("purchase");
     for(i=0; i < rewards.length; i++){
-	rewards[i].addEventListener("click", removeReward);
+	rewards[i].addEventListener("click", purchase);
 
     }
-
 }
+
 var reward_button = document.getElementById("add_reward");
 reward_button.addEventListener("click", addReward);
 

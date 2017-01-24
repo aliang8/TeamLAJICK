@@ -148,7 +148,9 @@
 
 /* GENERAL PAGE LAYOUT */
 
-
+#wrap{
+	padding: 0 ;
+}
 
 
 
