@@ -73,8 +73,6 @@ var newToDo = function(e) {
       url: "/home",
       type: 'POST',
       data: $("#addToDo").serializeObject()
-
-    
   }).done(function(result) {
             item.innerHTML = result;
           }).fail(function() {
@@ -84,8 +82,6 @@ var newToDo = function(e) {
 
   var list = document.getElementById("todolist");
   list.insertBefore(item, list.childNodes[0]);
-
-
 }
 
 var newHabit = function(e) {
@@ -96,8 +92,6 @@ var newHabit = function(e) {
       url: "/home",
       type: 'POST',
       data: $("#addHabit").serializeObject()
-
-    
   }).done(function(result) {
             item.innerHTML = result;
           }).fail(function() {
@@ -106,7 +100,6 @@ var newHabit = function(e) {
 
   var list = document.getElementById("habitlist");
   list.insertBefore(item, list.childNodes[0]);
-
 }
 
 var newGoal = function(e) {
@@ -117,8 +110,6 @@ var newGoal = function(e) {
       url: "/home",
       type: 'POST',
       data: $("#addGoal").serializeObject()
-
-    
   }).done(function(result) {
             item.innerHTML = result;
           }).fail(function() {
@@ -127,8 +118,6 @@ var newGoal = function(e) {
 
   var list = document.getElementById("goallist");
   list.insertBefore(item, list.childNodes[0]);
-
-
 }
 
 var todo = document.getElementById("newtodo");
