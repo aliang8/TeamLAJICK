@@ -35,6 +35,19 @@
 	margin-right: .618em;
 }
 
+.toolbar-currency .gold{
+	color: #946e00;
+}
+
+.shop_gold{
+	background-image: url(sprites/gold_coin.png);
+	background-position: -1730px, -1135px;
+	width: 32px;
+	height: 22px;
+	vertical-align: top;
+	display: inline-block;
+}
+
 /* PROFILE BAR */
 
 .header-wrap{
