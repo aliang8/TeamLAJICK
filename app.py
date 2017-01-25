@@ -9,11 +9,11 @@ app = Flask(__name__)
 app.secret_key = 'life^2'
 
 
-
+"""
 @app.route("/home/", methods=['POST','GET'])
 def home(message):
     return render_template('dashboard.html',message=message)
-
+"""
     
 @app.route("/", methods=['POST','GET'])
 def home():

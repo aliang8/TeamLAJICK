@@ -5,68 +5,71 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Life^2</title>
-	<link rel="stylesheet" type="text/css" href="../static/life.css" />
-	<link rel="stylesheet" type="text/css" href="../static/custom.css" />
+	<link rel="stylesheet" type="text/css" href="../static/css/life.css" />
+	<link rel="stylesheet" type="text/css" href="../static/css/custom.css" />
 	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" />
 </head>
 
 <body>
-    <!-- Navigation Bar-->
-    <div class="container">
-        <ul class="nav pav-pills">
-            <!-- Navigation Menu-->
-            <li class="active"><a data-toggle="tab" href="#myprofile">My Profile</a></li>
-            <li class><a data-toggle="tab" href="#leaderboard">Leaderboard</a></li>
-            <li class><a data-toggle="tab" href="#tasks">Tasks</a></li>
-            <li class><a data-toggle="tab" href="#store">Store</a></li>
-            <li class><a data-toggle="tab" href="#workshop">Workshop</a></li>
-            <li class="pull right"><a data-toggle="tab" href="#about">About</a></li>
-        </ul>
-    </div>
-    <!-- end container -->
+	<!-- Navigation Bar-->
+	<div class="container">
+		<ul class="nav pav-pills">
+			<!-- Navigation Menu-->
+			<li class="active"><a data-toggle="tab" href="#myprofile">My Profile</a></li>
+			<li class><a data-toggle="tab" href="#leaderboard">Leaderboard</a></li>
+			<li class><a data-toggle="tab" href="#tasks">Tasks</a></li>
+			<li class><a data-toggle="tab" href="#store">Store</a></li>
+			<li class><a data-toggle="tab" href="#workshop">Workshop</a></li>
+			<li class="pull right"><a data-toggle="tab" href="#about">About</a></li>
+		</ul>
+	</div>
+	<!-- End Navigation Bar-->
+	
+	
+	
+	<div class="tab-content">
+		
+		<div id="myprofile" class="tab-pane fade in active">
+			<div class="header-wrap">
+				<header class="site-header">
+					<!-- avatar -->
+					<div class="herobox-wrap main-herobox">
+						<figure class="herobox">
+							<div class="avatar-name">Anthony Liang</div>
+							<div class="character-sprites">Image</div>
+							<div class="avatar-level">
+								<span class="glyphion glyphicon-circle-arrow-up"></span>
+								<span>1</span>
+							</div>
+						</figure>
+					</div>
+					<!-- stat bars -->
+					<div class="hero-stats">
+						<div tooltip="Health" class="meter-label">
+							<span class="glyphicon glyphicon-heart"></span>
+						</div>
+						<div tooltip="50" class="meter health">
+							<div class="bar" style="width: 100%;"></div>
+							<span class="meter-text value">50 / 50</span>
+						</div>
+						<div tooltip="Experience" class="meter-label">
+							<span class="glyphicon glyphicon-star"></span>
+						</div>
+						<div tooltip="Experience" class="meter experience">
+							<div class="bar" style="width: 1%;"></div>
+							<span class="meter-text value"><span tooltip="Progress"><a class="glyphicon glyphicon-signal"></a></span><span>    </span>0 / 150</span>
+						</div>
+					</div>
+			
+				</header>
+			</div>
+			<div id="wrap" class="container-fluid">
+				<div class="row">
+				</div>
+			</div>
+		</div>
 
-    <!-- End Navigation Bar-->
-    <div class="tab-content">
-        <div id="myprofile" class="tab-pane fade in active">
 
-            <div class="header-wrap">
-            <header class="site-header">
-                <!-- avatar -->
-                <div class="herobox-wrap main-herobox">
-                    <figure class="herobox">
-                    <div class="avatar-name">Anthony Liang</div>
-                    <div class="character-sprites">Image</div>
-                    <div class="avatar-level">
-                        <span class="glyphion glyphicon-circle-arrow-up"></span>
-                        <span>1</span>
-                    </div>
-                    </figure> 
-                </div>
-                <!-- stat bars -->
-                <div class="hero-stats">
-                    <div tooltip="Health" class="meter-label">
-                        <span class="glyphicon glyphicon-heart"></span>
-                    </div>
-                    <div tooltip="50" class="meter health">
-                        <div class="bar" style="width: 100%;"></div>
-                        <span class="meter-text value">50 / 50</span>
-                    </div>
-                    <div tooltip="Experience" class="meter-label">
-                        <span class="glyphicon glyphicon-star"></span>
-                    </div>
-                    <div tooltip="Experience" class="meter experience">
-                        <div class="bar" style="width: 1%;"></div>
-                            <span class="meter-text value"><span tooltip="Progress"><a class="glyphicon glyphicon-signal"></a></span><span>    </span>0 / 150</span>
-                        </div>
-                    </div>
-                </div>
-            </header>
-            <div id="wrap" class="container-fluid">
-                <div class="row">
-                </div>
-            </div>
-            </div>
-        </div>
 		<div id="leaderboard" class="tab-pane fade">
 			<div class="container">
 				<div class="row">
@@ -249,6 +252,7 @@
 				</div>
 			</div>
 		</div>
+
 		<div id="workshop" class="tab-pane fade">
 			<h3>Workshop</h3>
 			<div id="contentBox" class="clearfix" style="margin:0px auto; width:80%">
@@ -295,10 +299,12 @@
 			</div>
 
 		</div>
+
 		<div id="about" class="tab-pane fade">
 			<h3>About</h3>
 			<p>Some content in menu 2.</p>
 		</div>
+
 	</div>
 
 	<!-- jQuery  -->
@@ -309,36 +315,9 @@
 	<script>
 		$('#login').modal('hide');
 		$('#signup').modal('hide');
-	</script>
-	<script>
 		$(document).ready(function() {
 			// Activate Carousel
 			$("#myCarousel").carousel();
-
-			// Enable Carousel Indicators
-			$(".item1").click(function() {
-				$("#myCarousel").carousel(0);
-			});
-			$(".item2").click(function() {
-				$("#myCarousel").carousel(1);
-			});
-			$(".item3").click(function() {
-				$("#myCarousel").carousel(2);
-			});
-
-			// Enable Carousel Controls
-			$(".left").click(function() {
-				$("#myCarousel").carousel("prev");
-			});
-			$(".right").click(function() {
-				$("#myCarousel").carousel("next");
-			});
-		});
-		$(document).ready(function() {
-			// Activate Carousel
-			$("#myCarousel").carousel({
-				interval: false
-			});
 
 			// Enable Carousel Indicators
 			$(".item1").click(function() {
