@@ -106,13 +106,11 @@
 	outline: #999 solid 1px;
 	text-align: center;
 	margin-right: .618em;
-	border: 1px solid #fff;
-	font-size: .8em;
-	line-height: 1;
-	color: #fff;
-	letter-spacing: .0618em;
-	font-weight: 700;
+
 }
+
+
+
 
 .hero-stats .experience{
 	background: #fffbf0;
@@ -171,7 +169,13 @@
 }
 
 
+/* STORE */
 
+.carousel-indicators li{visibility:hidden;}
+ 
+.item, item active{
+	text-align: center;
+}
 
 
 

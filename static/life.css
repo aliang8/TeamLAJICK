@@ -164,6 +164,7 @@
 	height: auto !important;
 }
 
+/* STORE */
 
 /* TASKS LIST */
 .tasks-lists .row{
@@ -175,7 +176,18 @@
 	padding-left: 10px;
 	padding-right: 10px;
 	margin-bottom: 15px;
+
+#myC{
+	width:100%;
+	background-color : #F2F1EF;
 }
+
+.item, item active{
+	text-align: center;	
+}
+
+.carousel-indicators li{
+	visibility: hidden;
 
 .habits{
 	padding: 1.5em;
