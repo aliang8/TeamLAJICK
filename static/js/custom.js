@@ -72,9 +72,10 @@ var newToDo = function(e) {
   $.ajax({
       url: "/home",
       type: 'POST',
-      data: $("#addToDo").serializeObject()
+      data: $("todoform").serializeObject()
   }).done(function(result) {
             item.innerHTML = result;
+            console.log(result);
           }).fail(function() {
                     console.log("Ooops");
               });
@@ -91,7 +92,7 @@ var newHabit = function(e) {
   $.ajax({
       url: "/home",
       type: 'POST',
-      data: $("#addHabit").serializeObject()
+      data: $("habitform").serializeObject()
   }).done(function(result) {
             item.innerHTML = result;
           }).fail(function() {
@@ -109,7 +110,7 @@ var newGoal = function(e) {
   $.ajax({
       url: "/home",
       type: 'POST',
-      data: $("#addGoal").serializeObject()
+      data: $("goalform").serializeObject()
   }).done(function(result) {
             item.innerHTML = result;
           }).fail(function() {
