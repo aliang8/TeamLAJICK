@@ -10,16 +10,22 @@ app.secret_key = 'life^2'
 
 @app.route("/", methods=['POST','GET'])
 def root():
-    lb = functions.getAllUserInfo()
+    lb = functions.getAllUserInfo('events_completed')
     return render_template('dashboard.html', logged = 0, lb=lb)
     
-@app.route("/<message>", methods=['POST','GET'])
-def home(message):
+@app.route("/<message>/<sort>", methods=['POST','GET'])
+def home(message,sort):
     if session.get('username') != None:
         user = session.get('username')
         userInfo = functions.getUserInfo(user)
+        #If not a request, load everything
+        todos = functions.getUserToDos(user)
+        habits = functions.getUserHabits(user)
+        goals = functions.getUserGoals(user)
+
         #Check for all ajax requests here
         #All of POST type
+        gold = functions.getUserInfo(user)[1]
         if request.method == 'POST':
             multi_dict = request.args
             for key in multi_dict:
@@ -33,17 +39,19 @@ def home(message):
                 return functions.insertHabit(user, request.form.get("addHabit"))
             if "addGoal" in request.form:
                 return functions.insertGoal(user, request.form.get("addGoal"))
-            
-    
-    
-        #If not a request, load everything
-        todos = functions.getUserToDos(user)
-        habits = functions.getUserHabits(user)
-        goals = functions.getUserGoals(user)
-
-        gold = functions.getUserInfo(user)[1]
+            if sort == "level":
+                lb = functions.getAllUserInfo('level')
+                return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb)
+            elif sort == "money":
+                lb = functions.getAllUserInfo('money')
+                return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb)            
+            elif sort == "events_completed":
+                lb = functions.getAllUserInfo('events_completed')
+                return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb)
+        else:
+            lb = functions.getAllUserInfo('events_completed')
         
-        return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo)
+        return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb)
     else:
         return redirect(url_for('root'))
 
@@ -56,19 +64,19 @@ def authenticate():
         if 'login' in request.form:
             if login.login(username,password):
                 session['username'] = username
-                return redirect(url_for("home",message = "Login successful"))
+                return redirect(url_for("home",message = "Login successful",sort="level"))
             else:
-                return redirect(url_for("home",message = "Login failed"))
+                return redirect(url_for("home",message = "Login failed",sort="level"))
         else:
             if login.register(username,password):
-                return redirect(url_for("home",message = "Registration successful"))
+                return redirect(url_for("home",message = "Registration successful",sort="level"))
             else:
-                return redirect(url_for("home",message = "Registration failed"))
+                return redirect(url_for("home",message = "Registration failed",sort="level"))
 
 @app.route("/logout/", methods=['POST','GET'])
 def logout():
     session.pop('username')
-    return redirect(url_for("home",message = "Successfully logged out"))
+    return redirect(url_for("root"))
 
 if __name__ == "__main__":
     app.debug = True

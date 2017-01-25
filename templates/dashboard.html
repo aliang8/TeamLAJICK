@@ -146,6 +146,17 @@
             <div class="container">
                 <div class="text">
                     <h1>LEADERBOARD</h1>
+                    {% if logged %}
+                    <form action="/hi/money" method="POST">
+                        <input type="submit" name="sort" value="Money">
+                    </form>
+                    <form action="/hi/level" method="POST">
+                        <input type="submit" name="sort" value="Level">
+                    </form>
+                    <form action="/hi/events_completed" method="POST">
+                        <input type="submit" name="sort" value="Events_Completed">
+                    </form>
+                    {% endif %}
                     <table class="table">
                         <thead>
                         <tr>
@@ -198,12 +209,15 @@
                                             <li class="task color-neutral">
                                                 <div class="task-meta-controls">
                                                     <button class="glyphicon glyphicon-pencil"></button>
-                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                    <button id="trash" class="glyphicon glyphicon-trash"></button>
                                                     <div class="task-controls">
-                                                        <div class="habits">
-                                                            <span class="glyphicon glyphicon-plus"></span>
+                                                        <div class="complete">
+                                                            <button class="glyphicon glyphicon-plus"></button>
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <div id="test" class="task-text">
+                                                    Hello
                                                 </div>
                                             </li>
                                             <li class="task habit color-neutral">What</li>
@@ -508,6 +522,10 @@
             $(this).carousel('pause');
         });
         $('.carousel-indicators .active').removeClass('active')
+        var li_node = document.getElementById("trash").parentNode.parentNode
+        document.getElementById("trash").addEventListener("click", function(){
+            li_node.remove()
+        })
     </script>
 
 </body>

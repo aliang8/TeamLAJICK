@@ -19,12 +19,19 @@ def getUserInfo(user):
     stats = data.fetchall()
     return stats[0]
 
-def getAllUserInfo():
+def getAllUserInfo(sort):
     db = sql.connect(DATA)
     c = db.cursor()
     leaderboard = [];
-    a = c.execute("SELECT username FROM accounts")
-    users = a.fetchall()
+    if sort == "money":
+        a = c.execute("SELECT username FROM accounts ORDER BY money DESC")
+        users = a.fetchall()
+    elif sort == "level":
+        a = c.execute("SELECT username FROM accounts ORDER BY level DESC")
+        users = a.fetchall()
+    elif sort == "events_completed":
+        a = c.execute("SELECT username FROM accounts ORDER BY events_completed DESC")
+        users = a.fetchall()
     for user in users:
         userInfo = getUserInfo(user[0])
         leaderboard.append(userInfo)
@@ -167,6 +174,5 @@ def makeEquipment(user):
         stats = updateStats(stats, level, 5)
     equipment[1:] = stats
     return equipment
-
 
 
