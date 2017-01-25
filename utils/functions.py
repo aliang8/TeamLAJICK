@@ -144,4 +144,3 @@ def makeEquipment(user):
         stats = updateStats(stats, level, 5)
     print(equipment)
 
-makeEquipment('anthony')

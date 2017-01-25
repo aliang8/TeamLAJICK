@@ -12,9 +12,10 @@ app.secret_key = 'life^2'
 def root():
     return render_template('dashboard.html', logged = 0)
     
-@app.route("/home", methods=['POST','GET'])
-def home():
-    print session.get('username');
+@app.route("/<message>", methods=['POST','GET'])
+def home(message):
+    return render_template('dashboard.html', logged = 1, message=message)
+    '''
     if session.get('username') != None:
         user = session.get('username')
         userInfo = functions.getUserInfo(user)
@@ -35,7 +36,6 @@ def home():
                 return functions.insertHabit(user, request.form.get("addHabit"))
             if "addGoal" in request.form:
                 return functions.insertGoal(user, request.form.get("addGoal"))
-            return 
             
     
     
@@ -46,11 +46,9 @@ def home():
 
         gold = functions.getUserInfo(user)[1]
         
-        return render_template('dashboard.html', logged = 1, todos=todos, habits=habits, goals=goals, balance = gold)
+        return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance = gold)
     
-
-    
-    return render_template('dashboard.html' )
+    '''
 
 
 @app.route("/authenticate/", methods = ['POST','GET'])

@@ -83,8 +83,6 @@
                 </div>
             </div>
         </div>
-        </ul>
-        </div>
     </nav>
 
 
@@ -93,7 +91,7 @@
 
     <div class="header-wrap">
         <header class="site-header">
-            <!-- avatar -->
+            <!-- AVATAR -->
             <div class="herobox-wrap main-herobox">
                 <figure class="herobox">
                     <div class="avatar-name">Anthony Liang</div>
@@ -103,7 +101,7 @@
                     </div>
                 </figure>
             </div>
-            <!-- stat bars -->
+            <!-- STAT BARS -->
             <div class="hero-stats">
                 <div tooltip="Health" class="meter-label">
                     <span class="glyphicon glyphicon-heart"></span>
@@ -129,10 +127,7 @@
 
 
     <div class="tab-content">
-
-
-
-
+        <!-- Leaderboard -->
         <div id="leaderboard" class="tab-pane fade">
             <div class="container">
                 <div class="row">
@@ -152,29 +147,35 @@
 
                         </div>
                         <div class="text">
-                            	<span style="font-size:2em;font-weight:20;">Stop Slacking and Get Cracking</span></br> Use our beautiful interface to keep track of your daily/long-term goals. Buy yourself a treat.
-                            </div>
-                            <div class="task-lists container-fluid">
-                                <div class="row">
-                                    <div class="col-sm-6 col-md-3">
-                                        <div class="task-column habits">
-                                            <h2 class="task-column_title habit-title">Habits</h2>
-                                            <form name="newhabitform" class="task-add">
-                                                <input type="text" placeholder="New Habit">
-                                                <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
-                                            </form>
-                                            <ul class="main-list" style="padding-left: 0px;">
-                                                <li class="task color-neutral">
-                                                    <div class="task-meta-controls">
-                                                        <button class="glyphicon glyphicon-pencil"></button>
-                                                        <span class="glyphicon glyphicon-trash"></span>
-                                                        <div class="task-controls">
-                                                            <div class="habits">
-                                                                <span class="glyphicon glyphicon-plus"></span>
-                                                            </div>
+                            <span style="font-size:2em;font-weight:20;">Stop Slacking and Get Cracking</span></br> Use our beautiful interface to keep track of your daily/long-term goals. Buy yourself a treat.
+                        </div>
                         <div class="task-lists container-fluid">
                             <div class="row">
-                                 <div class="col-sm-6 col-md-3">
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="task-column habits">
+                                        <h2 class="task-column_title habit-title">Habits</h2>
+                                        <form name="newhabitform" class="task-add">
+                                            <input type="text" placeholder="New Habit">
+                                            <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+                                        </form>
+                                        <ul class="main-list" style="padding-left: 0px;">
+                                            <li class="task color-neutral">
+                                                <div class="task-meta-controls">
+                                                    <button class="glyphicon glyphicon-pencil"></button>
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                    <div class="task-controls">
+                                                        <div class="habits">
+                                                            <span class="glyphicon glyphicon-plus"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="task habit color-neutral">What</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-md-3">
                                     <div class="task-column habits">
                                         <h2 class="task-column_title habit-title">To-Dos</h2>
                                         <form name="todoform" class="task-add">
@@ -189,24 +190,20 @@
                                                     <div class="task-controls">
                                                         <div class="habits">
                                                             <span class="glyphicon glyphicon-plus"></span>
-
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li class="task habit color-neutral">What</li>
-                                            </ul>
-                                        </div>
+                                                </div>
+                                            </li>
+                                            <li class="task habit color-neutral">What</li>
+                                        </ul>
                                     </div>
-
                                 </div>
-                                
+
                                 <div class="col-sm-6 col-md-3">
                                     <div class="task-column habits">
                                         <h2 class="task-column_title habit-title">Habits</h2>
                                         <form name="habitform" class="task-add">
                                             <input type="text" placeholder="To-Dos" name="addHabit">
-                                            
-                                            
                                             <button type="button" id="newhabit"><span class="glyphicon glyphicon-plus"></span></button>
                                         </form>
                                         <ul class="main-list" id="habitlist" style="padding-left: 0px;">
@@ -217,18 +214,16 @@
                                                     <div class="task-controls">
                                                         <div class="habits">
                                                             <span class="glyphicon glyphicon-plus"></span>
-
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li class="task habit color-neutral">What</li>
-                                            </ul>
-                                        </div>
+                                                </div>
+                                            </li>
+                                            <li class="task habit color-neutral">What</li>
+                                        </ul>
                                     </div>
-
                                 </div>
-                                
-                               <div class="col-sm-6 col-md-3">
+
+                                <div class="col-sm-6 col-md-3">
                                     <div class="task-column habits">
                                         <h2 class="task-column_title habit-title">Goals</h2>
                                         <form name="goalform" class="task-add">
@@ -243,38 +238,36 @@
                                                     <div class="task-controls">
                                                         <div class="habits">
                                                             <span class="glyphicon glyphicon-plus"></span>
-
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li class="task habit color-neutral">What</li>
-                                            </ul>
-                                        </div>
+                                                </div>
+                                            </li>
+                                            <li class="task habit color-neutral">What</li>
+                                        </ul>
                                     </div>
+                                </div>
 
-                                    <div class="col-sm-6 col-md-3">
-                                        <div class="task-column habits">
-                                            <h2 class="task-column_title habit-title">Rewards</h2>
-                                            <form name="newhabitform" class="task-add">
-                                                <input type="text" placeholder="New Reward">
-                                                <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
-                                            </form>
-                                            <ul class="main-list" style="padding-left: 0px;">
-                                                <li class="task color-neutral">
-                                                    <div class="task-meta-controls">
-                                                        <span class="glyphicon glyphicon-pencil"></span>
-                                                        <span class="glyphicon glyphicon-trash"></span>
-                                                        <div class="task-controls">
-                                                            <div class="habits">
-                                                                <span class="glyphicon glyphicon-plus"></span>
-                                                            </div>
-
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="task-column habits">
+                                        <h2 class="task-column_title habit-title">Rewards</h2>
+                                        <form name="newhabitform" class="task-add">
+                                            <input type="text" placeholder="New Reward">
+                                            <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+                                        </form>
+                                        <ul class="main-list" style="padding-left: 0px;">
+                                            <li class="task color-neutral">
+                                                <div class="task-meta-controls">
+                                                    <span class="glyphicon glyphicon-pencil"></span>
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                    <div class="task-controls">
+                                                        <div class="habits">
+                                                            <span class="glyphicon glyphicon-plus"></span>
                                                         </div>
                                                     </div>
-                                                </li>
-                                                <li class="task habit color-neutral">What</li>
-                                            </ul>
-                                        </div>
+                                                </div>
+                                            </li>
+                                            <li class="task habit color-neutral">What</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -435,13 +428,15 @@
         </div>
 
         <div id="about" class="tab-pane fade">
-        <div class="toolbar toolbar-container">
-          <div class="text">
-          	About Us! <br> <br>
-          	The Team: Jerry Chang (Project Manager), Issac Kim, and Anthony Liang <br> <br>
-          	Life2” is an app that gamifies habits, to-do’s and goals to keep users on top of their game. Upon registering, users will be given an avatar for which they can nurture, level, and pimp out by keeping in line with their habits and goals. A user can create a list of habits to follow and a set of goals to achieve by creating their own or choosing from presets. By completing these ‘quests’, the user receives bonuses and rewards that they can trade in for items. On the community side, users can check a global leaderboard for their placement. They can also share their custom quests so that other users can use them.
-          </div>
-        </div>
+            <div class="toolbar toolbar-container">
+                <div class="text">
+                    About Us!
+                    <br>
+                    <br> The Team: Jerry Chang (Project Manager), Issac Kim, and Anthony Liang
+                    <br>
+                    <br> Life2” is an app that gamifies habits, to-do’s and goals to keep users on top of their game. Upon registering, users will be given an avatar for which they can nurture, level, and pimp out by keeping in line with their habits and goals. A user can create a list of habits to follow and a set of goals to achieve by creating their own or choosing from presets. By completing these ‘quests’, the user receives bonuses and rewards that they can trade in for items. On the community side, users can check a global leaderboard for their placement. They can also share their custom quests so that other users can use them.
+                </div>
+            </div>
         </div>
 
     </div>
