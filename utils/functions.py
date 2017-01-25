@@ -1,8 +1,8 @@
 import sqlite3 as sql
-import hashlib
+import hashlib, random
 
 #CONNECT DATABASE                                                                                                       
-DATA = "data/data.db"
+DATA = "../data/data.db"
 
 def getUserID(user):
     db = sql.connect(DATA)
@@ -117,4 +117,34 @@ def updateInfo(user,infoType,update):
     db.commit()
     db.close()
 
+#edits equipment stats
+def updateStats(stats, level, multiplier):
+    for stat in stats:
+        stat = int(stat)
+        stat = stat * level + multiplier * level
+        stat = str(stat)
+    return stats
+    
+#makes random equipment for store
+def makeEquipment(user):
+    level = 1
+    #level = getUserInfo(user)[3]
+    f = open('../static/equipment.txt','r')
+    equipmentList = f.read().split()[1:]
+    n = random.randint(0,len(equipmentList)-1)
+    equipment = equipmentList[n].split(',')
+    name = equipment[0]
+    stats = equipment[1:]
+    n = random.randint(1,100)
+    print(n)
+    if(n >= 1 & n <=80):
+        stats = updateStats(stats, level, 0)
+    if(n >= 81 & n <=95):
+        stats = updateStats(stats, level, 1)
+    if(n >= 96 & n <=99):
+        stats = updateStats(stats, level, 2)
+    elif(n==100):
+        stats = updateStats(stats, level, 5)
+    print(equipment)
 
+makeEquipment('anthony')
