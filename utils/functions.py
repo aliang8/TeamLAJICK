@@ -100,9 +100,6 @@ def deleteGoal(user, goalID):
     db.commit()
     db.close()
      
-
- 
- 
 #update and insert user info
 def updateInfo(user,infoType,update):
     db = sql.connect(DATA)
