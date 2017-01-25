@@ -18,17 +18,19 @@ def home():
     if session.get('username') != None:
         user = session.get('username')
         userInfo = functions.getUserInfo(user)
-
-        #return render_template('dashboard.html', userInfo=userInfo)
-    
-    #if session.get('username'):
-        user = session.get('username')
-    
         #Check for all ajax requests here
         #All of POST type
         if request.method == 'POST':
+           
+            multi_dict = request.args
+            for key in multi_dict:
+                print multi_dict.get(key)
+                print "1"
+           
             if "addToDo" in request.form:
+                print request.form.get("addToDo")
                 return functions.insertToDo(user, request.form.get("addToDo"))
+            print "Bad"
             if "addHabit" in request.form:
                 return functions.insertHabit(user, request.form.get("addHabit"))
             if "addGoal" in request.form:
