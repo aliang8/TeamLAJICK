@@ -15,9 +15,20 @@ def getUserID(user):
 def getUserInfo(user):
     db = sql.connect(DATA)
     c = db.cursor()
-    data = c.execute("SELECT username, money, level, exp FROM accounts WHERE username = ?", (user,))
+    data = c.execute("SELECT username, money, level, exp, events_completed, userID FROM accounts WHERE username = ?", (user,))
     stats = data.fetchall()
     return stats[0]
+
+def getAllUserInfo():
+    db = sql.connect(DATA)
+    c = db.cursor()
+    leaderboard = [];
+    a = c.execute("SELECT username FROM accounts")
+    users = a.fetchall()
+    for user in users:
+        userInfo = getUserInfo(user[0])
+        leaderboard.append(userInfo)
+    return leaderboard
 
 def getUserEvents(user):
     db = sql.connect(DATA)
@@ -143,4 +154,5 @@ def makeEquipment(user):
     elif(n==100):
         stats = updateStats(stats, level, 5)
     print(equipment)
+
 

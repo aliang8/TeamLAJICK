@@ -26,12 +26,10 @@
                 <li class="toolbar-button"><a data-toggle="tab" href="#about">About</a></li>
             </ul>
             <ul class="toolbar-nav" style="float: right;">
-                {{message}}
-                {% if not logged %}
+                {{message}} {% if not logged %}
                 <button class="toolbar-button" data-toggle="modal" data-target="#signup">Signup</button>
                 <button class="toolbar-button" data-toggle="modal" data-target="#login">Login</button>
-                {% endif %}
-                {% if logged %}
+                {% endif %} {% if logged %}
                 <button class="toolbar-button"><a href="/logout">Logout</a></button>
                 {% endif %}
             </ul>
@@ -100,10 +98,10 @@
             <!-- AVATAR -->
             <div class="herobox-wrap main-herobox">
                 <figure class="herobox">
-                    <div class="avatar-name">Anthony Liang</div>
+                    <div class="avatar-name">{{userInfo[0]}}</div>
                     <div class="character-sprites">Image</div>
                     <div class="avatar-level">
-                        <span>1</span>
+                        <span>{{userInfo[2]}}</span>
                     </div>
                 </figure>
             </div>
@@ -126,16 +124,16 @@
             </div>
         </header>
     </div>
-    {% endif %}
-    {% if not logged %}
-    <div class ="header-wrap">
+    {% endif %} {% if not logged %}
+    <div class="header-wrap">
         <header class="site-header">
-        <div class="welcome">
-            THIS IS LIFE<sup>2</sup>.<br>
-        </div>
-        <div class="description">
+            <div class="welcome">
+                THIS IS LIFE<sup>2</sup>.
+                <br>
+            </div>
+            <div class="description">
 
-        </div>
+            </div>
         </header>
     </div>
     {% endif %}
@@ -146,8 +144,30 @@
         <!-- Leaderboard -->
         <div id="leaderboard" class="tab-pane fade">
             <div class="container">
-                <div class="row">
-                    <h1>Leaderboard</h1>
+                <div class="text">
+                    <h1>LEADERBOARD</h1>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <td>UserID</td>
+                            <td>Username</td>
+                            <td>Money</td>
+                            <td>Level</td>
+                            <td>Experience</td>
+                            <td>Events_Completed</td>
+                        </tr>
+                        </thead>
+                        {% for user in lb %}
+                        <tr>
+                            <td>{{user[5]}}</td>
+                            <td>{{user[0]}}</td>
+                            <td>{{user[1]}}</td>
+                            <td>{{user[2]}}</td>
+                            <td>{{user[3]}}</td>
+                            <td>{{user[4]}}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
                 </div>
             </div>
         </div>
@@ -321,7 +341,7 @@
                             </ul>
                         </div>
                         <div class="item">
-                            <h2>Rewards</h2>
+                            <h2>Rewards</h2>a
                             <input id="reward_name" type="text">Reward</input>
                             <input id="reward_cost" type="text" value="0">Price</input>
                             <button id="add_reward">New Reward</button>

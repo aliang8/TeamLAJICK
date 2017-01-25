@@ -10,7 +10,8 @@ app.secret_key = 'life^2'
 
 @app.route("/", methods=['POST','GET'])
 def root():
-    return render_template('dashboard.html', logged = 0)
+    lb = functions.getAllUserInfo()
+    return render_template('dashboard.html', logged = 0, lb=lb)
     
 @app.route("/<message>", methods=['POST','GET'])
 def home(message):
@@ -20,7 +21,6 @@ def home(message):
         #Check for all ajax requests here
         #All of POST type
         if request.method == 'POST':
-           
             multi_dict = request.args
             for key in multi_dict:
                 print multi_dict.get(key)
@@ -29,7 +29,6 @@ def home(message):
             if "addToDo" in request.form:
                 print request.form.get("addToDo")
                 return functions.insertToDo(user, request.form.get("addToDo"))
-            print "Bad"
             if "addHabit" in request.form:
                 return functions.insertHabit(user, request.form.get("addHabit"))
             if "addGoal" in request.form:
@@ -44,7 +43,7 @@ def home(message):
 
         gold = functions.getUserInfo(user)[1]
         
-        return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance = gold)
+        return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo)
     else:
         return redirect(url_for('root'))
 
