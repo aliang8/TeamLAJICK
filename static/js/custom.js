@@ -22,16 +22,6 @@ var addReward = function(e){
     var name = document.getElementById("reward_name");
     name = name.value;
     var price = document.getElementById("reward_cost");
-<<<<<<< HEAD
-    price = price.value;
-    li.innerHTML = "Reward: " + name + " Price: " + price + "<button class='purchase'>Purchase</button>";
-    var ol = document.getElementById("rewards");
-    ol.appendChild(li);
-    var reward_list = document.getElementById("rewards");
-    var rewards = reward_list.getElementsByClassName("purchase");
-    for(var i=0; i < rewards.length; i++){
-    	rewards[i].addEventListener("click", purchase);
-=======
     price = parseInt(price.value);
     if(name.length == 0){
 	alert("Reward Must Have Name");
@@ -49,7 +39,6 @@ var addReward = function(e){
 	var rewards = reward_list.getElementsByClassName("purchase");
 	for(i=0; i < rewards.length; i++){
 	    rewards[i].addEventListener("click", purchase);
->>>>>>> d254e3f0195940e3d315a13f5172803c21f471f4
 
 	}
     }

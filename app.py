@@ -10,7 +10,7 @@ app.secret_key = 'life^2'
 
 @app.route("/", methods=['POST','GET'])
 def root():
-    return render_template('dashboard.html')
+    return render_template('dashboard.html', login = 0)
     
 @app.route("/<message>", methods=['POST','GET'])
 def home(message):
