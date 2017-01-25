@@ -3,11 +3,10 @@
 /* NAVBAR STUFF */
 
 .toolbar {
-	position: fixed;
 	top: 0;
 	right: 0;
 	width: 100%;
-	background-color: #f4f7f7 !important; 
+	background-color: #f4f7f7;
 	border-bottom: 1px solid #bacbcf;
 }
 
@@ -15,16 +14,12 @@
 	white-space: nowrap;
 	float: left;
 	padding: .618em;
-	padding: 0;
-	margin: 0;
-	list-style-position: inside;
 }
 
 .toolbar-button{
 	list-style: none;
 	padding: .25em .5em !important;
 	text-decoration: none !important;
-	color: #222;
 	font-size: 1em;
 	cursor: pointer;
 	background-color: #f4f7f7 !important; 
@@ -37,10 +32,11 @@
 }
 
 .toolbar-nav li{
-	margin: 0;
-	padding: 0;
 	margin-right: .618em;
 }
+
+
+
 
 /* PROFILE BAR */
 
