@@ -15,7 +15,7 @@ def getUserID(user):
 def getUserInfo(user):
     db = sql.connect(DATA)
     c = db.cursor()
-    data = c.execute("SELECT money, level, exp FROM accounts WHERE username = ?", (user,))
+    data = c.execute("SELECT username, money, level, exp FROM accounts WHERE username = ?", (user,))
     stats = data.fetchall()
     return stats[0]
 
@@ -117,4 +117,3 @@ def updateInfo(user,infoType,update):
     db.commit()
     db.close()
 
-print(getUserInfo('j'))
