@@ -17,7 +17,6 @@
         <div class="toolbar toolbar-container">
             <ul class="toolbar-nav">
                 <!-- Navigation Menu-->
-                <li class="toolbar-button"><a data-toggle="tab" href="#myprofile">My Profile</a></li>
                 <li class="toolbar-button"><a data-toggle="tab" href="#leaderboard">Leaderboard</a></li>
                 <li class="toolbar-button"><a data-toggle="tab" href="#tasks">Tasks</a></li>
                 <li class="toolbar-button"><a data-toggle="tab" href="#store">Store</a></li>
@@ -32,7 +31,7 @@
                 <!-- Modal -->
                 <div class="modal fade" id="login">
                     <div class="modal-dialog" role="document">
-                        <div class="modal-content">ss
+                        <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -85,11 +84,11 @@
             <!-- avatar -->
             <div class="herobox-wrap main-herobox">
                 <figure class="herobox">
-                    <div class="avatar-name">Anthony Liang</div>
+                    <div class="avatar-name">{{userInfo[0]}}</div>
                     <div class="character-sprites">Image</div>
                     <div class="avatar-level">
                         <span class="glyphion glyphicon-circle-arrow-up"></span>
-                        <span>1</span>
+                        <span>{{userInfo[2]}}</span>
                     </div>
                 </figure>
             </div>
@@ -276,7 +275,7 @@
 
                                 <h2>Rewards</h2>
                                 <input id="reward_name" type="text">Reward</input>
-                                <input id="reward_cost" type="text">Price</input>
+                                <input id="reward_cost" type="text" value="0">Price</input>
                                 <button id="add_reward">New Reward</button>
                                 <ul id="rewards">
                                 </ul>

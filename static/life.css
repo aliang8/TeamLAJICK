@@ -166,8 +166,20 @@
 	padding: 0 ;
 }
 
+/* STORE */
 
+#myC{
+	width:100%;
+	background-color : #F2F1EF;
+}
 
+.item, item active{
+	text-align: center;	
+}
+
+.carousel-indicators li{
+	visibility: hidden;
+}
 
 
 
