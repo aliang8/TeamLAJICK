@@ -40,8 +40,8 @@ reward_button.addEventListener("click", addReward);
 
 var addToDo = function(e){
   
-  var item = document.createElement("li");
-  var.class = "todoitem";
+  //var item = document.createElement("li");
+  //var.class = "todoitem";
   
   
   
