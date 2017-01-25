@@ -209,14 +209,14 @@
                                             <li class="task color-neutral">
                                                 <div class="task-meta-controls">
                                                     <button class="glyphicon glyphicon-pencil"></button>
-                                                    <button class="glyphicon glyphicon-trash"></button>
+                                                    <button id="trash" class="glyphicon glyphicon-trash"></button>
                                                     <div class="task-controls">
                                                         <div class="complete">
                                                             <button class="glyphicon glyphicon-plus"></button>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="task-text">
+                                                <div id="test" class="task-text">
                                                     Hello
                                                 </div>
                                             </li>
@@ -522,6 +522,10 @@
             $(this).carousel('pause');
         });
         $('.carousel-indicators .active').removeClass('active')
+        var li_node = document.getElementById("trash").parentNode.parentNode
+        document.getElementById("trash").addEventListener("click", function(){
+            li_node.remove()
+        })
     </script>
 
 </body>
