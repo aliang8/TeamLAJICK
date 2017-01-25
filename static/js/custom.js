@@ -28,8 +28,8 @@ var addReward = function(e){
     ol.appendChild(li);
     var reward_list = document.getElementById("rewards");
     var rewards = reward_list.getElementsByClassName("purchase");
-    for(i=0; i < rewards.length; i++){
-	rewards[i].addEventListener("click", purchase);
+    for(var i=0; i < rewards.length; i++){
+    	rewards[i].addEventListener("click", purchase);
 
     }
 }
