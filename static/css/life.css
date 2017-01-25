@@ -110,27 +110,7 @@
 }
 
 
-.carousel-inner .item {
-    overflow: hidden;
-    max-width: 100%;
-    max-height: 100%;
-}
 
-.carousel-inner .item img {
-    width: 100%;
-    min-height: 100%;
-    max-height: none;
-}
-
-.carousel-indicators li{display:none;}
-
-	border: 1px solid #fff;
-	font-size: .8em;
-	line-height: 1;
-	color: #fff;
-	letter-spacing: .0618em;
-	font-weight: 700;
-}
 
 .hero-stats .experience{
 	background: #fffbf0;
@@ -189,7 +169,13 @@
 }
 
 
+/* STORE */
 
+.carousel-indicators li{visibility:hidden;}
+ 
+.item, item active{
+	text-align: center;
+}
 
 
 
