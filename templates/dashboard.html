@@ -154,14 +154,40 @@
                         </div>
                         <div class="task-lists container-fluid">
                             <div class="row">
+                                 <div class="col-sm-6 col-md-3">
+                                    <div class="task-column habits">
+                                        <h2 class="task-column_title habit-title">To-Dos</h2>
+                                        <form name="todoform" class="task-add">
+                                            <input type="text" placeholder="New To-Do" name="addToDo">
+                                            <button type="button" id="newtodo"><span class="glyphicon glyphicon-plus"></span></button>
+                                        </form>
+                                        <ul class="main-list" id="todolist" style="padding-left: 0px;">
+                                            <li class="task color-neutral">
+                                                <div class="task-meta-controls">
+                                                    <span class="glyphicon glyphicon-pencil"></span>
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                    <div class="task-controls">
+                                                        <div class="habits">
+                                                            <span class="glyphicon glyphicon-plus"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="task habit color-neutral">What</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
                                 <div class="col-sm-6 col-md-3">
                                     <div class="task-column habits">
                                         <h2 class="task-column_title habit-title">Habits</h2>
-                                        <form name="newhabitform" class="task-add">
-                                            <input type="text" placeholder="New Habit">
-                                            <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+                                        <form name="habitform" class="task-add">
+                                            <input type="text" placeholder="To-Dos" name="addHabit">
+                                            
+                                            
+                                            <button type="button" id="newhabit"><span class="glyphicon glyphicon-plus"></span></button>
                                         </form>
-                                        <ul class="main-list" style="padding-left: 0px;">
+                                        <ul class="main-list" id="habitlist" style="padding-left: 0px;">
                                             <li class="task color-neutral">
                                                 <div class="task-meta-controls">
                                                     <span class="glyphicon glyphicon-pencil"></span>
@@ -177,14 +203,15 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 col-md-3">
+                                
+                               <div class="col-sm-6 col-md-3">
                                     <div class="task-column habits">
-                                        <h2 class="task-column_title habit-title">Dailies</h2>
-                                        <form name="newhabitform" class="task-add">
-                                            <input type="text" placeholder="New Daily">
-                                            <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+                                        <h2 class="task-column_title habit-title">Goals</h2>
+                                        <form name="goalform" class="task-add">
+                                            <input type="text" placeholder="New Goal" name="addGoal">
+                                            <button type="button" id="newgoal"><span class="glyphicon glyphicon-plus"></span></button>
                                         </form>
-                                        <ul class="main-list" style="padding-left: 0px;">
+                                        <ul class="main-list" id="goallist" style="padding-left: 0px;">
                                             <li class="task color-neutral">
                                                 <div class="task-meta-controls">
                                                     <span class="glyphicon glyphicon-pencil"></span>
@@ -200,35 +227,13 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 col-md-3">
-                                    <div class="task-column habits">
-                                        <h2 class="task-column_title habit-title">To-Dos</h2>
-                                        <form name="newhabitform" class="task-add">
-                                            <input type="text" placeholder="New To-Do">
-                                            <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
-                                        </form>
-                                        <ul class="main-list" style="padding-left: 0px;">
-                                            <li class="task color-neutral">
-                                                <div class="task-meta-controls">
-                                                    <span class="glyphicon glyphicon-pencil"></span>
-                                                    <span class="glyphicon glyphicon-trash"></span>
-                                                    <div class="task-controls">
-                                                        <div class="habits">
-                                                            <span class="glyphicon glyphicon-plus"></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="task habit color-neutral">What</li>
-                                        </ul>
-                                    </div>
-                                </div>
+                               
                                 <div class="col-sm-6 col-md-3">
                                     <div class="task-column habits">
                                         <h2 class="task-column_title habit-title">Rewards</h2>
                                         <form name="newhabitform" class="task-add">
                                             <input type="text" placeholder="New Reward">
-                                            <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+                                            <button type="button"><span class="glyphicon glyphicon-plus"></span></button>
                                         </form>
                                         <ul class="main-list" style="padding-left: 0px;">
                                             <li class="task color-neutral">
