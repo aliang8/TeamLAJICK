@@ -14,7 +14,11 @@ def root():
     
 @app.route("/<message>", methods=['POST','GET'])
 def home(message):
-    
+    if session.get('username'):
+        user = session.get('username')
+        userInfo = functions.getUserInfo(user)
+
+        return render_template('dashboard.html', message=message, userInfo=userInfo)
     '''
     if session.get('username'):
         user = session.get('username')
@@ -39,7 +43,8 @@ def home(message):
         
         return render_template('dashboard.html', todos=todos, habits=habits, goals=goals, message=message)
     '''
-        
+
+    
     return render_template('dashboard.html', message=message)
 
 

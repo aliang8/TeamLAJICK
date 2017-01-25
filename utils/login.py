@@ -8,7 +8,7 @@ DATA = "data/data.db"
 def initializeTables():
     db = sql.connect(DATA)
     c = db.cursor()
-    c.execute("CREATE TABLE IF NOT EXISTS accounts (username TEXT NOT NULL, password TEXT NOT NULL, userID INTEGER PRIMARY KEY autoincrement, money INTEGER, level INTEGER, exp INTEGER)")
+    c.execute("CREATE TABLE IF NOT EXISTS accounts (username TEXT NOT NULL, password TEXT NOT NULL, money INTEGER, level INTEGER, exp INTEGER, userID INTEGER PRIMARY KEY autoincrement)")
     c.execute("CREATE TABLE IF NOT EXISTS events (goalID INTEGER PRIMARY KEY autoincrement, userID INTEGER, todo INTEGER, habit INTEGER, goal INTEGER, content TEXT NOT NULL)")
     c.execute("CREATE TABLE IF NOT EXISTS items (userID INTEGER, item TEXT NOT NULL)")
     db.commit()
@@ -16,12 +16,12 @@ def initializeTables():
     
 def register(username, password):
     hashpass = hashlib.sha224(password).hexdigest()
-    creds = (username,hashpass,)
+    creds = (username,hashpass,0,0,0,)
     db = sql.connect(DATA)
     c = db.cursor()
     users = c.execute("SELECT username FROM accounts WHERE username = ?", (username,))
     if len(c.fetchall()) == 0 and len(password) >= 3:
-        c.execute("INSERT INTO accounts (username,password) VALUES (?,?)", creds)
+        c.execute("INSERT INTO accounts (username,password,money,level,exp) VALUES (?,?,?,?,?)", creds)
         db.commit()
         return True
     else:
@@ -50,6 +50,3 @@ def changePass(username,oldpass,newpass):
         return True
     else:
         return False
-
-initializeTables()
-register('j', '1111')
