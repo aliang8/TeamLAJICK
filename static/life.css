@@ -113,7 +113,7 @@
 	right: .382em;
 }
 
-.hero-stats .meter-label, .herobox .avatar-level, .herobox .avatar-name{
+.hero-stats .meter-label{
 	padding: .382em .618em !important;
 	float: left;
 	background-color: #b0c3c7 !important;
@@ -125,6 +125,19 @@
 	border: 1px solid #fff;
 	font-size: .8em;
 	line-height: 1;
+	color: #fff;
+	letter-spacing: .0618em;
+	font-weight: 700;
+}
+
+.herobox .avatar-level, .herobox .avatar-name{
+	padding: .382em .618em !important;
+	float: left;
+	background-color: #b0c3c7 !important;
+	text-shadow: -1px -1px 1px #2f3f42, 1px -1px 1px #2f3f42, -1px 1px 1px #2f3f42, 1px 1px 1px #2f3f42;
+	outline: #999 solid 1px;
+	text-align: center;
+	border: 1px solid #fff;
 	color: #fff;
 	letter-spacing: .0618em;
 	font-weight: 700;
@@ -146,7 +159,6 @@
 
 .herobox{
 	height: 10.5em;
-	width: 10em;
 	margin: 0;
 	position: relative;
 	cursor: pointer;
