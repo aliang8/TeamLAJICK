@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Life^2</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/life.css" />
+    <link rel="stylesheet" type="text/css" href="../static/life.css" />
     <link rel="stylesheet" type="text/css" href="../static/css/custom.css" />
     <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -25,12 +25,10 @@
                 <li class="toolbar-button"><a data-toggle="tab" href="#about">About</a></li>
             </ul>
             <ul class="toolbar-nav" style="float: right;">
-                {{message}}
+            	{{message}}
                 <button class="toolbar-button" data-toggle="modal" data-target="#signup">Signup</button>
                 <button class="toolbar-button" data-toggle="modal" data-target="#login">Login</button>
-                <form action="/logout/" method="POST" style="display: inline-block;">
-                	<input class="toolbar-button" type="submit" name="logout" value="Logout">
-                </form>
+                <button class="toolbar-button">Logout</button>
                 <!-- Modal -->
                 <div class="modal fade" id="login">
                     <div class="modal-dialog" role="document">
@@ -78,12 +76,10 @@
                         </div>
                     </div>
                 </div>
-
-            </ul>
+        </div>
+        </ul>
         </div>
     </nav>
-    
-    {% if login %}
     <div class="header-wrap">
         <header class="site-header">
             <!-- avatar -->
@@ -116,8 +112,6 @@
             </div>
         </header>
     </div>
-    {% endif %}
-    
     <!-- End Navigation Bar-->
 
 
@@ -146,14 +140,12 @@
 
                             To-dos
                             <br>
-                            <a class="btn btn-primary" role="button" data-toggle="collapse" href="#todos1" aria-expanded="false" aria-controls="collapseExample">
+                            <a class="btn btn-primary" role="button" data-toggle="collapse" href="#goals1" aria-expanded="false" aria-controls="collapseExample">
                                
 							+
 							</a>
 
-
-                            <div class="collapse" id="todos1">
-
+                            <div class="collapse" id="goals1">
                                 <div class="well">
                                     <form>
                                         <div class="form-group">
@@ -164,10 +156,8 @@
 
                                         <div class="checkbox">
                                             <label>
-
                                                 <input type="checkbox"> Check me out
                                             </label>
-
                                         </div>
                                         <button type="submit" class="btn btn-default">Submit</button>
                                     </form>
@@ -204,10 +194,8 @@
 
                                         <div class="checkbox">
                                             <label>
-
                                                 <input type="checkbox"> Check me out
                                             </label>
-
                                         </div>
                                         <button type="submit" class="btn btn-default">Submit</button>
                                     </form>
@@ -244,10 +232,8 @@
 
                                         <div class="checkbox">
                                             <label>
-
                                                 <input type="checkbox"> Check me out
                                             </label>
-
                                         </div>
                                         <button type="submit" class="btn btn-default">Submit</button>
                                     </form>
@@ -266,7 +252,7 @@
         <div id="store" role="tabpanel" class="tab-pane fade">
             <h3>Store</h3>
             <p>Buy our equipment. Make your own rewards.</p>
-            <p id="balance">500</p>
+            <p id="balance">{{balance}}</p>
             <div class="container" id="myC">
                 <div id="myCarousel" class="carousel slide">
                     <!-- Indicators -->
@@ -282,7 +268,11 @@
                       <div class="item active">
 		
                           <h2>Equipment</h2>
-			  
+			  <ul id="equipment">
+			    <li>{{e1}}</li>
+			    <li>{{e2}}</li>
+			    <li>{{e3}}</li>
+			  </ul>
                       </div>
 
 
@@ -385,32 +375,32 @@
     <script>
         $('#login').modal('hide');
         $('#signup').modal('hide');
-        $(document).ready(function() {
+        $(document).ready(function () {
             // Activate Carousel
             $("#myCarousel").carousel({
                 interval: false
             });
 
             // Enable Carousel Indicators
-            $(".item1").click(function() {
+            $(".item1").click(function () {
                 $("#myCarousel").carousel(0);
             });
-            $(".item2").click(function() {
+            $(".item2").click(function () {
                 $("#myCarousel").carousel(1);
             });
-            $(".item3").click(function() {
+            $(".item3").click(function () {
                 $("#myCarousel").carousel(2);
             });
 
             // Enable Carousel Controls
-            $(".left").click(function() {
+            $(".left").click(function () {
                 $("#myCarousel").carousel("prev");
             });
-            $(".right").click(function() {
+            $(".right").click(function () {
                 $("#myCarousel").carousel("next");
             });
         });
-        $('.carousel-indicators li').each(function() {
+        $('.carousel-indicators li').each(function () {
             $(this).carousel('pause');
         });
         $('.carousel-indicators .active').removeClass('active')
