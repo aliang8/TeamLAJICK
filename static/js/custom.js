@@ -4,10 +4,18 @@ $('#myTabs a').click(function (e) {
 })
 
 var purchase = function(e){
-    var balance = document.getElementById("balance").innerHTML;
+    var balance = document.getElementById("balance");
+    var initial = parseInt(balance.innerHTML);
     var price = this.parentNode.childNodes;
-    price = price[1].innerHTML;
-    this.parentNode.remove();
+    price = parseInt(price[1].innerHTML);
+    if(price > balance){
+	alert("This Reward Is Too Expensive");
+    }
+    else{
+	var transaction = initial - price;
+	balance.innerHTML = transaction.toString();
+	this.parentNode.remove();
+    }
 }
 
 var addReward = function(e){
