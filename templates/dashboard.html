@@ -7,8 +7,8 @@
 	<title>Life^2</title>
 	<link rel="stylesheet" type="text/css" href="../static/life.css" />
 	<link rel="stylesheet" type="text/css" href="../static/css/custom.css" />
-	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
 </head>
 
 <body>
@@ -34,7 +34,7 @@
 							<div class="avatar-name">Anthony Liang</div>
 							<div class="character-sprites">Image</div>
 							<div class="avatar-level">
-								<span class="glyphion glyphicon-circle-arrow-up"></span>
+								<span class="glyphion glyphicon-circle-arrow-up" aria-hidden="true"></span>
 								<span>1</span>
 							</div>
 						</figure>
@@ -42,18 +42,23 @@
 					<!-- stat bars -->
 					<div class="hero-stats">
 						<div tooltip="Health" class="meter-label">
-							<span class="glyphicon glyphicon-heart"></span>
+							<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
 						</div>
 						<div tooltip="50" class="meter health">
 							<div class="bar" style="width: 100%;"></div>
 							<span class="meter-text value">50 / 50</span>
 						</div>
 						<div tooltip="Experience" class="meter-label">
-							<span class="glyphicon glyphicon-star"></span>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 						</div>
 						<div tooltip="Experience" class="meter experience">
 							<div class="bar" style="width: 1%;"></div>
-							<span class="meter-text value"><span tooltip="Progress"><a class="glyphicon glyphicon-signal"></a></span><span>    </span>0 / 150</span>
+							<span class="meter-text value">
+								<span tooltip="Progress">
+									<a class="glyphicon glyphicon-signal"></a>
+								</span>
+							<span></span> 0 / 150
+							</span>
 						</div>
 					</div>
 			
@@ -83,7 +88,7 @@
 
 
 		<!--Tasks-->
-		<div id="tasks" class="tab-pane fade">
+		<div id="tasks" role="tabpanel" class="tab-pane fade">
 			<h3>Tasks</h3>
 			<div id="contentBox" class="clearfix" style="margin:0px auto; width:80%">
 				<div class="row">
@@ -201,7 +206,7 @@
 			</div>
 		</div>
 
-		<div id="store" class="tab-pane fade">
+		<div id="store" role="tabpanel" class="tab-pane fade">
 			<h3>Store</h3>
 			<p>Buy our equipment. Make your own rewards.</p>
 			<div class="container">
@@ -256,7 +261,7 @@
 			</div>
 		</div>
 
-		<div id="workshop" class="tab-pane fade">
+		<div id="workshop" role="tabpanel" class="tab-pane fade">
 			<h3>Workshop</h3>
 			<div id="contentBox" class="clearfix" style="margin:0px auto; width:80%">
 				<div class="row">
@@ -303,7 +308,7 @@
 
 		</div>
 
-		<div id="about" class="tab-pane fade">
+		<div id="about" role="tabpanel" class="tab-pane fade">
 			<h3>About</h3>
 			<p>Some content in menu 2.</p>
 		</div>
