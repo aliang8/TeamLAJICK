@@ -2,7 +2,7 @@ import sqlite3 as sql
 import hashlib, random
 
 #CONNECT DATABASE                                                                                                       
-DATA = "../data/data.db"
+DATA = "data/data.db"
 
 def getUserID(user):
     db = sql.connect(DATA)

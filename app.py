@@ -14,8 +14,6 @@ def root():
     
 @app.route("/<message>", methods=['POST','GET'])
 def home(message):
-    return render_template('dashboard.html', logged = 1, message=message)
-    '''
     if session.get('username') != None:
         user = session.get('username')
         userInfo = functions.getUserInfo(user)
@@ -47,9 +45,8 @@ def home(message):
         gold = functions.getUserInfo(user)[1]
         
         return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance = gold)
-    
-    '''
-
+    else:
+        return redirect(url_for('root'))
 
 @app.route("/authenticate/", methods = ['POST','GET'])
 def authenticate():
@@ -72,7 +69,7 @@ def authenticate():
 @app.route("/logout/", methods=['POST','GET'])
 def logout():
     session.pop('username')
-    return redirect(url_for("home",message = "Logout successful"))
+    return redirect(url_for("home",message = "Successfully logged out"))
 
 if __name__ == "__main__":
     app.debug = True
