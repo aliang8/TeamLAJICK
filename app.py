@@ -19,9 +19,9 @@ def home():
         user = session.get('username')
         userInfo = functions.getUserInfo(user)
 
-        return render_template('dashboard.html', userInfo=userInfo)
-    '''
-    if session.get('username'):
+        #return render_template('dashboard.html', userInfo=userInfo)
+    
+    #if session.get('username'):
         user = session.get('username')
     
         #Check for all ajax requests here
@@ -42,11 +42,11 @@ def home():
         habits = functions.getUserHabits(user)
         goals = functions.getUserGoals(user)
         
-        return render_template('dashboard.html', todos=todos, habits=habits, goals=goals, message=message)
-    '''
+        return render_template('dashboard.html', logged = 1, todos=todos, habits=habits, goals=goals)
+    
 
     
-    return render_template('dashboard.html')
+    return render_template('dashboard.html' )
 
 
 @app.route("/authenticate/", methods = ['POST','GET'])

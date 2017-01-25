@@ -72,9 +72,9 @@ var newToDo = function(e) {
   $.ajax({
       url: "/home",
       type: 'POST',
-      data: $("#addToDo").serializeObject();
+      data: $("#addToDo").serializeObject()
 
-    }
+    
   }).done(function(result) {
             item.innerHTML = result;
           }).fail(function() {
@@ -82,7 +82,8 @@ var newToDo = function(e) {
               });
               
 
-
+  var list = document.getElementById("todolist");
+  list.insertBefore(item, list.childNodes[0]);
 
 
 }
@@ -94,16 +95,17 @@ var newHabit = function(e) {
   $.ajax({
       url: "/home",
       type: 'POST',
-      data: $("#addHabit").serializeObject();
+      data: $("#addHabit").serializeObject()
 
-    }
+    
   }).done(function(result) {
             item.innerHTML = result;
           }).fail(function() {
                     console.log("Oops");
                   });
 
-  
+  var list = document.getElementById("habitlist");
+  list.insertBefore(item, list.childNodes[0]);
 
 }
 
@@ -114,25 +116,26 @@ var newGoal = function(e) {
   $.ajax({
       url: "/home",
       type: 'POST',
-      data: $("#addGoal").serializeObject();
+      data: $("#addGoal").serializeObject()
 
-    }
+    
   }).done(function(result) {
             item.innerHTML = result;
           }).fail(function() {
                     console.log("oops");
               });
 
-
+  var list = document.getElementById("goallist");
+  list.insertBefore(item, list.childNodes[0]);
 
 
 }
 
-var todo = document.getElementByID("newtodo");
+var todo = document.getElementById("newtodo");
 todo.addEventListener("click", newToDo);
 
-var habit = document.getElementByID("newhabit");
+var habit = document.getElementById("newhabit");
 habit.addEventListener("click", newHabit);
 
-var goal = document.getElementByID("newgoal");
+var goal = document.getElementById("newgoal");
 goal.addEventListener("click", newGoal);
