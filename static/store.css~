@@ -1,6 +1,0 @@
-.hidden>div.equip, div.user, div.irl{
-	display: none;
-}
-.visible>div.equip, div.user, div.irl{
-	display: block;
-}
