@@ -41,10 +41,8 @@ def home():
         todos = functions.getUserToDos(user)
         habits = functions.getUserHabits(user)
         goals = functions.getUserGoals(user)
-
-        gold = functions.getUserInfo(user)[1]
         
-        return render_template('dashboard.html', logged = 1, todos=todos, habits=habits, goals=goals, balance = gold)
+        return render_template('dashboard.html', logged = 1, todos=todos, habits=habits, goals=goals)
     
 
     
@@ -77,4 +75,4 @@ def logout():
 if __name__ == "__main__":
     app.debug = True
     login.initializeTables()
-    app.run()
+    app.run(host=os.getenv('IP', '0.0.0.0'),port=int(os.getenv('PORT', 8080)))
