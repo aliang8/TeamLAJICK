@@ -313,6 +313,12 @@
 	opacity: .25;
 }
 
+.task-meta-controls button{
+	border: none;
+	outline: none;
+	background: none;
+}
+
 .task-controls{
 	position: absolute;
 	top: 0;
@@ -329,12 +335,21 @@
 	height: 100%;
 }
 
-.habits > span{
-	position: absolute;
-	margin: auto;
-	height:1em;width:1em;
-	top:0;left:0;bottom:0;right:0;
+.task-text{
+	display: block;
+	padding: .75em 0 .75em 3.75em;
+	line-height: 1.4;
+	word-wrap: break-word;
 }
+
+.complete {
+	position: relative;
+	margin-top: 9px;
+	margin-bottom: 3px;
+	margin-left: 4px;
+}
+
+
 
 
 
