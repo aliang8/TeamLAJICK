@@ -82,7 +82,7 @@
         </div>
     </nav>
     
-    {% if login %}
+    {% if logged %}
     <div class="header-wrap">
         <header class="site-header">
             <!-- avatar -->
@@ -157,7 +157,7 @@
                                     <form>
                                         <div class="form-group">
                                             <label for="">To-do</label>
-                                            <input type="addToDo" class="form-control" id="addToDo" placeholder="todo">
+                                            <input type="task" class="form-control" id="addToDo" placeholder="todo">
                                         </div>
 
 
@@ -168,7 +168,7 @@
                                             </label>
 
                                         </div>
-                                        <button type="submit" class="btn btn-default">Submit</button>
+                                        <button id="newtodo" class="btn btn-default">Add</button>
                                     </form>
 
 
@@ -178,7 +178,7 @@
                             <hr>
 
                             <!--Jinja-->
-
+                            
 
 
                         </div>
@@ -197,7 +197,7 @@
                                     <form>
                                         <div class="form-group">
                                             <label for="">Habit</label>
-                                            <input type="addToDo" class="form-control" id="addToDo" placeholder="todo">
+                                            <input type="task" class="form-control" id="addHabit" placeholder="todo">
                                         </div>
 
 
@@ -208,7 +208,7 @@
                                             </label>
 
                                         </div>
-                                        <button type="submit" class="btn btn-default">Submit</button>
+                                        <button id="newhabit" class="btn btn-default">Submit</button>
                                     </form>
 
 
@@ -237,7 +237,7 @@
                                     <form>
                                         <div class="form-group">
                                             <label for="">Goal</label>
-                                            <input type="addToDo" class="form-control" id="addToDo" placeholder="todo">
+                                            <input type="task" class="form-control" id="addGoal" placeholder="todo">
                                         </div>
 
 
@@ -248,7 +248,7 @@
                                             </label>
 
                                         </div>
-                                        <button type="submit" class="btn btn-default">Submit</button>
+                                        <button id="newgoal" class="btn btn-default">Submit</button>
                                     </form>
 
 

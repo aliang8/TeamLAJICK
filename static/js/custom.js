@@ -37,7 +37,7 @@ var addReward = function(e){
 	ol.appendChild(li);
 	var reward_list = document.getElementById("rewards");
 	var rewards = reward_list.getElementsByClassName("purchase");
-	for(i=0; i < rewards.length; i++){
+	for(var i=0; i < rewards.length; i++){
 	    rewards[i].addEventListener("click", purchase);
 
 	}
@@ -48,11 +48,91 @@ var reward_button = document.getElementById("add_reward");
 reward_button.addEventListener("click", addReward);
 
 
-var addToDo = function(e){
-  
-  //var item = document.createElement("li");
-  //var.class = "todoitem";
-  
-  
-  
+$.fn.serializeObject = function(e)
+{
+   var o = {};
+   var a = this.serializeArray();
+   $.each(a, function() {
+       if (o[this.name]) {
+           if (!o[this.name].push) {
+               o[this.name] = [o[this.name]];
+           }
+           o[this.name].push(this.value || '');
+       } else {
+           o[this.name] = this.value || '';
+       }
+   });
+   return o;
+};
+
+var newToDo = function(e) {
+  var item = document.createElement("li");
+  item.class = "todoitem";
+
+  $.ajax({
+      url: "/home",
+      type: 'POST',
+      data: $("#addToDo").serializeObject();
+
+    }
+  }).done(function(result) {
+            item.innerHTML = result;
+          }).fail(function() {
+                    console.log("Ooops");
+              });
+              
+
+
+
+
 }
+
+var newHabit = function(e) {
+  var item = document.createElement("li");
+  item.class = "habititem";
+
+  $.ajax({
+      url: "/home",
+      type: 'POST',
+      data: $("#addHabit").serializeObject();
+
+    }
+  }).done(function(result) {
+            item.innerHTML = result;
+          }).fail(function() {
+                    console.log("Oops");
+                  });
+
+  
+
+}
+
+var newGoal = function(e) {
+  var item = document.createElement("li");
+  item.class = "goalitem";
+  
+  $.ajax({
+      url: "/home",
+      type: 'POST',
+      data: $("#addGoal").serializeObject();
+
+    }
+  }).done(function(result) {
+            item.innerHTML = result;
+          }).fail(function() {
+                    console.log("oops");
+              });
+
+
+
+
+}
+
+var todo = document.getElementByID("newtodo");
+todo.addEventListener("click", newToDo);
+
+var habit = document.getElementByID("newhabit");
+habit.addEventListener("click", newHabit);
+
+var goal = document.getElementByID("newgoal");
+goal.addEventListener("click", newGoal);

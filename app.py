@@ -10,16 +10,16 @@ app.secret_key = 'life^2'
 
 @app.route("/", methods=['POST','GET'])
 def root():
-    return render_template('dashboard.html', login = 0)
+    return render_template('dashboard.html', logged = 0)
     
-@app.route("/<message>", methods=['POST','GET'])
-def home(message):
+@app.route("/home", methods=['POST','GET'])
+def home():
     print session.get('username');
     if session.get('username') != None:
         user = session.get('username')
         userInfo = functions.getUserInfo(user)
 
-        return render_template('dashboard.html', message=message, userInfo=userInfo)
+        return render_template('dashboard.html', userInfo=userInfo)
     '''
     if session.get('username'):
         user = session.get('username')
@@ -46,7 +46,7 @@ def home(message):
     '''
 
     
-    return render_template('dashboard.html', message=message)
+    return render_template('dashboard.html')
 
 
 @app.route("/authenticate/", methods = ['POST','GET'])
