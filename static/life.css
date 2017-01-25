@@ -19,12 +19,16 @@
 .toolbar-button{
 	list-style: none;
 	padding: .25em .5em !important;
-	text-decoration: none !important;
 	font-size: 1em;
 	cursor: pointer;
 	background-color: #f4f7f7 !important; 
 	border: 1px solid #ccc !important;
 	border-radius: .382em !important;
+}
+
+.toolbar-button a{
+	text-decoration: none !important;
+	color: #000000;
 }
 
 .toolbar-container ul li{
