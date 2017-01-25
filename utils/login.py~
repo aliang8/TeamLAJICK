@@ -16,7 +16,7 @@ def initializeTables():
     
 def register(username, password):
     hashpass = hashlib.sha224(password).hexdigest()
-    creds = (username,hashpass,500,0,0,)
+    creds = (username,hashpass,0,0,0,)
     db = sql.connect(DATA)
     c = db.cursor()
     users = c.execute("SELECT username FROM accounts WHERE username = ?", (username,))
