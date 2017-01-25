@@ -127,16 +127,25 @@ def updateInfo(user,infoType,update):
 
 #edits equipment stats
 def updateStats(stats, level, multiplier):
+    i = 0
+    avg = 0
     for stat in stats:
         stat = int(stat)
         stat = stat * level + multiplier * level
+        avg += stat
         stat = str(stat)
+        stats[i] = stat
+        i += 1
+    gold = int(avg/6)
+    if gold < 1:
+        gold = 1
+    gold = str(gold * 5)
+    stats.append(gold)
     return stats
     
 #makes random equipment for store
 def makeEquipment(user):
-    level = 1
-    #level = getUserInfo(user)[3]
+    level = getUserInfo(user)[3]
     f = open('../static/equipment.txt','r')
     equipmentList = f.read().split()[1:]
     n = random.randint(0,len(equipmentList)-1)
@@ -144,15 +153,20 @@ def makeEquipment(user):
     name = equipment[0]
     stats = equipment[1:]
     n = random.randint(1,100)
-    print(n)
-    if(n >= 1 & n <=80):
+    if(n >= 1 and n <=80):
+        print(0)
         stats = updateStats(stats, level, 0)
-    if(n >= 81 & n <=95):
+    if(n >= 81 and n <=95):
+        print(1)
         stats = updateStats(stats, level, 1)
-    if(n >= 96 & n <=99):
+    if(n >= 96 and n <=99):
+        print(2)
         stats = updateStats(stats, level, 2)
     elif(n==100):
+        print(3)
         stats = updateStats(stats, level, 5)
-    print(equipment)
+    equipment[1:] = stats
+    return equipment
+
 
 
