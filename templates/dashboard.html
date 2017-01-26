@@ -308,7 +308,6 @@
         <div id="store" role="tabpanel" class="tab-pane fade">
             <h3>Store</h3>
             <p>Buy our equipment. Make your own rewards.</p>
-            <p id="balance">\{\{balance\}\}</p>
             <div class="container" id="myC">
                 <div id="myCarousel" class="carousel slide">
                     <!-- Indicators -->
@@ -323,12 +322,29 @@
 
                         <div class="item active">
 
-                            <h2>Equipment</h2>
-                            <ul id="equipment">
-                                <li>\{\{e1\}\}</li>
-                                <li>\{\{e2}\}\}</li>
-                                <li>\{\{e3\}\}</li>
-                            </ul>
+                          <h2>Equipment</h2>
+			  <table>
+			    <tr>
+			      <th>Equipment</th>
+			      <th>HP</th>
+			      <th>ATK</th>
+			      <th>ATK Speed</th>
+			      <th>Speed</th>
+			      <th>Def</th>
+			      <th>Int</th>
+			      <th>Price</th>
+			    </tr>
+			    <tr>
+			      {{equipment1}}
+			    </tr>
+			    <tr>
+			      {{equipment2}}
+			    </tr>
+			    <tr>
+			      {{equipment3}}
+			    </tr>
+			  </table>
+                          
                         </div>
                         <div class="item">
                             <h2>Rewards</h2>a
