@@ -44,9 +44,9 @@ def home(message,sort=None):
                 functions.insertHabit(user, request.form.get("addHabit"))
             if "addGoal" in request.form:
                 functions.insertGoal(user, request.form.get("addGoal"))
+        '''
             if sort == "level":
                 lb = functions.getAllUserInfo('level')
-
                 return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb, equipments = equipments)
             elif sort == "money":
                 lb = functions.getAllUserInfo('money')
@@ -56,6 +56,8 @@ def home(message,sort=None):
                 return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb, equipments = equipments)
         else:
             lb = functions.getAllUserInfo('events_completed')
+        '''
+        lb = functions.getAllUserInfo('events_completed')
         
         return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb, equipments = equipments)
     else:
