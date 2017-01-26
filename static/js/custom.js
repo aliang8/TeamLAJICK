@@ -35,6 +35,7 @@ var buy = function(e) {
             "price": price
         }
     }).done(function(result) {
+        console.log(result);
         if (result == "Item bought"){
         var balance = document.getElementById("balance");
         var initial = parseInt(balance.innerHTML);

@@ -167,8 +167,11 @@ def buyItem(user,price):
     c = db.cursor()
     c.execute("SELECT money from accounts WHERE username = ?", (user,))
     exist = c.fetchone()
+    print exist[0]
+    print price
+    print price <= exist[0]
     
-    if price <= exist[0]:
+    if (int(price) < int(exist[0])) or (int(price) == int(exist[0])):
         final = exist[0] - price
         c = db.cursor()
         c.execute("UPDATE accounts SET money = ? WHERE username = ?", (final, user,))
