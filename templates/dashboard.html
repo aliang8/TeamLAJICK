@@ -20,8 +20,8 @@
                 <li class="toolbar-button"><a data-toggle="tab" href="#leaderboard">Leaderboard</a></li>
                 {% if logged %}
                 <li class="toolbar-button"><a data-toggle="tab" href="#tasks">Tasks</a></li>
-                {% endif %}
                 <li class="toolbar-button"><a data-toggle="tab" href="#store">Store</a></li>
+                {% endif %}
                 <li class="toolbar-button"><a data-toggle="tab" href="#workshop">Workshop</a></li>
                 <li class="toolbar-button"><a data-toggle="tab" href="#about">About</a></li>
             </ul>
@@ -304,9 +304,11 @@
         {% endif %}
 
         <!-- STORE -->
+        {% if logged %}
         <div id="store" role="tabpanel" class="tab-pane fade">
             <div class="text">
                 <h1>STORE</h1>
+                <h3>Look cool everyday.</h3>
                 <table class="table">
                     <thead>
                         <td>Equipment</td>
@@ -335,6 +337,7 @@
                 </table>
             </div>
         </div>
+        {% endif %}
 
         <!-- WORKSHOP -->
         <div id="workshop" class="tab-pane fade">
