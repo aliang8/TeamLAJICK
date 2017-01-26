@@ -21,6 +21,7 @@
                 {% if logged %}
                 <li class="toolbar-button"><a data-toggle="tab" href="#tasks">Tasks</a></li>
                 <li class="toolbar-button"><a data-toggle="tab" href="#store">Store</a></li>
+		<li class="toolbar-button"><a data-toggle="tab" href="#inventory">Inventory</a></li>
                 {% endif %}
                 <li class="toolbar-button"><a data-toggle="tab" href="#workshop">Workshop</a></li>
                 <li class="toolbar-button"><a data-toggle="tab" href="#about">About</a></li>
@@ -341,6 +342,42 @@
         </div>
         {% endif %}
 
+	{% if logged %}
+	<div id="inventory" role="tabpanel" class="tab-pane fade">
+	  <div class="text">
+	    <h1>INVENTORY</h1>
+	    <h3>Upgrade yourself!!!</h3>
+	    <table class="table">
+                  <thead>
+		    <td>Image</td>
+                    <td>Equipment</td>
+                    <td>HP</td>
+                    <td>ATK</td>
+                    <td>ATK Speed</td>
+                    <td>Speed</td>
+                    <td>Def</td>
+                    <td>Int</td>
+                    <td>Price</td>
+                    </thead>
+                    {% for equipment in equipments %}
+                    <tr>
+		      <td><img src={{equipment[8]}}></td>
+                      <td>{{equipment[0]}}</td>
+                      <td>{{equipment[1]}}</td>
+                      <td>{{equipment[2]}}</td>
+                      <td>{{equipment[3]}}</td>
+                      <td>{{equipment[4]}}</td>
+                      <td>{{equipment[5]}}</td>
+                      <td>{{equipment[6]}}</td>
+                      <td>
+                        <button class="buy">{{equipment[7]}}</button>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+	  </div>
+	</div>
+	{% endif %}
         <!-- WORKSHOP -->
         <div id="workshop" class="tab-pane fade">
             <div id="wrap" class="container-fluid">

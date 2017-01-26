@@ -1,6 +1,6 @@
 equipment,hp,atk,atkspeed,speed,def,int,pic
 head,4,0,0,0,5,1,bow1;bow2;bow3;bow4
-body,5,0,0,0,4,0,chestplate1;chesplate2;chestplate3
+body,5,0,0,0,4,0,chestplate1;chestplate2;chestplate3
 legs,3,0,0,0,4,0,pants2;pants3
 feet,2,0,0,1,2,0,shoe3;shoe4
 head,1,0,0,0,1,2,hat1;hat2;hat3

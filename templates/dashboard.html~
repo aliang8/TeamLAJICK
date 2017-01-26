@@ -99,7 +99,7 @@
             <div class="herobox-wrap main-herobox">
                 <figure class="herobox">
                     <div class="avatar-name">{{userInfo[0]}}</div>
-                    <div class="character-sprites">Image</div>
+                    <img src="/static/sprites/user.png" alt="Image" class="avatar">
                     <div class="avatar-level">
                         <span>{{userInfo[2]}}</span>
                     </div>
@@ -310,19 +310,20 @@
                 <h1>STORE</h1>
                 <h3>Look cool everyday.</h3>
                 <table class="table">
-                    <thead>
-                        <td>Equipment</td>
-                        <td>HP</td>
-                        <td>ATK</td>
-                        <td>ATK Speed</td>
-                        <td>Speed</td>
-                        <td>Def</td>
-                        <td>Int</td>
-                        <td>Price</td>
+                  <thead>
+		    <td>Image</td>
+                    <td>Equipment</td>
+                    <td>HP</td>
+                    <td>ATK</td>
+                    <td>ATK Speed</td>
+                    <td>Speed</td>
+                    <td>Def</td>
+                    <td>Int</td>
+                    <td>Price</td>
                     </thead>
                     {% for equipment in equipments %}
                     <tr>
-		      <td><img src={{equipment[7]}}></td>
+		      <td><img src={{equipment[8]}}></td>
                       <td>{{equipment[0]}}</td>
                       <td>{{equipment[1]}}</td>
                       <td>{{equipment[2]}}</td>
