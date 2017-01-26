@@ -12,12 +12,13 @@ def initializeTables():
     c.execute("CREATE TABLE IF NOT EXISTS events (goalID INTEGER PRIMARY KEY autoincrement, userID INTEGER, todo INTEGER, habit INTEGER, goal INTEGER, content TEXT NOT NULL)")
     c.execute("CREATE TABLE IF NOT EXISTS inventory (userID INTEGER, image TEXT NOT NULL, item TEXT NOT NULL, health INTEGER, atk INTEGER, atkspeed INTEGER, speed INTEGER, def INTEGER, int INTEGER)")
     c.execute("CREATE TABLE IF NOT EXISTS shop (userID INTEGER, item TEXT NOT NULL, hp INTEGER, atk INTEGER, atkspeed INTEGER, speed INTEGER, def INTEGER, int INTEGER, price INTEGER)")
+    c.execute("CREATE TABLE IF NOT EXISTS userSuggested (goalID INTEGER PRIMARY KEY autoincrement, userID INTEGER, todo INTEGER, habit INTEGER, goal INTEGER, content TEXT NOT NULL)")
     db.commit()
     db.close()
     
 def register(username, password):
     hashpass = hashlib.sha224(password).hexdigest()
-    creds = (username,hashpass,5,1,0,0,50)
+    creds = (username,hashpass,1,75,0,7,80)
     db = sql.connect(DATA)
     c = db.cursor()
     users = c.execute("SELECT username FROM accounts WHERE username = ?", (username,))

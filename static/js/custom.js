@@ -203,6 +203,85 @@ habit.addEventListener("click", newHabit);
 var goal = document.getElementById("newgoal");
 goal.addEventListener("click", newGoal);
 
+var cToDo = function(item) {
+    $("#tlist").append(taskTemplate.format(
+        item["id"],
+        item["task"]
+    ));
+
+};
+
+var cHabit = function(item) {
+    $("#hlist").append(taskTemplate.format(
+        item.id,
+        item.task
+    ));
+
+};
+
+var cGoal = function(item) {
+    $("#glist").append(taskTemplate.format(
+        item["id"],
+        item["task"]
+    ));
+
+};
+
+var nToDo = function(e) {
+
+    $.ajax({
+        url: "/ntodo",
+        type: 'POST',
+        datatype: 'json',
+        data: $("#tform").serializeObject()
+    }).done(function(result) {
+        cToDo(result);
+    }).fail(function() {
+        console.log("Ooops");
+    });
+
+};
+
+var nHabit = function(e) {
+
+
+    $.ajax({
+        url: "/nhabit",
+        type: 'POST',
+        datatype: 'json',
+        data: $("#hform").serializeObject()
+    }).done(function(result) {
+        cHabit(result);
+    }).fail(function() {
+        console.log("Oops");
+    });
+
+
+}
+
+var nGoal = function(e) {
+
+    $.ajax({
+        url: "/ngoal",
+        type: 'POST',
+        datatype: 'json',
+        data: $("#gform").serializeObject()
+    }).done(function(result) {
+        cGoal(result);
+    }).fail(function() {
+        console.log("oops");
+    });
+};
+
+var td = document.getElementById("newt");
+td.addEventListener("click", nToDo);
+
+var hab = document.getElementById("newh");
+hab.addEventListener("click", nHabit);
+
+var gl = document.getElementById("newg");
+gl.addEventListener("click", nGoal);
+
 var shop = document.getElementsByClassName("buy");
 for (var i = 0; i < shop.length; i++) {
     shop[i].addEventListener("click", buy);

@@ -3,6 +3,13 @@ $('#myTabs a').click(function(e) {
     $(this).tab('show');
 })
 
+var sMoney = document.getElementById("sMoney");
+
+var sLevel = document.getElementById("sLevel");
+
+var sEvents = document.getElementById("sEvents");
+
+
 var purchase = function(e) {
     var balance = document.getElementById("balance");
     var initial = parseInt(balance.innerHTML);
@@ -16,20 +23,31 @@ var purchase = function(e) {
         balance.innerHTML = transaction.toString();
         this.parentNode.remove();
     }
-}
+};
 
 var buy = function(e) {
-    var balance = document.getElementById("balance");
-    var initial = parseInt(balance.innerHTML);
-    var price = parseInt(this.innerHTML);
-    if (price > balance) {
-        alert("This Reward Is Too Expensive");
-    }
-    else {
-        var transaction = initial - price;
-        balance.innerHTML = transaction.toString();
-        this.parentNode.parentNode.remove();
-    }
+    var button = this;
+    var price = parseInt(button.innerHTML);
+    $.ajax({
+        url: "/buy",
+        type: 'POST',
+        data: {
+            "price": price
+        }
+    }).done(function(result) {
+        if (result == "Item bought"){
+        var balance = document.getElementById("balance");
+        var initial = parseInt(balance.innerHTML);
+        balance.innerHTML = initial - price;
+
+        button.parentElement.parentElement.remove();
+        }
+        else{
+            
+        }
+    }).fail(function() {
+        console.log("Ooops");
+    });
 }
 
 var addReward = function(e) {
@@ -58,8 +76,6 @@ var addReward = function(e) {
     }
 }
 
-
-
 $.fn.serializeObject = function(e) {
     var o = {};
     var a = this.serializeArray();
@@ -77,39 +93,86 @@ $.fn.serializeObject = function(e) {
     return o;
 };
 
+// Format a string
+String.prototype.format = function() {
+    var args = arguments;
+    return this.replace(/{(\d+)}/g, function(match, number) {
+        return typeof args[number] != 'undefined' 
+        ? args[number]
+        : match;
+    });
+};
+
+var taskTemplate = `
+<li class="task color-neutral">
+<div class="task-meta-controls">
+    <form>
+        <button class="glyphicon glyphicon-pencil edittask"></button>
+        <button class="glyphicon glyphicon-trash deletetask" onclick="this.parentNode.parentNode.parentNode.remove();"></button>
+        <div class="task-controls">
+            <div class="complete">
+                <button class="glyphicon glyphicon-plus completetask"></button>
+            </div>
+        </div>
+        <input type="hidden" value="{0}">
+        
+    </form>
+</div>
+<div name="test" class="task-text">
+    {1}
+</div>
+</li>
+`;
+
+var createToDo = function(item) {
+    $("#todolist").append(taskTemplate.format(
+        item["id"],
+        item["task"]
+    ));
+
+};
+
+var createHabit = function(item) {
+    $("#habitlist").append(taskTemplate.format(
+        item.id,
+        item.task
+    ));
+
+};
+
+var createGoal = function(item) {
+    $("#goallist").append(taskTemplate.format(
+        item["id"],
+        item["task"]
+    ));
+
+};
+
 var newToDo = function(e) {
 
     $.ajax({
-        url: "/home",
+        url: "/newtodo",
         type: 'POST',
+        datatype: 'json',
         data: $("#todoform").serializeObject()
     }).done(function(result) {
-        var item = document.createElement("li");
-        item.class = "todoitem";
-
-        item.innerHTML = result;
-        var list = document.getElementById("todolist");
-        list.insertBefore(item, list.childNodes[0]);
-        console.log(result);
+        createToDo(result);
     }).fail(function() {
         console.log("Ooops");
     });
 
-}
+};
 
 var newHabit = function(e) {
 
 
     $.ajax({
-        url: "/home",
+        url: "/newhabit",
         type: 'POST',
+        datatype: 'json',
         data: $("#habitform").serializeObject()
     }).done(function(result) {
-        var item = document.createElement("li");
-        item.class = "habititem";
-        item.innerHTML = result;
-        var list = document.getElementById("habitlist");
-        list.insertBefore(item, list.childNodes[0]);
+        createHabit(result);
     }).fail(function() {
         console.log("Oops");
     });
@@ -119,18 +182,13 @@ var newHabit = function(e) {
 
 var newGoal = function(e) {
 
-
     $.ajax({
-        url: "/home",
+        url: "/newgoal",
         type: 'POST',
+        datatype: 'json',
         data: $("#goalform").serializeObject()
     }).done(function(result) {
-        var item = document.createElement("li");
-        item.class = "goalitem";
-        item.innerHTML = result;
-        var list = document.getElementById("goallist");
-        list.insertBefore(item, list.childNodes[0]);
-
+        createGoal(result);
     }).fail(function() {
         console.log("oops");
     });
@@ -149,3 +207,28 @@ var shop = document.getElementsByClassName("buy");
 for (var i = 0; i < shop.length; i++) {
     shop[i].addEventListener("click", buy);
 }
+
+
+var del = function(e){
+    this.parentNode.parentNode.remove();
+    
+}
+
+var todoitems = document.getElementsByClassName("glyphicon-trash");
+for (var i = 0; i < todoitems.length; i++) {
+    todoitems[i].addEventListener("click", del);
+}
+
+var completeTask = function(e){
+    var button = this;
+    $.ajax({
+        url: "/complete",
+        type: 'POST',
+        datatype: 'json',
+    }).done(function(result) {
+       //Here
+    }).fail(function() {
+        console.log("Oops");
+    });
+    
+};
