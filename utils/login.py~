@@ -8,20 +8,21 @@ DATA = "data/data.db"
 def initializeTables():
     db = sql.connect(DATA)
     c = db.cursor()
-    c.execute("CREATE TABLE IF NOT EXISTS accounts (username TEXT NOT NULL, password TEXT NOT NULL, money INTEGER, level INTEGER, exp INTEGER, events_completed INTEGER, userID INTEGER PRIMARY KEY autoincrement)")
+    c.execute("CREATE TABLE IF NOT EXISTS accounts (username TEXT NOT NULL, password TEXT NOT NULL, money INTEGER, level INTEGER, exp INTEGER, events_completed INTEGER, hp INTEGER, userID INTEGER PRIMARY KEY autoincrement)")
     c.execute("CREATE TABLE IF NOT EXISTS events (goalID INTEGER PRIMARY KEY autoincrement, userID INTEGER, todo INTEGER, habit INTEGER, goal INTEGER, content TEXT NOT NULL)")
-    c.execute("CREATE TABLE IF NOT EXISTS items (userID INTEGER, item TEXT NOT NULL, hp INTEGER, atk INTEGER, atkspeed INTEGER, speed INTEGER, def INTEGER, int INTEGER)")
+    c.execute("CREATE TABLE IF NOT EXISTS inventory (userID INTEGER, item TEXT NOT NULL, hp INTEGER, atk INTEGER, atkspeed INTEGER, speed INTEGER, def INTEGER, int INTEGER)")
+    c.execute("CREATE TABLE IF NOT EXISTS shop (userID INTEGER, item TEXT NOT NULL, hp INTEGER, atk INTEGER, atkspeed INTEGER, speed INTEGER, def INTEGER, int INTEGER, shop INTEGER)")
     db.commit()
     db.close()
     
 def register(username, password):
     hashpass = hashlib.sha224(password).hexdigest()
-    creds = (username,hashpass,500,1,0,0)
+    creds = (username,hashpass,500,1,0,0,50)
     db = sql.connect(DATA)
     c = db.cursor()
     users = c.execute("SELECT username FROM accounts WHERE username = ?", (username,))
     if len(c.fetchall()) == 0 and len(password) >= 3:
-        c.execute("INSERT INTO accounts (username,password,money,level,exp,events_completed) VALUES (?,?,?,?,?,?)", creds)
+        c.execute("INSERT INTO accounts (username,password,money,level,exp,events_completed,hp) VALUES (?,?,?,?,?,?)", creds)
         db.commit()
         return True
     else:

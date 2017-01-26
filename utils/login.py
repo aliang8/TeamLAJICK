@@ -22,7 +22,7 @@ def register(username, password):
     c = db.cursor()
     users = c.execute("SELECT username FROM accounts WHERE username = ?", (username,))
     if len(c.fetchall()) == 0 and len(password) >= 3:
-        c.execute("INSERT INTO accounts (username,password,money,level,exp,events_completed,hp) VALUES (?,?,?,?,?,?)", creds)
+        c.execute("INSERT INTO accounts (username,password,money,level,exp,events_completed,hp) VALUES (?,?,?,?,?,?,?)", creds)
         db.commit()
         return True
     else:
