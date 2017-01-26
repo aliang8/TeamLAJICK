@@ -26,6 +26,9 @@ def home(message,sort):
         #Check for all ajax requests here
         #All of POST type
         gold = functions.getUserInfo(user)[1]
+        equipment1 = functions.makeTR(makeEquipment(user))
+        equipment2 = functions.makeTR(makeEquipment(user))
+        equipment3 = functions.makeTR(makeEquipment(user))
         if request.method == 'POST':
             multi_dict = request.args
             for key in multi_dict:
@@ -41,15 +44,15 @@ def home(message,sort):
                 return functions.insertGoal(user, request.form.get("addGoal"))
             if sort == "level":
                 lb = functions.getAllUserInfo('level')
-                return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb)
+                return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb, equipment1 = equipment1, equipment2 = equipment2, equipment3 = equipment3)
             elif sort == "money":
                 lb = functions.getAllUserInfo('money')
-                return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb)            
+                return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb, equipment1 = equipment1, equipment2 = equipment2, equipment3 = equipment3)
             elif sort == "events_completed":
                 lb = functions.getAllUserInfo('events_completed')
-                return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb)
-        else:
-            lb = functions.getAllUserInfo('events_completed')
+                return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb, equipment1 = equipment1, equipment2 = equipment2, equipment3 = equipment3)
+            else:
+                lb = functions.getAllUserInfo('events_completed')
         
         return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb)
     else:

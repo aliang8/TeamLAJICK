@@ -17,29 +17,34 @@
         <div class="toolbar toolbar-container">
             <ul class="toolbar-nav">
                 <!-- Navigation Menu-->
-                <li class="toolbar-button"><a data-toggle="tab" href="#myprofile">My Profile</a></li>
                 <li class="toolbar-button"><a data-toggle="tab" href="#leaderboard">Leaderboard</a></li>
+                {% if logged %}
                 <li class="toolbar-button"><a data-toggle="tab" href="#tasks">Tasks</a></li>
+                {% endif %}
                 <li class="toolbar-button"><a data-toggle="tab" href="#store">Store</a></li>
                 <li class="toolbar-button"><a data-toggle="tab" href="#workshop">Workshop</a></li>
                 <li class="toolbar-button"><a data-toggle="tab" href="#about">About</a></li>
             </ul>
             <ul class="toolbar-nav" style="float: right;">
-                {{message}}
+                {{message}} {% if not logged %}
                 <button class="toolbar-button" data-toggle="modal" data-target="#signup">Signup</button>
                 <button class="toolbar-button" data-toggle="modal" data-target="#login">Login</button>
-                <button class="toolbar-button">Logout</button>
+                {% endif %} {% if logged %}
+                <button class="toolbar-button"><a href="/logout">Logout</a></button>
+                {% endif %}
             </ul>
+            {% if logged %}
             <ul class="toolbar-nav" style="float: right;">
                 <li popover="Gold (18)" popover-placement="bottom" data-trigger="hover" class="toolbar-currency gold">
                     <span class="shop_gold"></span>
-                    <span>18</span>
+                    <span id="balance">{{balance}}</span>
                 </li>
             </ul>
+            {% endif %}
             <!-- Modal -->
             <div class="modal fade" id="login">
                 <div class="modal-dialog" role="document">
-                    <div class="modal-content">ss
+                    <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -84,28 +89,23 @@
                 </div>
             </div>
         </div>
-        </ul>
-        </div>
     </nav>
 
 
     {% if logged %}
-
-
     <div class="header-wrap">
         <header class="site-header">
-            <!-- avatar -->
+            <!-- AVATAR -->
             <div class="herobox-wrap main-herobox">
                 <figure class="herobox">
-                    <div class="avatar-name">Anthony Liang</div>
+                    <div class="avatar-name">{{userInfo[0]}}</div>
                     <div class="character-sprites">Image</div>
                     <div class="avatar-level">
-                        <span class="glyphion glyphicon-circle-arrow-up"></span>
-                        <span>1</span>
+                        <span>{{userInfo[2]}}</span>
                     </div>
                 </figure>
             </div>
-            <!-- stat bars -->
+            <!-- STAT BARS -->
             <div class="hero-stats">
                 <div tooltip="Health" class="meter-label">
                     <span class="glyphicon glyphicon-heart"></span>
@@ -124,26 +124,66 @@
             </div>
         </header>
     </div>
+    {% endif %} {% if not logged %}
+    <div class="header-wrap">
+        <header class="site-header">
+            <div class="welcome">
+                THIS IS LIFE<sup>2</sup>.
+                <br>
+            </div>
+            <div class="description">
+
+            </div>
+        </header>
+    </div>
     {% endif %}
 
     <!-- End Navigation Bar-->
 
-
-
     <div class="tab-content">
-
-
-
-
+        <!-- Leaderboard -->
         <div id="leaderboard" class="tab-pane fade">
             <div class="container">
-                <div class="row">
-                    <h1>Leaderboard</h1>
+                <div class="text">
+                    <h1>LEADERBOARD</h1>
+                    {% if logged %}
+                    <form action="/hi/money" method="POST">
+                        <input type="submit" name="sort" value="Money">
+                    </form>
+                    <form action="/hi/level" method="POST">
+                        <input type="submit" name="sort" value="Level">
+                    </form>
+                    <form action="/hi/events_completed" method="POST">
+                        <input type="submit" name="sort" value="Events_Completed">
+                    </form>
+                    {% endif %}
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <td>UserID</td>
+                            <td>Username</td>
+                            <td>Money</td>
+                            <td>Level</td>
+                            <td>Experience</td>
+                            <td>Events_Completed</td>
+                        </tr>
+                        </thead>
+                        {% for user in lb %}
+                        <tr>
+                            <td>{{user[5]}}</td>
+                            <td>{{user[0]}}</td>
+                            <td>{{user[1]}}</td>
+                            <td>{{user[2]}}</td>
+                            <td>{{user[3]}}</td>
+                            <td>{{user[4]}}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
                 </div>
             </div>
         </div>
 
-
+        {% if logged %}
         <!--Tasks-->
         <div id="tasks" class="tab-pane fade">
             <div id="wrap" class="container-fluid">
@@ -151,6 +191,10 @@
                     <div id="main">
                         <div class="container-fluid">
                             <!-- search bar -->
+
+                        </div>
+                        <div class="text">
+                            <span style="font-size:2em;font-weight:20;">Stop Slacking and Get Cracking</span></br> Use our beautiful interface to keep track of your daily/long-term goals. Buy yourself a treat.
                         </div>
                         <div class="task-lists container-fluid">
                             <div class="row">
@@ -164,50 +208,31 @@
                                         <ul class="main-list" style="padding-left: 0px;">
                                             <li class="task color-neutral">
                                                 <div class="task-meta-controls">
-                                                    <span class="glyphicon glyphicon-pencil"></span>
-                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                    <button class="glyphicon glyphicon-pencil"></button>
+                                                    <button id="trash" class="glyphicon glyphicon-trash"></button>
                                                     <div class="task-controls">
-                                                        <div class="habits">
-                                                            <span class="glyphicon glyphicon-plus"></span>
+                                                        <div class="complete">
+                                                            <button class="glyphicon glyphicon-plus"></button>
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <div id="test" class="task-text">
+                                                    Hello
                                                 </div>
                                             </li>
                                             <li class="task habit color-neutral">What</li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 col-md-3">
-                                    <div class="task-column habits">
-                                        <h2 class="task-column_title habit-title">Dailies</h2>
-                                        <form name="newhabitform" class="task-add">
-                                            <input type="text" placeholder="New Daily">
-                                            <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
-                                        </form>
-                                        <ul class="main-list" style="padding-left: 0px;">
-                                            <li class="task color-neutral">
-                                                <div class="task-meta-controls">
-                                                    <span class="glyphicon glyphicon-pencil"></span>
-                                                    <span class="glyphicon glyphicon-trash"></span>
-                                                    <div class="task-controls">
-                                                        <div class="habits">
-                                                            <span class="glyphicon glyphicon-plus"></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="task habit color-neutral">What</li>
-                                        </ul>
-                                    </div>
-                                </div>
+
                                 <div class="col-sm-6 col-md-3">
                                     <div class="task-column habits">
                                         <h2 class="task-column_title habit-title">To-Dos</h2>
-                                        <form name="newhabitform" class="task-add">
-                                            <input type="text" placeholder="New To-Do">
-                                            <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+                                        <form name="todoform" class="task-add">
+                                            <input type="text" placeholder="New To-Do" name="addToDo">
+                                            <button type="button" id="newtodo"><span class="glyphicon glyphicon-plus"></span></button>
                                         </form>
-                                        <ul class="main-list" style="padding-left: 0px;">
+                                        <ul class="main-list" id="todolist" style="padding-left: 0px;">
                                             <li class="task color-neutral">
                                                 <div class="task-meta-controls">
                                                     <span class="glyphicon glyphicon-pencil"></span>
@@ -223,6 +248,55 @@
                                         </ul>
                                     </div>
                                 </div>
+
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="task-column habits">
+                                        <h2 class="task-column_title habit-title">Habits</h2>
+                                        <form name="habitform" class="task-add">
+                                            <input type="text" placeholder="To-Dos" name="addHabit">
+                                            <button type="button" id="newhabit"><span class="glyphicon glyphicon-plus"></span></button>
+                                        </form>
+                                        <ul class="main-list" id="habitlist" style="padding-left: 0px;">
+                                            <li class="task color-neutral">
+                                                <div class="task-meta-controls">
+                                                    <span class="glyphicon glyphicon-pencil"></span>
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                    <div class="task-controls">
+                                                        <div class="habits">
+                                                            <span class="glyphicon glyphicon-plus"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="task habit color-neutral">What</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="task-column habits">
+                                        <h2 class="task-column_title habit-title">Goals</h2>
+                                        <form name="goalform" class="task-add">
+                                            <input type="text" placeholder="New Goal" name="addGoal">
+                                            <button type="button" id="newgoal"><span class="glyphicon glyphicon-plus"></span></button>
+                                        </form>
+                                        <ul class="main-list" id="goallist" style="padding-left: 0px;">
+                                            <li class="task color-neutral">
+                                                <div class="task-meta-controls">
+                                                    <span class="glyphicon glyphicon-pencil"></span>
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                    <div class="task-controls">
+                                                        <div class="habits">
+                                                            <span class="glyphicon glyphicon-plus"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="task habit color-neutral">What</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
                                 <div class="col-sm-6 col-md-3">
                                     <div class="task-column habits">
                                         <h2 class="task-column_title habit-title">Rewards</h2>
@@ -252,8 +326,9 @@
                 </div>
             </div>
         </div>
+        {% endif %}
 
-
+        <!-- STORE -->
         <div id="store" role="tabpanel" class="tab-pane fade">
             <h3>Store</h3>
             <p>Buy our equipment. Make your own rewards.</p>
@@ -279,30 +354,18 @@
                                 <li>\{\{e3\}\}</li>
                             </ul>
                         </div>
-
-
-
                         <div class="item">
-
-
-                            <h2>Rewards</h2>
+                            <h2>Rewards</h2>a
                             <input id="reward_name" type="text">Reward</input>
                             <input id="reward_cost" type="text" value="0">Price</input>
                             <button id="add_reward">New Reward</button>
                             <ul id="rewards">
                             </ul>
-
                         </div>
-
                         <div class="item">
-
                             <h2>IRL</h2>
-
-
                         </div>
-
                     </div>
-
                     <!-- Left and right controls -->
                     <a class="left carousel-control" href="#myCarousel" role="button">
 
@@ -316,56 +379,106 @@
             </div>
         </div>
 
+        <!-- WORKSHOP -->
         <div id="workshop" class="tab-pane fade">
-            <h3>Workshop</h3>
-            <div id="contentBox" class="clearfix" style="margin:0px auto; width:80%">
+            <div id="wrap" class="container-fluid">
                 <div class="row">
-                    <div class="col-xs-6 col-sm-4">
-                        <div id="to-dos">
-
-                            To-dos
-                            <div>
-
-
+                    <div id="main">
+                        <div class="container-fluid">
+                            <!-- search bar -->
+                        </div>
+                        <div class="task-lists container-fluid">
+                            <div class="row">
+                                <div class="text">
+                                    <span style="font-size:3em;font-weight:20;">Welcome to the Workshop.</span></br> Here you can suggest new tasks for other users while also finding suggestions to add to your own list.
+                                </div>
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="task-column habits">
+                                        <h2 class="task-column_title habit-title">Habits</h2>
+                                        <form name="newhabitform" class="task-add">
+                                            <input type="text" placeholder="New Habit">
+                                            <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+                                        </form>
+                                        <ul class="main-list" style="padding-left: 0px;">
+                                            <li class="task color-neutral">
+                                                <div class="task-meta-controls">
+                                                    <span class="glyphicon glyphicon-pencil"></span>
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                    <div class="task-controls">
+                                                        <div class="habits">
+                                                            <span class="glyphicon glyphicon-plus"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="task habit color-neutral">What</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="task-column habits">
+                                        <h2 class="task-column_title habit-title">Dailies</h2>
+                                        <form name="newhabitform" class="task-add">
+                                            <input type="text" placeholder="New Daily">
+                                            <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+                                        </form>
+                                        <ul class="main-list" style="padding-left: 0px;">
+                                            <li class="task color-neutral">
+                                                <div class="task-meta-controls">
+                                                    <span class="glyphicon glyphicon-pencil"></span>
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                    <div class="task-controls">
+                                                        <div class="habits">
+                                                            <span class="glyphicon glyphicon-plus"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="task habit color-neutral">What</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="task-column habits">
+                                        <h2 class="task-column_title habit-title">To-Dos</h2>
+                                        <form name="newhabitform" class="task-add">
+                                            <input type="text" placeholder="New To-Do">
+                                            <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+                                        </form>
+                                        <ul class="main-list" style="padding-left: 0px;">
+                                            <li class="task color-neutral">
+                                                <div class="task-meta-controls">
+                                                    <span class="glyphicon glyphicon-pencil"></span>
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                    <div class="task-controls">
+                                                        <div class="habits">
+                                                            <span class="glyphicon glyphicon-plus"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="task habit color-neutral">What</li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
-                            <hr>
-
-                            <!--Jinja-->
-
-
-
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-4">
-                        <div id="habits">
-
-                            Habits
-                            <hr>
-
-
-
-                        </div>
-                    </div>
-                    <!-- Add clearfix for only the required viewport -->
-                    <div class="clearfix visible-xs"></div>
-                    <div class="col-xs-6 col-sm-4">
-                        <div id="goals">
-                            Goals
-                            <hr>
-
-
-
-
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
 
+        <!-- ABOUT -->
         <div id="about" class="tab-pane fade">
-            <h3>About</h3>
-            <p>Some content in menu 2.</p>
+            <div class="toolbar toolbar-container">
+                <div class="text">
+                    About Us!
+                    <br>
+                    <br> The Team: Jerry Chang (Project Manager), Issac Kim, and Anthony Liang
+                    <br>
+                    <br> Life2” is an app that gamifies habits, to-do’s and goals to keep users on top of their game. Upon registering, users will be given an avatar for which they can nurture, level, and pimp out by keeping in line with their habits and goals. A user can create a list of habits to follow and a set of goals to achieve by creating their own or choosing from presets. By completing these ‘quests’, the user receives bonuses and rewards that they can trade in for items. On the community side, users can check a global leaderboard for their placement. They can also share their custom quests so that other users can use them.
+                </div>
+            </div>
         </div>
 
     </div>
@@ -409,6 +522,10 @@
             $(this).carousel('pause');
         });
         $('.carousel-indicators .active').removeClass('active')
+        var li_node = document.getElementById("trash").parentNode.parentNode
+        document.getElementById("trash").addEventListener("click", function(){
+            li_node.remove()
+        })
     </script>
 
 </body>
