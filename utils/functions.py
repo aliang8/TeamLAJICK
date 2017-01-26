@@ -45,6 +45,18 @@ def getUserEvents(user):
     goals = data.fetchall()
     return goals
     
+def getUserSuggested(task):
+    db = sql.connect(DATA)
+    c = db.cursor()
+    if task == "todo":
+        data = c.execute("SELECT userID, content FROM userSuggested WHERE todo = ?", (1,))
+    elif task == "habit"
+        data = c.execute("SELECT userID, content FROM userSuggested WHERE habit = ?", (1,))
+    elif task == "goal"
+        data = c.execute("SELECT userID, content FROM userSuggested WHERE goal = ?", (1,))
+    userSuggested = data.fetchall()
+    return userSuggested
+
 #return the user's goals in a tuple
 def getUserToDos(user):
     db = sql.connect(DATA)
@@ -143,7 +155,6 @@ def updateInfo(user,infoType,update):
     c = db.cursor()
     exists = c.execute("SELECT " + infoType + " from accounts WHERE username = ?", (user,))
     exist = exists.fetchall()
-    print len(exist)
     if len(exist) != 0:
         data = c.execute("UPDATE accounts SET " + infoType + " = ? WHERE username = ?", (update, user,))
     else:
@@ -157,8 +168,6 @@ def buyItem(user,price):
     c.execute("SELECT money from accounts WHERE username = ?", (user,))
     exist = c.fetchone()
     
-    print price
-    print exist[0]
     if price <= exist[0]:
         final = exist[0] - price
         c = db.cursor()
@@ -218,7 +227,6 @@ def makeShop(user):
     equipments = [makeEquipment(user), makeEquipment(user), makeEquipment(user),makeEquipment(user), makeEquipment(user), makeEquipment(user),makeEquipment(user), makeEquipment(user), makeEquipment(user),makeEquipment(user)]
     return equipments
 
-
 def exp(user, experience):
     db = sql.connect(DATA)
     c = db.cursor()
@@ -233,8 +241,7 @@ def exp(user, experience):
     data = c.execute("UPDATE accounts SET level = ? WHERE username = ?", (level, user,))
     db.commit()
     db.close()
-    print(exp)
-    print(level)
+
 
 
 
