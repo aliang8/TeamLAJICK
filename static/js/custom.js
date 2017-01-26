@@ -35,12 +35,16 @@ var buy = function(e) {
             "price": price
         }
     }).done(function(result) {
+        if (result == "Item bought"){
         var balance = document.getElementById("balance");
         var initial = parseInt(balance.innerHTML);
         balance.innerHTML = initial - price;
 
         button.parentElement.parentElement.remove();
-
+        }
+        else{
+            
+        }
     }).fail(function() {
         console.log("Ooops");
     });
