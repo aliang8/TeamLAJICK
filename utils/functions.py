@@ -177,7 +177,7 @@ def makeEquipment(user):
     return equipment
 
 def makeShop(user):
-    equipments = [makeEquipment(user), makeEquipment(user), makeEquipment(user)]
+    equipments = [makeEquipment(user), makeEquipment(user), makeEquipment(user),makeEquipment(user), makeEquipment(user), makeEquipment(user),makeEquipment(user), makeEquipment(user), makeEquipment(user),makeEquipment(user)]
     return equipments
 
 
