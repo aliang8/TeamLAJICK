@@ -50,9 +50,9 @@ def getUserSuggested(task):
     c = db.cursor()
     if task == "todo":
         data = c.execute("SELECT userID, content FROM userSuggested WHERE todo = ?", (1,))
-    elif task == "habit"
+    elif task == "habit":
         data = c.execute("SELECT userID, content FROM userSuggested WHERE habit = ?", (1,))
-    elif task == "goal"
+    elif task == "goal":
         data = c.execute("SELECT userID, content FROM userSuggested WHERE goal = ?", (1,))
     userSuggested = data.fetchall()
     return userSuggested
