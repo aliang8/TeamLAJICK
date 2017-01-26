@@ -201,15 +201,15 @@
                                 <div class="col-sm-6 col-md-3">
                                     <div class="task-column habits">
                                         <h2 class="task-column_title habit-title">Habits</h2>
-                                        <form name="newhabitform" class="task-add">
-                                            <input type="text" placeholder="New Habit">
-                                            <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+                                        <form action="/added_habits" method="POST" class="task-add">
+                                            <input type="text" placeholder="New Habit" name="addHabit">
+                                            <button type="submit" class="glyphicon glyphicon-plus"></button>
                                         </form>
                                         <ul class="main-list" style="padding-left: 0px;">
                                             <li class="task color-neutral">
                                                 <div class="task-meta-controls">
                                                     <button class="glyphicon glyphicon-pencil"></button>
-                                                    <button id="trash" class="glyphicon glyphicon-trash"></button>
+                                                    <button class="glyphicon glyphicon-trash"></button>
                                                     <div class="task-controls">
                                                         <div class="complete">
                                                             <button class="glyphicon glyphicon-plus"></button>
@@ -233,30 +233,6 @@
                                             <button type="button" id="newtodo"><span class="glyphicon glyphicon-plus"></span></button>
                                         </form>
                                         <ul class="main-list" id="todolist" style="padding-left: 0px;">
-                                            <li class="task color-neutral">
-                                                <div class="task-meta-controls">
-                                                    <span class="glyphicon glyphicon-pencil"></span>
-                                                    <span class="glyphicon glyphicon-trash"></span>
-                                                    <div class="task-controls">
-                                                        <div class="habits">
-                                                            <span class="glyphicon glyphicon-plus"></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="task habit color-neutral">What</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6 col-md-3">
-                                    <div class="task-column habits">
-                                        <h2 class="task-column_title habit-title">Habits</h2>
-                                        <form name="habitform" class="task-add">
-                                            <input type="text" placeholder="To-Dos" name="addHabit">
-                                            <button type="button" id="newhabit"><span class="glyphicon glyphicon-plus"></span></button>
-                                        </form>
-                                        <ul class="main-list" id="habitlist" style="padding-left: 0px;">
                                             <li class="task color-neutral">
                                                 <div class="task-meta-controls">
                                                     <span class="glyphicon glyphicon-pencil"></span>
@@ -395,10 +371,10 @@
                                 <div class="col-sm-6 col-md-4">
                                     <div class="task-column habits">
                                         <h2 class="task-column_title habit-title">Habits</h2>
-                                        <form name="newhabitform" class="task-add">
+                                        <div class="task-add">
                                             <input type="text" placeholder="New Habit">
-                                            <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
-                                        </form>
+                                            <button class="glyphicon glyphicon-plus"></button>
+                                        </div>
                                         <ul class="main-list" style="padding-left: 0px;">
                                             <li class="task color-neutral">
                                                 <div class="task-meta-controls">
@@ -522,10 +498,25 @@
             $(this).carousel('pause');
         });
         $('.carousel-indicators .active').removeClass('active')
-        var li_node = document.getElementById("trash").parentNode.parentNode
-        document.getElementById("trash").addEventListener("click", function(){
-            li_node.remove()
-        })
+        
+        /*
+        var ul_node = document.getElementById("task-add").parentNode.parentNode.childNodes[5];
+        document.getElementById("task-add").addEventListener("click", function(event){
+            event.preventDefault();
+            var new_task = document.createElement("li");
+            var habit = document.getElementById("new-habit").value
+            new_task.className = "task color-neutral";
+            new_task.innerHTML = '<div class="task-meta-controls"> <button class="glyphicon glyphicon-pencil"> </button> <button id="trash" class="glyphicon glyphicon-trash"> </button> <div class="task-controls"> <div class="complete"> <button class="glyphicon glyphicon-plus"></button> </div> </div> </div> <div id="test" class="task-text">' + habit + '</div>';
+            ul_node.appendChild(new_task);
+        });
+
+        var li_nodes = document.getElementsByClassName('glyphicon glyphicon-trash');
+        for(i = 0; i < li_nodes.length; i++){
+            li_nodes[i].addEventListener("click", function(){
+                li_nodes[i].parentNode.parentNode.remove();
+            });
+        };
+        */
     </script>
 
 </body>
