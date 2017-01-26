@@ -178,7 +178,6 @@ var newHabit = function(e) {
 
 var newGoal = function(e) {
 
-
     $.ajax({
         url: "/newgoal",
         type: 'POST',
