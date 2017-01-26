@@ -186,7 +186,7 @@
             <div class="container">
                 <div class="text">
                     <h1>LEADERBOARD</h1> {% if logged %}
-                    <form action="/hi/money" method="POST">
+                    <!--<form action="/hi/money" method="POST">
                         <input type="submit" name="sort" value="Money">
                     </form>
                     <form action="/hi/level" method="POST">
@@ -194,9 +194,12 @@
                     </form>
                     <form action="/hi/events_completed" method="POST">
                         <input type="submit" name="sort" value="Events_Completed">
-                    </form>
+                    </form>-->
+		    <button id="sMoney">Money</button>
+		    <button id="sLevel">Level</button>
+		    <button id="sEvents">Events Completed</button>
                     {% endif %}
-                    <table class="table">
+                    <table class="table" id="leaderboard" >
                         <thead>
                             <tr>
                                 <td>UserID</td>
@@ -208,7 +211,7 @@
                             </tr>
                         </thead>
                         {% for user in lb %}
-                        <tr>
+                        <tr class="leaderboardEntry">
                             <td>{{user[5]}}</td>
                             <td>{{user[0]}}</td>
                             <td>{{user[1]}}</td>
