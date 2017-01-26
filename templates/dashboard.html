@@ -21,7 +21,7 @@
                 {% if logged %}
                 <li class="toolbar-button"><a data-toggle="tab" href="#tasks">Tasks</a></li>
                 <li class="toolbar-button"><a data-toggle="tab" href="#store">Store</a></li>
-		<li class="toolbar-button"><a data-toggle="tab" href="#inventory">Inventory</a></li>
+                <li class="toolbar-button"><a data-toggle="tab" href="#inventory">Inventory</a></li>
                 {% endif %}
                 <li class="toolbar-button"><a data-toggle="tab" href="#workshop">Workshop</a></li>
                 <li class="toolbar-button"><a data-toggle="tab" href="#about">About</a></li>
@@ -29,10 +29,8 @@
             <ul class="toolbar-nav" style="float: right;">
                 {{message}} {% if not logged %}
                 <button class="toolbar-button" data-toggle="modal" data-target="#signup">Signup</button>
-                <button class="toolbar-button" data-toggle="modal" data-target="#login">Login</button>
-                {% endif %} {% if logged %}
-                <button class="toolbar-button"><a href="/logout">Logout</a></button>
-                {% endif %}
+                <button class="toolbar-button" data-toggle="modal" data-target="#login">Login</button> {% endif %} {% if logged %}
+                <button class="toolbar-button"><a href="/logout">Logout</a></button> {% endif %}
             </ul>
             {% if logged %}
             <ul class="toolbar-nav" style="float: right;">
@@ -198,12 +196,38 @@
                         </div>
                         <div class="task-lists container-fluid">
                             <div class="row">
+
+
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="task-column habits">
+                                        <h2 class="task-column_title habit-title">To-Dos</h2>
+                                        <form id="todoform" class="task-add">
+                                            <input type="text" placeholder="New To-Do" name="addToDo">
+                                            <button type="button" id="newtodo"><span class="glyphicon glyphicon-plus"></span></button>
+                                        </form>
+                                        <ul class="main-list" id="todolist" style="padding-left: 0px;">
+                                            <li class="task color-neutral">
+                                                <div class="task-meta-controls">
+                                                    <span class="glyphicon glyphicon-pencil"></span>
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                    <div class="task-controls">
+                                                        <div class="habits">
+                                                            <span class="glyphicon glyphicon-plus"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="task habit color-neutral">What</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
                                 <div class="col-sm-6 col-md-3">
                                     <div class="task-column habits">
                                         <h2 class="task-column_title habit-title">Habits</h2>
-                                        <form action="/added_habits" method="POST" class="task-add">
+                                        <form action="/added_habits" method="POST" class="task-add" id="habitform">
                                             <input type="text" placeholder="New Habit" name="addHabit">
-                                            <button type="submit" class="glyphicon glyphicon-plus"></button>
+                                            <button type="button" id="newhabit" class="glyphicon glyphicon-plus"></button>
                                         </form>
                                         <ul class="main-list" style="padding-left: 0px;">
                                             <li class="task color-neutral">
@@ -227,32 +251,8 @@
 
                                 <div class="col-sm-6 col-md-3">
                                     <div class="task-column habits">
-                                        <h2 class="task-column_title habit-title">To-Dos</h2>
-                                        <form name="todoform" class="task-add">
-                                            <input type="text" placeholder="New To-Do" name="addToDo">
-                                            <button type="button" id="newtodo"><span class="glyphicon glyphicon-plus"></span></button>
-                                        </form>
-                                        <ul class="main-list" id="todolist" style="padding-left: 0px;">
-                                            <li class="task color-neutral">
-                                                <div class="task-meta-controls">
-                                                    <span class="glyphicon glyphicon-pencil"></span>
-                                                    <span class="glyphicon glyphicon-trash"></span>
-                                                    <div class="task-controls">
-                                                        <div class="habits">
-                                                            <span class="glyphicon glyphicon-plus"></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="task habit color-neutral">What</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6 col-md-3">
-                                    <div class="task-column habits">
                                         <h2 class="task-column_title habit-title">Goals</h2>
-                                        <form name="goalform" class="task-add">
+                                        <form id="goalform" class="task-add">
                                             <input type="text" placeholder="New Goal" name="addGoal">
                                             <button type="button" id="newgoal"><span class="glyphicon glyphicon-plus"></span></button>
                                         </form>
@@ -276,9 +276,9 @@
                                 <div class="col-sm-6 col-md-3">
                                     <div class="task-column habits">
                                         <h2 class="task-column_title habit-title">Rewards</h2>
-                                        <form name="newhabitform" class="task-add">
+                                        <form id="newhabitform" class="task-add">
                                             <input type="text" placeholder="New Reward">
-                                            <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+                                            <button type="button"><span class="glyphicon glyphicon-plus"></span></button>
                                         </form>
                                         <ul class="main-list" style="padding-left: 0px;">
                                             <li class="task color-neutral">
@@ -311,36 +311,37 @@
                 <h1>STORE</h1>
                 <h3>Look cool everyday.</h3>
                 <table class="table">
-                  <thead>
-		    <td>Equipment</td>
-                    <td>Type</td>
-                    <td>HP</td>
-                    <td>ATK</td>
-                    <td>ATK Speed</td>
-                    <td>Speed</td>
-                    <td>Def</td>
-                    <td>Int</td>
-		    <td>Price</td>
+                    <thead>
+                        <td>Equipment</td>
+                        <td>Type</td>
+                        <td>HP</td>
+                        <td>ATK</td>
+                        <td>ATK Speed</td>
+                        <td>Speed</td>
+                        <td>Def</td>
+                        <td>Int</td>
+                        <td>Price</td>
 
-                  </thead>
+                    </thead>
                     {% for equipment in equipments %}
                     <tr>
-		      <td><img src={{equipment[8]}}></td>
-                      <td>{{equipment[0]}}</td>
-                      <td>{{equipment[1]}}</td>
-                      <td>{{equipment[2]}}</td>
-                      <td>{{equipment[3]}}</td>
-                      <td>{{equipment[4]}}</td>
-                      <td>{{equipment[5]}}</td>
-                      <td>{{equipment[6]}}</td>
-                      <td>
-                        <button class="buy">{{equipment[7]}}</button>
-                      </td>
+                        <td><img src={{equipment[8]}}></td>
+                        <td>{{equipment[0]}}</td>
+                        <td>{{equipment[1]}}</td>
+                        <td>{{equipment[2]}}</td>
+                        <td>{{equipment[3]}}</td>
+                        <td>{{equipment[4]}}</td>
+                        <td>{{equipment[5]}}</td>
+                        <td>{{equipment[6]}}</td>
+                        <td>
+                            <button class="buy">{{equipment[7]}}</button>
+                        </td>
                     </tr>
                     {% endfor %}
                 </table>
             </div>
         </div>
+
         {% endif %}
 
 	{% if logged %}
@@ -369,12 +370,13 @@
                       <td>{{item[4]}}</td>
                       <td>{{item[5]}}</td>
                       <td>{{item[6]}}</td>
+
                     </tr>
                     {% endfor %}
                 </table>
-	  </div>
-	</div>
-	{% endif %}
+            </div>
+        </div>
+        {% endif %}
         <!-- WORKSHOP -->
         <div id="workshop" class="tab-pane fade">
             <div id="wrap" class="container-fluid">
@@ -416,7 +418,7 @@
                                         <h2 class="task-column_title habit-title">Dailies</h2>
                                         <form name="newhabitform" class="task-add">
                                             <input type="text" placeholder="New Daily">
-                                            <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+                                            <button type="button"><span class="glyphicon glyphicon-plus"></span></button>
                                         </form>
                                         <ul class="main-list" style="padding-left: 0px;">
                                             <li class="task color-neutral">
@@ -439,7 +441,7 @@
                                         <h2 class="task-column_title habit-title">To-Dos</h2>
                                         <form name="newhabitform" class="task-add">
                                             <input type="text" placeholder="New To-Do">
-                                            <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+                                            <button type="button"><span class="glyphicon glyphicon-plus"></span></button>
                                         </form>
                                         <ul class="main-list" style="padding-left: 0px;">
                                             <li class="task color-neutral">
@@ -472,7 +474,9 @@
                     <br>
                     <br> The Team: Jerry Chang (Project Manager), Issac Kim, and Anthony Liang
                     <br>
-                    <br> Life2” is an app that gamifies habits, to-do’s and goals to keep users on top of their game. Upon registering, users will be given an avatar for which they can nurture, level, and pimp out by keeping in line with their habits and goals. A user can create a list of habits to follow and a set of goals to achieve by creating their own or choosing from presets. By completing these ‘quests’, the user receives bonuses and rewards that they can thade in for items. On the community side, users can check a global leaderboard for their placement. They can also share their custom quests so that other users can use them.
+                    <br> Life2” is an app that gamifies habits, to-do’s and goals to keep users on top of their game. Upon registering, users will be given an avatar for which they can nurture, level, and pimp out by keeping in line with their habits
+                    and goals. A user can create a list of habits to follow and a set of goals to achieve by creating their own or choosing from presets. By completing these ‘quests’, the user receives bonuses and rewards that they can thade in for items.
+                    On the community side, users can check a global leaderboard for their placement. They can also share their custom quests so that other users can use them.
                 </div>
             </div>
         </div>
@@ -489,32 +493,32 @@
     <script>
         $('#login').modal('hide');
         $('#signup').modal('hide');
-        $(document).ready(function () {
+        $(document).ready(function() {
             // Activate Carousel
             $("#myCarousel").carousel({
                 interval: false
             });
 
             // Enable Carousel Indicators
-            $(".item1").click(function () {
+            $(".item1").click(function() {
                 $("#myCarousel").carousel(0);
             });
-            $(".item2").click(function () {
+            $(".item2").click(function() {
                 $("#myCarousel").carousel(1);
             });
-            $(".item3").click(function () {
+            $(".item3").click(function() {
                 $("#myCarousel").carousel(2);
             });
 
             // Enable Carousel Controls
-            $(".left").click(function () {
+            $(".left").click(function() {
                 $("#myCarousel").carousel("prev");
             });
-            $(".right").click(function () {
+            $(".right").click(function() {
                 $("#myCarousel").carousel("next");
             });
         });
-        $('.carousel-indicators li').each(function () {
+        $('.carousel-indicators li').each(function() {
             $(this).carousel('pause');
         });
         $('.carousel-indicators .active').removeClass('active')
