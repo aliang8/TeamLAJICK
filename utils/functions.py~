@@ -175,4 +175,14 @@ def makeEquipment(user):
     equipment[1:] = stats
     return equipment
 
+def makeTR(equipment):
+    tr = ""
+    price = equipment.pop()
+    print(equipment)
+    for x in equipment:
+        print(x)
+        tr += "<td>" + x + "</td>"
+    tr += "<td><button id='purchase'>" + price + " Gold</button></td>"
+    return tr
+
 

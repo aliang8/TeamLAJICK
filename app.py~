@@ -26,6 +26,9 @@ def home(message,sort):
         #Check for all ajax requests here
         #All of POST type
         gold = functions.getUserInfo(user)[1]
+        i = '''equipment1 = functions.makeTR(functions.makeEquipment(user))
+        equipment2 = functions.makeTR(functions.makeEquipment(user))
+        equipment3 = functions.makeTR(functions.makeEquipment(user))'''
         if request.method == 'POST':
             multi_dict = request.args
             for key in multi_dict:
@@ -44,16 +47,16 @@ def home(message,sort):
                 return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb)
             elif sort == "money":
                 lb = functions.getAllUserInfo('money')
-                return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb)            
+                return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb)
             elif sort == "events_completed":
                 lb = functions.getAllUserInfo('events_completed')
                 return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb)
-        else:
-            lb = functions.getAllUserInfo('events_completed')
+            else:
+                lb = functions.getAllUserInfo('events_completed')
         
-        return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb)
-    else:
-        return redirect(url_for('root'))
+            return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb)
+        else:
+            return redirect(url_for('root'))
 
 @app.route("/authenticate/", methods = ['POST','GET'])
 def authenticate():
