@@ -96,10 +96,11 @@ def insertToDo(user, goal):
     userID = getUserID(user)
     
     data = c.execute("INSERT INTO events (userID, todo, habit, goal, content) VALUES (?,1,0,0,?)", (userID, goal,))
+    id = c.lastrowid
     
     db.commit()
     db.close()
-    return goal
+    return id, goal
 
 def insertHabit(user, goal):
     db = sql.connect(DATA)
@@ -107,10 +108,11 @@ def insertHabit(user, goal):
     userID = getUserID(user)
     
     data = c.execute("INSERT INTO events (userID, todo, habit, goal, content) VALUES (?,0,1,0,?)", (userID, goal,))
+    id = c.lastrowid
     
     db.commit()
     db.close()
-    return goal
+    return id, goal
 
 #one function for removing and inserting user goals
 def insertGoal(user, goal):
@@ -119,10 +121,11 @@ def insertGoal(user, goal):
     userID = getUserID(user)
 
     data = c.execute("INSERT INTO events (userID, todo, habit, goal, content) VALUES (?,0,0,1,?)", (userID, goal,))
+    id = c.lastrowid
 
     db.commit()
     db.close()
-    return goal
+    return id, goal
     
 def deleteGoal(user, goalID):
     db = sql.connect(DATA)
@@ -151,18 +154,20 @@ def updateInfo(user,infoType,update):
 def buyItem(user,price):
     db = sql.connect(DATA)
     c = db.cursor()
-    exists = c.execute("SELECT money from accounts WHERE username = ?", (user,))
-    exist = exists.fetchone()
+    c.execute("SELECT money from accounts WHERE username = ?", (user,))
+    exist = c.fetchone()
     
+    print price
+    print exist[0]
     if price <= exist[0]:
-        data = c.execute("UPDATE accounts SET money = ? WHERE username = ?", (exist[0] - price, user,))
+        final = exist[0] - price
+        c = db.cursor()
+        c.execute("UPDATE accounts SET money = ? WHERE username = ?", (final, user,))
         db.commit()
         db.close()
         return "Item bought"
 
     else:
-        db.commit()
-        db.close()
         return "Too expensive!"
     
 
@@ -212,3 +217,4 @@ def makeEquipment(user):
 def makeShop(user):
     equipments = [makeEquipment(user), makeEquipment(user), makeEquipment(user),makeEquipment(user), makeEquipment(user), makeEquipment(user),makeEquipment(user), makeEquipment(user), makeEquipment(user),makeEquipment(user)]
     return equipments
+    

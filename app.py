@@ -1,9 +1,10 @@
 #import flask
 import os
-from flask import Flask, render_template, session, redirect, url_for, request
+from flask import Flask, render_template, session, redirect, url_for, request, jsonify
 from utils import functions, login
 import sqlite3
 import hashlib
+
 
 app = Flask(__name__)
 app.secret_key = 'life^2'
@@ -67,17 +68,20 @@ def home():
 @app.route("/newtodo", methods=['POST'])
 def newtodo():
     user = session.get('username')
-    return functions.insertToDo(user, request.form.get("addToDo"))
+    a,b = functions.insertToDo(user, request.form.get("addToDo"))
+    return jsonify(id=a, task=b)
     
 @app.route("/newhabit", methods=['POST'])
 def newhabit():
     user = session.get('username')
-    return functions.insertHabit(user, request.form.get("addHabit"))
-
+    a,b = functions.insertHabit(user, request.form.get("addHabit"))
+    return jsonify(id=a, task=b)
+    
 @app.route("/newgoal", methods=['POST'])
 def newgoal():
     user = session.get('username')
-    return functions.insertGoal(user, request.form.get("addGoal"))
+    a,b =  functions.insertGoal(user, request.form.get("addGoal"))
+    return jsonify(id=a, task=b)
     
 @app.route("/buy", methods=['POST'])
 def buy():

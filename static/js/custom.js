@@ -31,14 +31,16 @@ var buy = function(e) {
     $.ajax({
         url: "/buy",
         type: 'POST',
-        data: {"price" : price}
+        data: {
+            "price": price
+        }
     }).done(function(result) {
         var balance = document.getElementById("balance");
         var initial = parseInt(balance.innerHTML);
         balance.innerHTML = initial - price;
-        
+
         button.parentElement.parentElement.remove();
-        
+
     }).fail(function() {
         console.log("Ooops");
     });
@@ -91,14 +93,14 @@ $.fn.serializeObject = function(e) {
 String.prototype.format = function() {
     var args = arguments;
     return this.replace(/{(\d+)}/g, function(match, number) {
-        return typeof args[number] != 'undefined'
-            ? args[number]
-            : match
-        ;
+        return typeof args[number] != 'undefined' 
+        ? args[number]
+        : match;
     });
 };
 
 var taskTemplate = `
+<li class="task color-neutral">
 <div class="task-meta-controls">
     <form>
         <button class="glyphicon glyphicon-pencil edittask"></button>
@@ -112,30 +114,50 @@ var taskTemplate = `
         
     </form>
 </div>
-<div id="test" class="task-text">
+<div name="test" class="task-text">
     {1}
 </div>
+</li>
 `;
+
+var createToDo = function(item) {
+    $("#todolist").append(taskTemplate.format(
+        item["id"],
+        item["task"]
+    ));
+
+};
+
+var createHabit = function(item) {
+    $("habitlist").append(taskTemplate.format(
+        item.id,
+        item.task
+    ));
+
+};
+
+var createGoal = function(item) {
+    $("goallist").append(taskTemplate.format(
+        item["id"],
+        item["task"]
+    ));
+
+};
 
 var newToDo = function(e) {
 
     $.ajax({
         url: "/newtodo",
         type: 'POST',
+        datatype: 'json',
         data: $("#todoform").serializeObject()
     }).done(function(result) {
-        var item = document.createElement("li");
-        item.class = "todoitem";
-
-        item.innerHTML = result;
-        var list = document.getElementById("todolist");
-        list.insertBefore(item, list.childNodes[0]);
-        console.log(result);
+        createToDo(result);
     }).fail(function() {
         console.log("Ooops");
     });
 
-}
+};
 
 var newHabit = function(e) {
 
@@ -143,13 +165,10 @@ var newHabit = function(e) {
     $.ajax({
         url: "/newhabit",
         type: 'POST',
+        datatype: 'json',
         data: $("#habitform").serializeObject()
     }).done(function(result) {
-        var item = document.createElement("li");
-        item.class = "habititem";
-        item.innerHTML = result;
-        var list = document.getElementById("habitlist");
-        list.insertBefore(item, list.childNodes[0]);
+        createHabit(result);
     }).fail(function() {
         console.log("Oops");
     });
@@ -163,14 +182,10 @@ var newGoal = function(e) {
     $.ajax({
         url: "/newgoal",
         type: 'POST',
+        datatype: 'json',
         data: $("#goalform").serializeObject()
     }).done(function(result) {
-        var item = document.createElement("li");
-        item.class = "goalitem";
-        item.innerHTML = result;
-        var list = document.getElementById("goallist");
-        list.insertBefore(item, list.childNodes[0]);
-
+        createGoal(result);
     }).fail(function() {
         console.log("oops");
     });
@@ -181,10 +196,10 @@ todo.addEventListener("click", newToDo);
 
 var habit = document.getElementById("newhabit");
 habit.addEventListener("click", newHabit);
-    
+
 var goal = document.getElementById("newgoal");
 goal.addEventListener("click", newGoal);
-    
+
 var shop = document.getElementsByClassName("buy");
 for (var i = 0; i < shop.length; i++) {
     shop[i].addEventListener("click", buy);
