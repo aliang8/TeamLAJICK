@@ -24,7 +24,7 @@ def home():
         equipments = functions.makeShop(user)
         inventory = functions.getUserInventory(user)
 
-        stats = [0,0,0,0,0,0]
+        stats = [50,0,0,0,0,0]
     
         for item in inventory:
             stats[0] += item[3]
@@ -34,6 +34,9 @@ def home():
             stats[4] += item[7]
             stats[5] += item[8]
 
+        width_health = ((float(userInfo[5]) / stats[0]) * 100)
+        width_exp = ((float(userInfo[3]) / 150) * 100)
+        userInfo = userInfo + (width_health,width_exp,)
         #Check for all ajax requests here
         #All of POST type
         gold = functions.getUserInfo(user)[1]
@@ -41,7 +44,6 @@ def home():
             multi_dict = request.args
             for key in multi_dict:
                 print multi_dict.get(key)
-                print "1"
            
             if "addToDo" in request.form:
                 functions.insertToDo(user, request.form.get("addToDo"))
