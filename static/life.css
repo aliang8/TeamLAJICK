@@ -46,12 +46,16 @@
 .shop_gold{
 	background-image: url(sprites/gold_coin.png);
 	background-position: -1730px, -1135px;
-	width: 32px;
+	width: 27px;
 	height: 22px;
 	vertical-align: top;
 	display: inline-block;
 }
 
+.avatar{
+	margin-left: 130px;
+	height: 90px;
+}
 /* TEXT BUBBLES */
 .text{
 	border: 5px solid #c3d1d6;
