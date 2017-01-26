@@ -203,6 +203,7 @@ habit.addEventListener("click", newHabit);
 var goal = document.getElementById("newgoal");
 goal.addEventListener("click", newGoal);
 
+
 var cToDo = function(item) {
     $("#tlist").append(taskTemplate.format(
         item["id"],
@@ -281,6 +282,11 @@ hab.addEventListener("click", nHabit);
 
 var gl = document.getElementById("newg");
 gl.addEventListener("click", nGoal);
+
+
+
+
+
 
 var shop = document.getElementsByClassName("buy");
 for (var i = 0; i < shop.length; i++) {

@@ -321,6 +321,23 @@
                                                 </div>
                                             </li>
                                             
+                                            {% for item in todos %}
+                                            <li class="task color-neutral">
+                                                <div class="task-meta-controls">
+                                                    <button class="glyphicon glyphicon-pencil"></button>
+                                                    <button class="glyphicon glyphicon-trash"></button>
+                                                    <div class="task-controls">
+                                                        <div class="complete">
+                                                            <button class="glyphicon glyphicon-plus"></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div name="test" class="task-text">
+                                                    {{item[5]}}
+                                                </div>
+                                            </li>
+                                            {% endfor %}
+                                            
                                         </ul>
                                     </div>
                                 </div>
@@ -347,6 +364,23 @@
                                                     Hello
                                                 </div>
                                             </li>
+                                            
+                                            {% for item in habits %}
+                                            <li class="task color-neutral">
+                                                <div class="task-meta-controls">
+                                                    <button class="glyphicon glyphicon-pencil"></button>
+                                                    <button class="glyphicon glyphicon-trash"></button>
+                                                    <div class="task-controls">
+                                                        <div class="complete">
+                                                            <button class="glyphicon glyphicon-plus"></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div name="test" class="task-text">
+                                                    {{item[5]}}
+                                                </div>
+                                            </li>
+                                            {% endfor %}
                                            
                                         </ul>
                                     </div>
@@ -374,6 +408,23 @@
                                                     Hello
                                                 </div>
                                             </li>
+                                            
+                                            {% for item in goals %}
+                                            <li class="task color-neutral">
+                                                <div class="task-meta-controls">
+                                                    <button class="glyphicon glyphicon-pencil"></button>
+                                                    <button class="glyphicon glyphicon-trash"></button>
+                                                    <div class="task-controls">
+                                                        <div class="complete">
+                                                            <button class="glyphicon glyphicon-plus"></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div name="test" class="task-text">
+                                                    {{item[5]}}
+                                                </div>
+                                            </li>
+                                            {% endfor %}
                                             
                                         </ul>
                                     </div>
