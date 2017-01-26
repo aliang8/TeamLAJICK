@@ -1,0 +1,33 @@
+ENTRY FORMAT:
+firstL -- TIMESTAMP
+<CHANGES>
+
+anthonyL -- 2017-01-15 10:10 PM
+started basic html page with login implemented
+
+anthonyL -- 2017-01-16 2:52 PM
+working on creating the tabs (leaderboard, store, etc)
+
+anthonyL -- 2017-01-18 5:16 PM
+added a leaderboards tab
+created backend functions to retrieve userInfo and sort them for leaderboard
+
+anthonyL -- 2017-01-19 2:20 PM
+working on CSS template for page
+added a basic profile bar to display user stats (health bar, exp bar, level, name)
+
+anthonyL -- 2017-01-21 3:40 PM
+finished styling templates, added avatar image and coin image
+created the task tab and separate "check-list" styled containers
+
+anthonyL --2017-1-22 2:25 PM
+linked up the inventory with the profile stats
+created methods to update health and exp for user
+
+anthonyL -- 2017-1-24 6:10 PM
+styled about page and created text bubbles for each tab
+worked on some backend function calls to get events and insert events
+
+anthonyL -- 2017-1-25 12:15 PM
+finalized styling for pages, fixed bug with pre-login display
+robustified the function to display health and exp

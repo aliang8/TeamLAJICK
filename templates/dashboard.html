@@ -98,11 +98,52 @@
             <div class="herobox-wrap main-herobox">
                 <figure class="herobox">
                     <div class="avatar-name">{{userInfo[0]}}</div>
-                    <img src="/static/sprites/user.png" alt="Image" class="avatar">
+                    <button type="button" class="stat-list" data-toggle="modal" data-target="#stat-list"><img src="/static/sprites/user.png" alt="Image" class="avatar"></button>
                     <div class="avatar-level">
                         <span>{{userInfo[2]}}</span>
                     </div>
                 </figure>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="stat-list">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="text">{{userInfo[0]}}'s Stats</div>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table stats">
+                                <tr>
+                                    <td>Health: </td>
+                                    <td>{{stats[0]}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Attack: </td>
+                                    <td>{{stats[1]}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Attack Speed: </td>
+                                    <td>{{stats[2]}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Speed: </td>
+                                    <td>{{stats[3]}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Defense: </td>
+                                    <td>{{stats[4]}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Intelligence: </td>
+                                    <td>{{stats[5]}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- STAT BARS -->
             <div class="hero-stats">
@@ -110,14 +151,14 @@
                     <span class="glyphicon glyphicon-heart"></span>
                 </div>
                 <div tooltip="50" class="meter health">
-                    <div class="bar" style="height: 100%; width: {{userInfo[3]}};"></div>
-                    <span class="meter-text value"> {{userInfo[3]}} / 50</span>
+                    <div class="bar" style="height: 100%; width: {{userInfo[7]}}%;"></div>
+                    <span class="meter-text value"> {{userInfo[5]}} / {{stats[0]}}</span>
                 </div>
                 <div tooltip="Experience" class="meter-label">
                     <span class="glyphicon glyphicon-star"></span>
                 </div>
                 <div tooltip="Experience" class="meter experience">
-                    <div class="bar" style="height: 100%; width: {{userInfo[3]}};"></div>
+                    <div class="bar" style="height: 100%; width: {{userInfo[8]}};"></div>
                     <span class="meter-text value"><span tooltip="Progress"><a class="glyphicon glyphicon-signal"></a></span><span>    </span> {{userInfo[3]}} / 150</span>
                 </div>
             </div>
@@ -145,7 +186,7 @@
             <div class="container">
                 <div class="text">
                     <h1>LEADERBOARD</h1> {% if logged %}
-                    <form action="/hi/money" method="POST">
+                    <!--<form action="/hi/money" method="POST">
                         <input type="submit" name="sort" value="Money">
                     </form>
                     <form action="/hi/level" method="POST">
@@ -153,9 +194,12 @@
                     </form>
                     <form action="/hi/events_completed" method="POST">
                         <input type="submit" name="sort" value="Events_Completed">
-                    </form>
+                    </form>-->
+		    <button id="sMoney">Money</button>
+		    <button id="sLevel">Level</button>
+		    <button id="sEvents">Events Completed</button>
                     {% endif %}
-                    <table class="table">
+                    <table class="table" id="leaderboard" >
                         <thead>
                             <tr>
                                 <td>UserID</td>
@@ -167,7 +211,7 @@
                             </tr>
                         </thead>
                         {% for user in lb %}
-                        <tr>
+                        <tr class="leaderboardEntry">
                             <td>{{user[5]}}</td>
                             <td>{{user[0]}}</td>
                             <td>{{user[1]}}</td>
@@ -303,7 +347,6 @@
             </div>
         </div>
         {% endif %}
-
         <!-- STORE -->
         {% if logged %}
         <div id="store" role="tabpanel" class="tab-pane fade">
@@ -342,35 +385,32 @@
             </div>
         </div>
 
-        {% endif %}
-
-	{% if logged %}
-	<div id="inventory" role="tabpanel" class="tab-pane fade">
-	  <div class="text">
-	    <h1>INVENTORY</h1>
-	    <h3>Upgrade yourself!!!</h3>
-	    <table class="table">
-                  <thead>
-		    <td>Equipment</td>
-                    <td>Type</td>
-                    <td>HP</td>
-                    <td>ATK</td>
-                    <td>ATK Speed</td>
-                    <td>Speed</td>
-                    <td>Def</td>
-                    <td>Int</td>
-                  </thead>
+        {% endif %} {% if logged %}
+        <div id="inventory" role="tabpanel" class="tab-pane fade">
+            <div class="text">
+                <h1>INVENTORY</h1>
+                <h3>Upgrade yourself!!!</h3>
+                <table class="table">
+                    <thead>
+                        <td>Equipment</td>
+                        <td>Type</td>
+                        <td>HP</td>
+                        <td>ATK</td>
+                        <td>ATK Speed</td>
+                        <td>Speed</td>
+                        <td>Def</td>
+                        <td>Int</td>
+                    </thead>
                     {% for item in inventory %}
                     <tr>
-		      <td><img src={{item[8]}}></td>
-                      <td>{{item[0]}}</td>
-                      <td>{{item[1]}}</td>
-                      <td>{{item[2]}}</td>
-                      <td>{{item[3]}}</td>
-                      <td>{{item[4]}}</td>
-                      <td>{{item[5]}}</td>
-                      <td>{{item[6]}}</td>
-
+                        <td><img src={{item[1]}}></td>
+                        <td>{{item[2]}}</td>
+                        <td>{{item[3]}}</td>
+                        <td>{{item[4]}}</td>
+                        <td>{{item[5]}}</td>
+                        <td>{{item[6]}}</td>
+                        <td>{{item[7]}}</td>
+                        <td>{{item[8]}}</td>
                     </tr>
                     {% endfor %}
                 </table>
@@ -474,9 +514,7 @@
                     <br>
                     <br> The Team: Jerry Chang (Project Manager), Issac Kim, and Anthony Liang
                     <br>
-                    <br> Life2” is an app that gamifies habits, to-do’s and goals to keep users on top of their game. Upon registering, users will be given an avatar for which they can nurture, level, and pimp out by keeping in line with their habits
-                    and goals. A user can create a list of habits to follow and a set of goals to achieve by creating their own or choosing from presets. By completing these ‘quests’, the user receives bonuses and rewards that they can thade in for items.
-                    On the community side, users can check a global leaderboard for their placement. They can also share their custom quests so that other users can use them.
+                    <br> Life2” is an app that gamifies habits, to-do’s and goals to keep users on top of their game. Upon registering, users will be given an avatar for which they can nurture, level, and pimp out by keeping in line with their habits and goals. A user can create a list of habits to follow and a set of goals to achieve by creating their own or choosing from presets. By completing these ‘quests’, the user receives bonuses and rewards that they can thade in for items. On the community side, users can check a global leaderboard for their placement. They can also share their custom quests so that other users can use them.
                 </div>
             </div>
         </div>
@@ -493,32 +531,32 @@
     <script>
         $('#login').modal('hide');
         $('#signup').modal('hide');
-        $(document).ready(function() {
+        $(document).ready(function () {
             // Activate Carousel
             $("#myCarousel").carousel({
                 interval: false
             });
 
             // Enable Carousel Indicators
-            $(".item1").click(function() {
+            $(".item1").click(function () {
                 $("#myCarousel").carousel(0);
             });
-            $(".item2").click(function() {
+            $(".item2").click(function () {
                 $("#myCarousel").carousel(1);
             });
-            $(".item3").click(function() {
+            $(".item3").click(function () {
                 $("#myCarousel").carousel(2);
             });
 
             // Enable Carousel Controls
-            $(".left").click(function() {
+            $(".left").click(function () {
                 $("#myCarousel").carousel("prev");
             });
-            $(".right").click(function() {
+            $(".right").click(function () {
                 $("#myCarousel").carousel("next");
             });
         });
-        $('.carousel-indicators li').each(function() {
+        $('.carousel-indicators li').each(function () {
             $(this).carousel('pause');
         });
         $('.carousel-indicators .active').removeClass('active')

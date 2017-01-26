@@ -3,6 +3,13 @@ $('#myTabs a').click(function(e) {
     $(this).tab('show');
 })
 
+var sMoney = document.getElementById("sMoney");
+
+var sLevel = document.getElementById("sLevel");
+
+var sEvents = document.getElementById("sEvents");
+
+
 var purchase = function(e) {
     var balance = document.getElementById("balance");
     var initial = parseInt(balance.innerHTML);

@@ -21,7 +21,7 @@
                 {% if logged %}
                 <li class="toolbar-button"><a data-toggle="tab" href="#tasks">Tasks</a></li>
                 <li class="toolbar-button"><a data-toggle="tab" href="#store">Store</a></li>
-		<li class="toolbar-button"><a data-toggle="tab" href="#inventory">Inventory</a></li>
+                <li class="toolbar-button"><a data-toggle="tab" href="#inventory">Inventory</a></li>
                 {% endif %}
                 <li class="toolbar-button"><a data-toggle="tab" href="#workshop">Workshop</a></li>
                 <li class="toolbar-button"><a data-toggle="tab" href="#about">About</a></li>
@@ -29,10 +29,8 @@
             <ul class="toolbar-nav" style="float: right;">
                 {{message}} {% if not logged %}
                 <button class="toolbar-button" data-toggle="modal" data-target="#signup">Signup</button>
-                <button class="toolbar-button" data-toggle="modal" data-target="#login">Login</button>
-                {% endif %} {% if logged %}
-                <button class="toolbar-button"><a href="/logout">Logout</a></button>
-                {% endif %}
+                <button class="toolbar-button" data-toggle="modal" data-target="#login">Login</button> {% endif %} {% if logged %}
+                <button class="toolbar-button"><a href="/logout">Logout</a></button> {% endif %}
             </ul>
             {% if logged %}
             <ul class="toolbar-nav" style="float: right;">
@@ -100,11 +98,27 @@
             <div class="herobox-wrap main-herobox">
                 <figure class="herobox">
                     <div class="avatar-name">{{userInfo[0]}}</div>
-                    <img src="/static/sprites/user.png" alt="Image" class="avatar">
+                    <button type="button" class="stat-list" data-toggle="modal" data-target="#stat-list"><img src="/static/sprites/user.png" alt="Image" class="avatar"></button>
                     <div class="avatar-level">
                         <span>{{userInfo[2]}}</span>
                     </div>
                 </figure>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="stat-list">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="text">{{userInfo[0]}}'s Stats</div>
+                        </div>
+                        <div class="modal-body">
+                            
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- STAT BARS -->
             <div class="hero-stats">
@@ -198,12 +212,38 @@
                         </div>
                         <div class="task-lists container-fluid">
                             <div class="row">
+
+
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="task-column habits">
+                                        <h2 class="task-column_title habit-title">To-Dos</h2>
+                                        <form id="todoform" class="task-add">
+                                            <input type="text" placeholder="New To-Do" name="addToDo">
+                                            <button type="button" id="newtodo"><span class="glyphicon glyphicon-plus"></span></button>
+                                        </form>
+                                        <ul class="main-list" id="todolist" style="padding-left: 0px;">
+                                            <li class="task color-neutral">
+                                                <div class="task-meta-controls">
+                                                    <span class="glyphicon glyphicon-pencil"></span>
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                    <div class="task-controls">
+                                                        <div class="habits">
+                                                            <span class="glyphicon glyphicon-plus"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="task habit color-neutral">What</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
                                 <div class="col-sm-6 col-md-3">
                                     <div class="task-column habits">
                                         <h2 class="task-column_title habit-title">Habits</h2>
-                                        <form action="/added_habits" method="POST" class="task-add">
+                                        <form action="/added_habits" method="POST" class="task-add" id="habitform">
                                             <input type="text" placeholder="New Habit" name="addHabit">
-                                            <button type="submit" class="glyphicon glyphicon-plus"></button>
+                                            <button type="button" id="newhabit" class="glyphicon glyphicon-plus"></button>
                                         </form>
                                         <ul class="main-list" style="padding-left: 0px;">
                                             <li class="task color-neutral">
@@ -227,32 +267,8 @@
 
                                 <div class="col-sm-6 col-md-3">
                                     <div class="task-column habits">
-                                        <h2 class="task-column_title habit-title">To-Dos</h2>
-                                        <form name="todoform" class="task-add">
-                                            <input type="text" placeholder="New To-Do" name="addToDo">
-                                            <button type="button" id="newtodo"><span class="glyphicon glyphicon-plus"></span></button>
-                                        </form>
-                                        <ul class="main-list" id="todolist" style="padding-left: 0px;">
-                                            <li class="task color-neutral">
-                                                <div class="task-meta-controls">
-                                                    <span class="glyphicon glyphicon-pencil"></span>
-                                                    <span class="glyphicon glyphicon-trash"></span>
-                                                    <div class="task-controls">
-                                                        <div class="habits">
-                                                            <span class="glyphicon glyphicon-plus"></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="task habit color-neutral">What</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6 col-md-3">
-                                    <div class="task-column habits">
                                         <h2 class="task-column_title habit-title">Goals</h2>
-                                        <form name="goalform" class="task-add">
+                                        <form id="goalform" class="task-add">
                                             <input type="text" placeholder="New Goal" name="addGoal">
                                             <button type="button" id="newgoal"><span class="glyphicon glyphicon-plus"></span></button>
                                         </form>
@@ -276,9 +292,9 @@
                                 <div class="col-sm-6 col-md-3">
                                     <div class="task-column habits">
                                         <h2 class="task-column_title habit-title">Rewards</h2>
-                                        <form name="newhabitform" class="task-add">
+                                        <form id="newhabitform" class="task-add">
                                             <input type="text" placeholder="New Reward">
-                                            <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+                                            <button type="button"><span class="glyphicon glyphicon-plus"></span></button>
                                         </form>
                                         <ul class="main-list" style="padding-left: 0px;">
                                             <li class="task color-neutral">
@@ -303,7 +319,6 @@
             </div>
         </div>
         {% endif %}
-
         <!-- STORE -->
         {% if logged %}
         <div id="store" role="tabpanel" class="tab-pane fade">
@@ -311,70 +326,69 @@
                 <h1>STORE</h1>
                 <h3>Look cool everyday.</h3>
                 <table class="table">
-                  <thead>
-		    <td>Equipment</td>
-                    <td>Type</td>
-                    <td>HP</td>
-                    <td>ATK</td>
-                    <td>ATK Speed</td>
-                    <td>Speed</td>
-                    <td>Def</td>
-                    <td>Int</td>
-		    <td>Price</td>
+                    <thead>
+                        <td>Equipment</td>
+                        <td>Type</td>
+                        <td>HP</td>
+                        <td>ATK</td>
+                        <td>ATK Speed</td>
+                        <td>Speed</td>
+                        <td>Def</td>
+                        <td>Int</td>
+                        <td>Price</td>
 
-                  </thead>
+                    </thead>
                     {% for equipment in equipments %}
                     <tr>
-		      <td><img src={{equipment[8]}}></td>
-                      <td>{{equipment[0]}}</td>
-                      <td>{{equipment[1]}}</td>
-                      <td>{{equipment[2]}}</td>
-                      <td>{{equipment[3]}}</td>
-                      <td>{{equipment[4]}}</td>
-                      <td>{{equipment[5]}}</td>
-                      <td>{{equipment[6]}}</td>
-                      <td>
-                        <button class="buy">{{equipment[7]}}</button>
-                      </td>
+                        <td><img src={{equipment[8]}}></td>
+                        <td>{{equipment[0]}}</td>
+                        <td>{{equipment[1]}}</td>
+                        <td>{{equipment[2]}}</td>
+                        <td>{{equipment[3]}}</td>
+                        <td>{{equipment[4]}}</td>
+                        <td>{{equipment[5]}}</td>
+                        <td>{{equipment[6]}}</td>
+                        <td>
+                            <button class="buy">{{equipment[7]}}</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+        {% endif %} {% if logged %}
+        <div id="inventory" role="tabpanel" class="tab-pane fade">
+            <div class="text">
+                <h1>INVENTORY</h1>
+                <h3>Upgrade yourself!!!</h3>
+                <table class="table">
+                    <thead>
+                        <td>Equipment</td>
+                        <td>Type</td>
+                        <td>HP</td>
+                        <td>ATK</td>
+                        <td>ATK Speed</td>
+                        <td>Speed</td>
+                        <td>Def</td>
+                        <td>Int</td>
+                    </thead>
+                    {% for item in inventory %}
+                    <tr>
+                        <td><img src={{item[1]}}></td>
+                        <td>{{item[2]}}</td>
+                        <td>{{item[3]}}</td>
+                        <td>{{item[4]}}</td>
+                        <td>{{item[5]}}</td>
+                        <td>{{item[6]}}</td>
+                        <td>{{item[7]}}</td>
+                        <td>{{item[8]}}</td>
                     </tr>
                     {% endfor %}
                 </table>
             </div>
         </div>
         {% endif %}
-
-	{% if logged %}
-	<div id="inventory" role="tabpanel" class="tab-pane fade">
-	  <div class="text">
-	    <h1>INVENTORY</h1>
-	    <h3>Upgrade yourself!!!</h3>
-	    <table class="table">
-                  <thead>
-		    <td>Equipment</td>
-                    <td>Type</td>
-                    <td>HP</td>
-                    <td>ATK</td>
-                    <td>ATK Speed</td>
-                    <td>Speed</td>
-                    <td>Def</td>
-                    <td>Int</td>
-                  </thead>
-                    {% for equipment in equipments %}
-                    <tr>
-		      <td><img src={{equipment[8]}}></td>
-                      <td>{{equipment[0]}}</td>
-                      <td>{{equipment[1]}}</td>
-                      <td>{{equipment[2]}}</td>
-                      <td>{{equipment[3]}}</td>
-                      <td>{{equipment[4]}}</td>
-                      <td>{{equipment[5]}}</td>
-                      <td>{{equipment[6]}}</td>
-                    </tr>
-                    {% endfor %}
-                </table>
-	  </div>
-	</div>
-	{% endif %}
         <!-- WORKSHOP -->
         <div id="workshop" class="tab-pane fade">
             <div id="wrap" class="container-fluid">
@@ -416,7 +430,7 @@
                                         <h2 class="task-column_title habit-title">Dailies</h2>
                                         <form name="newhabitform" class="task-add">
                                             <input type="text" placeholder="New Daily">
-                                            <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+                                            <button type="button"><span class="glyphicon glyphicon-plus"></span></button>
                                         </form>
                                         <ul class="main-list" style="padding-left: 0px;">
                                             <li class="task color-neutral">
@@ -439,7 +453,7 @@
                                         <h2 class="task-column_title habit-title">To-Dos</h2>
                                         <form name="newhabitform" class="task-add">
                                             <input type="text" placeholder="New To-Do">
-                                            <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+                                            <button type="button"><span class="glyphicon glyphicon-plus"></span></button>
                                         </form>
                                         <ul class="main-list" style="padding-left: 0px;">
                                             <li class="task color-neutral">

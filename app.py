@@ -22,11 +22,27 @@ def home():
         goals = functions.getUserGoals(user)
         equipments = functions.makeShop(user)
         inventory = functions.getUserInventory(user)
+
+        stats = [50,0,0,0,0,0]
+    
+        for item in inventory:
+            stats[0] += item[3]
+            stats[1] += item[4]
+            stats[2] += item[5]
+            stats[3] += item[6]
+            stats[4] += item[7]
+            stats[5] += item[8]
+
+        width_health = ((float(userInfo[5]) / stats[0]) * 100)
+        width_exp = ((float(userInfo[3]) / 150) * 100)
+        userInfo = userInfo + (width_health,width_exp,)
         #Check for all ajax requests here
         #All of POST type
         gold = functions.getUserInfo(user)[1]
         if request.method == 'POST':
+
              return   
+
         '''
             if sort == "level":
                 lb = functions.getAllUserInfo('level')
@@ -42,7 +58,7 @@ def home():
         '''
         lb = functions.getAllUserInfo('events_completed')
         
-        return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb, equipments = equipments, inventory = inventory)
+        return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb, equipments=equipments, inventory=inventory, stats=stats)
     else:
         lb = functions.getAllUserInfo('events_completed')
         return render_template('dashboard.html', logged = 0, lb=lb)
@@ -93,9 +109,9 @@ def authenticate():
 @app.route("/logout/", methods=['POST','GET'])
 def logout():
     session.pop('username')
-    return redirect(url_for("root"))
+    return redirect(url_for("home"))
 
 if __name__ == "__main__":
     app.debug = True
     login.initializeTables()
-    app.run(host=os.getenv('IP', '0.0.0.0'),port=int(os.getenv('PORT', 8080)))
+    app.run()
