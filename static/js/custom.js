@@ -18,6 +18,20 @@ var purchase = function(e){
     }
 }
 
+var buy = function(e){
+    var balance = document.getElementById("balance");
+    var initial = parseInt(balance.innerHTML);
+    var price = parseInt(this.innerHTML);
+    if(price > balance){
+	alert("This Reward Is Too Expensive");
+    }
+    else{
+	var transaction = initial - price;
+  	balance.innerHTML = transaction.toString();
+  	this.parentNode.parentNode.remove();
+    }
+}
+
 var addReward = function(e){
     var name = document.getElementById("reward_name");
     name = name.value;
@@ -44,8 +58,6 @@ var addReward = function(e){
     }
 }
 
-var reward_button = document.getElementById("add_reward");
-reward_button.addEventListener("click", addReward);
 
 
 $.fn.serializeObject = function(e)
@@ -121,16 +133,16 @@ var newGoal = function(e) {
   list.insertBefore(item, list.childNodes[0]);
 }
 
-var todo = document.getElementById("newtodo");
+/*var todo = document.getElementById("newtodo");
 todo.addEventListener("click", newToDo);
 
 var habit = document.getElementById("newhabit");
 habit.addEventListener("click", newHabit);
 
 var goal = document.getElementById("newgoal");
-goal.addEventListener("click", newGoal);
+goal.addEventListener("click", newGoal);*/
 
-var shop = document.getElementsByClassName("purchase");
-for(var i = 0; i < purchase.length; i++){
-    purchase[i].addEventListener("click", purchase)
+var shop = document.getElementsByClassName("buy");
+for(var i = 0; i < shop.length; i++){
+    shop[i].addEventListener("click", buy);
 }
