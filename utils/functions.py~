@@ -79,7 +79,7 @@ def getUserInventory(user):
     userID = getUserID(user)
     data = c.execute("SELECT * FROM inventory WHERE userID = ?", (userID,))
     inventory = data.fetchall()
-    return inventory
+    print inventory
 
 def insertItem(user, image, item, health, atk, atkspeed, speed, defense, intelligence):
     db = sql.connect(DATA)

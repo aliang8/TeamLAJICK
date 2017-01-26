@@ -93,7 +93,7 @@ def authenticate():
 @app.route("/logout/", methods=['POST','GET'])
 def logout():
     session.pop('username')
-    return redirect(url_for("root"))
+    return redirect(url_for("home"))
 
 if __name__ == "__main__":
     app.debug = True
