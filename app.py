@@ -8,14 +8,11 @@ import hashlib
 app = Flask(__name__)
 app.secret_key = 'life^2'
 
-@app.route("/", methods=['POST','GET'])
-def root():
-    lb = functions.getAllUserInfo('events_completed')
-    return render_template('dashboard.html', logged = 0, lb=lb)
     
-@app.route("/<message>", methods=['POST','GET'])
-@app.route("/<message>/<sort>", methods=['POST','GET'])
-def home(message,sort=None):
+@app.route("/", methods=['POST','GET'])
+def home():
+    message = ""
+    
     if session.get('username') != None:
         user = session.get('username')
         userInfo = functions.getUserInfo(user)
@@ -61,7 +58,8 @@ def home(message,sort=None):
         
         return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb, equipments = equipments, inventory = inventory)
     else:
-        return redirect(url_for('root'))
+        lb = functions.getAllUserInfo('events_completed')
+        return render_template('dashboard.html', logged = 0, lb=lb)
 
 @app.route("/authenticate/", methods = ['POST','GET'])
 def authenticate():
