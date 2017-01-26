@@ -81,11 +81,14 @@ def getUserInventory(user):
     inventory = data.fetchall()
     return inventory
 
-i = '''def insertItem(user, item):
+def insertItem(user, image, item, health, atk, atkspeed, speed, defense, intelligence):
     db = sql.connect(DATA)
     c = db.cursor()
     userID = getUserID(user)
-    data = c.execute("INSERT INTO inventory (userID, item, health, atk, atkspeed, speed, def, int) VALUES (?,?,?,?,?,?,?,?)", (userID,goal)'''
+    data = c.execute("INSERT INTO inventory (userID,image, item, health, atk, atkspeed, speed, def, int) VALUES (?,?,?,?,?,?,?,?,?)", (userID, image, item, health, atk, atkspeed, speed, defense, intelligence,))
+    db.commit()
+    db.close()
+    return item
 
 def insertToDo(user, goal):
     db = sql.connect(DATA)
