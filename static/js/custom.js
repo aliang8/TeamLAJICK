@@ -203,6 +203,10 @@ habit.addEventListener("click", newHabit);
 var goal = document.getElementById("newgoal");
 goal.addEventListener("click", newGoal);
 
+
+
+
+
 var shop = document.getElementsByClassName("buy");
 for (var i = 0; i < shop.length; i++) {
     shop[i].addEventListener("click", buy);
