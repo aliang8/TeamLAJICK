@@ -25,7 +25,8 @@ var purchase = function(e) {
     }
 };
 
-var buy = function(button) {
+var buy = function(e) {
+    var button = this;
     var price = parseInt(button.innerHTML);
     $.ajax({
         url: "/buy",
@@ -68,8 +69,6 @@ var addReward = function(e) {
         }
     }
 }
-
-
 
 $.fn.serializeObject = function(e) {
     var o = {};
@@ -182,11 +181,11 @@ todo.addEventListener("click", newToDo);
 
 var habit = document.getElementById("newhabit");
 habit.addEventListener("click", newHabit);
-
+    
 var goal = document.getElementById("newgoal");
 goal.addEventListener("click", newGoal);
-
+    
 var shop = document.getElementsByClassName("buy");
 for (var i = 0; i < shop.length; i++) {
-    shop[i].addEventListener("click", buy(this));
+    shop[i].addEventListener("click", buy);
 }
