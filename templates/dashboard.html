@@ -185,42 +185,100 @@
         <div id="leaderboard" class="tab-pane fade">
             <div class="container">
                 <div class="text">
-                    <h1>LEADERBOARD</h1> {% if logged %}
+                    <h1>LEADERBOARD</h1>
                     <!--<form action="/hi/money" method="POST">
                         <input type="submit" name="sort" value="Money">
                     </form>
                     <form action="/hi/level" method="POST">
                         <input type="submit" name="sort" value="Level">
-                    </form>
+                    </form>a
                     <form action="/hi/events_completed" method="POST">
                         <input type="submit" name="sort" value="Events_Completed">
                     </form>-->
-		    <button id="sMoney">Money</button>
-		    <button id="sLevel">Level</button>
-		    <button id="sEvents">Events Completed</button>
-                    {% endif %}
-                    <table class="table" id="leaderboard" >
-                        <thead>
-                            <tr>
-                                <td>UserID</td>
-                                <td>Username</td>
-                                <td>Money</td>
-                                <td>Level</td>
-                                <td>Experience</td>
-                                <td>Events_Completed</td>
-                            </tr>
-                        </thead>
-                        {% for user in lb %}
-                        <tr class="leaderboardEntry">
-                            <td>{{user[5]}}</td>
-                            <td>{{user[0]}}</td>
-                            <td>{{user[1]}}</td>
-                            <td>{{user[2]}}</td>
-                            <td>{{user[3]}}</td>
-                            <td>{{user[4]}}</td>
-                        </tr>
-                        {% endfor %}
-                    </table>
+                    <button><a data-toggle="tab" href="#sMoney">Money</a></button>
+                    <button><a data-toggle="tab" href="#sLevel">Level</a></button>
+                    <button><a data-toggle="tab" href="#sEvents">Events Completed</a></button>
+
+                    <div class="tab-content">
+                        <!--SORT BY MONEY-->
+                        <div id="sMoney" class="tab-pane fade">
+                            <table class="table sort">
+                                <thead>
+                                    <tr>
+                                        <td>UserID</td>
+                                        <td>Username</td>
+                                        <td>Money</td>
+                                        <td>Level</td>
+                                        <td>Experience</td>
+                                        <td>Events_Completed</td>
+                                    </tr>
+                                </thead>
+                                {% for user in lbM %}
+                                <tr>
+                                    <td>{{user[6]}}</td>
+                                    <td>{{user[0]}}</td>
+                                    <td>{{user[1]}}</td>
+                                    <td>{{user[2]}}</td>
+                                    <td>{{user[3]}}</td>
+                                    <td>{{user[4]}}</td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+
+                        <!--SORT BY LEVEL-->
+                        <div id="sLevel" class="tab-pane fade">
+                            <table class="table sort">
+                                <thead>
+                                    <tr>
+                                        <td>UserID</td>
+                                        <td>Username</td>
+                                        <td>Money</td>
+                                        <td>Level</td>
+                                        <td>Experience</td>
+                                        <td>Events_Completed</td>
+                                    </tr>
+                                </thead>
+                                {% for user in lbL %}
+                                <tr>
+                                    <td>{{user[6]}}</td>
+                                    <td>{{user[0]}}</td>
+                                    <td>{{user[1]}}</td>
+                                    <td>{{user[2]}}</td>
+                                    <td>{{user[3]}}</td>
+                                    <td>{{user[4]}}</td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+
+
+                        <!--SORT BY EVENTS COMPLETED-->
+                        <div id="sEvents" class="tab-pane fade">
+                            <table class="table sort">
+                                <thead>
+                                    <tr>
+                                        <td>UserID</td>
+                                        <td>Username</td>
+                                        <td>Money</td>
+                                        <td>Level</td>
+                                        <td>Experience</td>
+                                        <td>Events_Completed</td>
+                                    </tr>
+                                </thead>
+                                {% for user in lbE %}
+                                <tr class>
+                                    <td>{{user[6]}}</td>
+                                    <td>{{user[0]}}</td>
+                                    <td>{{user[1]}}</td>
+                                    <td>{{user[2]}}</td>
+                                    <td>{{user[3]}}</td>
+                                    <td>{{user[4]}}</td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

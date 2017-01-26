@@ -43,22 +43,11 @@ def home():
 
              return   
 
-        '''
-            if sort == "level":
-                lb = functions.getAllUserInfo('level')
-                return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb, equipments = equipments)
-            elif sort == "money":
-                lb = functions.getAllUserInfo('money')
-                return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb, equipments = equipments)
-            elif sort == "events_completed":
-                lb = functions.getAllUserInfo('events_completed')
-                return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb, equipments = equipments)
-        else:
-            lb = functions.getAllUserInfo('events_completed')
-        '''
-        lb = functions.getAllUserInfo('events_completed')
+        lbM = functions.getAllUserInfo('money')
+        lbL = functions.getAllUserInfo('level')
+        lbE = functions.getAllUserInfo('events_completed')
         
-        return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb, equipments=equipments, inventory=inventory, stats=stats)
+        return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lbL=lbL, lbM=lbM, lbE=lbE, equipments=equipments, inventory=inventory, stats=stats)
     else:
         lb = functions.getAllUserInfo('events_completed')
         return render_template('dashboard.html', logged = 0, lb=lb)
@@ -85,8 +74,6 @@ def buy():
     price = request.form.get("price")
     return functions.buyItem(user, price)
 
-    
-    
 
 @app.route("/authenticate/", methods = ['POST','GET'])
 def authenticate():
