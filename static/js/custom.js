@@ -129,7 +129,7 @@ var createToDo = function(item) {
 };
 
 var createHabit = function(item) {
-    $("habitlist").append(taskTemplate.format(
+    $("#habitlist").append(taskTemplate.format(
         item.id,
         item.task
     ));
@@ -137,7 +137,7 @@ var createHabit = function(item) {
 };
 
 var createGoal = function(item) {
-    $("goallist").append(taskTemplate.format(
+    $("#goallist").append(taskTemplate.format(
         item["id"],
         item["task"]
     ));
@@ -203,4 +203,15 @@ goal.addEventListener("click", newGoal);
 var shop = document.getElementsByClassName("buy");
 for (var i = 0; i < shop.length; i++) {
     shop[i].addEventListener("click", buy);
+}
+
+
+var del = function(e){
+    this.parentNode.parentNode.remove();
+    
+}
+
+var todoitems = document.getElementsByClassName("deletetask");
+for (var i = 0; i < shop.length; i++) {
+    todoitems[i].addEventListener("click", del);
 }
