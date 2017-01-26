@@ -1,13 +1,14 @@
 equipment,hp,atk,atkspeed,speed,def,int
-helmet,4,0,0,0,5,1
-chestplate,5,0,0,0,4,0
-leggings,3,0,0,0,4,0
-boots,2,0,0,1,2,0
-hat,1,0,0,0,1,2
-shirt,1,0,0,0,1,0
-pants,1,0,0,0,1,0
-shoes,1,0,0,3,1,0
-sword,0,5,3,0,0,0
-wand,0,0,3,0,0,5
-bow,0,0,3,5,0,0
+head,4,0,0,0,5,1,bow1;bow2;bow3;bow4
+body,5,0,0,0,4,0,chestplate1;chesplate2;chestplate3
+legs,3,0,0,0,4,0,pants2;pants3
+feet,2,0,0,1,2,0,shoe3;shoe4
+head,1,0,0,0,1,2,hat1;hat2;hat3
+body,1,0,0,0,1,0,shirt1;shirt2;shirt3
+legs,1,0,0,0,1,0,pants1
+feet,1,0,0,3,1,0,shoe1;shoe2
+sword,0,5,3,0,0,0,sword1;sword2;sword3;sword4;sword5
+wand,0,0,3,0,0,5,wand1;wand2;wand3;wand4
+bow,0,0,3,5,0,0,bow1;bow2;bow3;bow4
+hands,1,0,1,0,1,0,glove1;glove2;glove3;glove4
 

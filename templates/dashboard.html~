@@ -20,8 +20,8 @@
                 <li class="toolbar-button"><a data-toggle="tab" href="#leaderboard">Leaderboard</a></li>
                 {% if logged %}
                 <li class="toolbar-button"><a data-toggle="tab" href="#tasks">Tasks</a></li>
-                {% endif %}
                 <li class="toolbar-button"><a data-toggle="tab" href="#store">Store</a></li>
+                {% endif %}
                 <li class="toolbar-button"><a data-toggle="tab" href="#workshop">Workshop</a></li>
                 <li class="toolbar-button"><a data-toggle="tab" href="#about">About</a></li>
             </ul>
@@ -145,8 +145,7 @@
         <div id="leaderboard" class="tab-pane fade">
             <div class="container">
                 <div class="text">
-                    <h1>LEADERBOARD</h1>
-                    {% if logged %}
+                    <h1>LEADERBOARD</h1> {% if logged %}
                     <form action="/hi/money" method="POST">
                         <input type="submit" name="sort" value="Money">
                     </form>
@@ -159,14 +158,14 @@
                     {% endif %}
                     <table class="table">
                         <thead>
-                        <tr>
-                            <td>UserID</td>
-                            <td>Username</td>
-                            <td>Money</td>
-                            <td>Level</td>
-                            <td>Experience</td>
-                            <td>Events_Completed</td>
-                        </tr>
+                            <tr>
+                                <td>UserID</td>
+                                <td>Username</td>
+                                <td>Money</td>
+                                <td>Level</td>
+                                <td>Experience</td>
+                                <td>Events_Completed</td>
+                            </tr>
                         </thead>
                         {% for user in lb %}
                         <tr>
@@ -305,37 +304,40 @@
         {% endif %}
 
         <!-- STORE -->
+        {% if logged %}
         <div id="store" role="tabpanel" class="tab-pane fade">
-            <h3>Store</h3>
-            <center>
-                          <h2>Equipment</h2>
-			  <table>
-			    <tr>
-			      <th>Equipment</th>
-			      <th>HP</th>
-			      <th>ATK</th>
-			      <th>ATK Speed</th>
-			      <th>Speed</th>
-			      <th>Def</th>
-			      <th>Int</th>
-			      <th>Price</th>
-			    </tr>
-			    {% for equipment in equipments %}
-                            <tr>
-                              <td>{{equipment[0]}}</td>
-			      <td>{{equipment[1]}}</td>
-			      <td>{{equipment[2]}}</td>
-			      <td>{{equipment[3]}}</td>
-			      <td>{{equipment[4]}}</td>
-			      <td>{{equipment[5]}}</td>
-			      <td>{{equipment[6]}}</td>
-			      <td><button class="purchase">{{equipment[7]}}</button></td>
-                            </tr>
-                            {% endfor %}
-			  </table>
-                          </center>
-                        
+            <div class="text">
+                <h1>STORE</h1>
+                <h3>Look cool everyday.</h3>
+                <table class="table">
+                    <thead>
+                        <td>Equipment</td>
+                        <td>HP</td>
+                        <td>ATK</td>
+                        <td>ATK Speed</td>
+                        <td>Speed</td>
+                        <td>Def</td>
+                        <td>Int</td>
+                        <td>Price</td>
+                    </thead>
+                    {% for equipment in equipments %}
+                    <tr>
+                        <td>{{equipment[0]}}</td>
+                        <td>{{equipment[1]}}</td>
+                        <td>{{equipment[2]}}</td>
+                        <td>{{equipment[3]}}</td>
+                        <td>{{equipment[4]}}</td>
+                        <td>{{equipment[5]}}</td>
+                        <td>{{equipment[6]}}</td>
+                        <td>
+                            <button class="purchase">{{equipment[7]}}</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
+        {% endif %}
 
         <!-- WORKSHOP -->
         <div id="workshop" class="tab-pane fade">
@@ -434,7 +436,7 @@
                     <br>
                     <br> The Team: Jerry Chang (Project Manager), Issac Kim, and Anthony Liang
                     <br>
-                    <br> Life2” is an app that gamifies habits, to-do’s and goals to keep users on top of their game. Upon registering, users will be given an avatar for which they can nurture, level, and pimp out by keeping in line with their habits and goals. A user can create a list of habits to follow and a set of goals to achieve by creating their own or choosing from presets. By completing these ‘quests’, the user receives bonuses and rewards that they can trade in for items. On the community side, users can check a global leaderboard for their placement. They can also share their custom quests so that other users can use them.
+                    <br> Life2” is an app that gamifies habits, to-do’s and goals to keep users on top of their game. Upon registering, users will be given an avatar for which they can nurture, level, and pimp out by keeping in line with their habits and goals. A user can create a list of habits to follow and a set of goals to achieve by creating their own or choosing from presets. By completing these ‘quests’, the user receives bonuses and rewards that they can thade in for items. On the community side, users can check a global leaderboard for their placement. They can also share their custom quests so that other users can use them.
                 </div>
             </div>
         </div>
@@ -480,7 +482,7 @@
             $(this).carousel('pause');
         });
         $('.carousel-indicators .active').removeClass('active')
-        
+
         /*
         var ul_node = document.getElementById("task-add").parentNode.parentNode.childNodes[5];
         document.getElementById("task-add").addEventListener("click", function(event){
@@ -493,7 +495,7 @@
         });
 
         var li_nodes = document.getElementsByClassName('glyphicon glyphicon-trash');
-        for(i = 0; i < li_nodes.length; i++){
+        for(i = 0; i < li_nodes.lengtr; i++){
             li_nodes[i].addEventListener("click", function(){
                 li_nodes[i].parentNode.parentNode.remove();
             });
