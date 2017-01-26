@@ -310,28 +310,30 @@
                 <h1>STORE</h1>
                 <h3>Look cool everyday.</h3>
                 <table class="table">
-                    <thead>
-                        <td>Equipment</td>
-                        <td>HP</td>
-                        <td>ATK</td>
-                        <td>ATK Speed</td>
-                        <td>Speed</td>
-                        <td>Def</td>
-                        <td>Int</td>
-                        <td>Price</td>
+                  <thead>
+		    <td>Image</td>
+                    <td>Equipment</td>
+                    <td>HP</td>
+                    <td>ATK</td>
+                    <td>ATK Speed</td>
+                    <td>Speed</td>
+                    <td>Def</td>
+                    <td>Int</td>
+                    <td>Price</td>
                     </thead>
                     {% for equipment in equipments %}
                     <tr>
-                        <td>{{equipment[0]}}</td>
-                        <td>{{equipment[1]}}</td>
-                        <td>{{equipment[2]}}</td>
-                        <td>{{equipment[3]}}</td>
-                        <td>{{equipment[4]}}</td>
-                        <td>{{equipment[5]}}</td>
-                        <td>{{equipment[6]}}</td>
-                        <td>
-                            <button class="buy">{{equipment[7]}}</button>
-                        </td>
+		      <td><img src={{equipment[8]}}></td>
+                      <td>{{equipment[0]}}</td>
+                      <td>{{equipment[1]}}</td>
+                      <td>{{equipment[2]}}</td>
+                      <td>{{equipment[3]}}</td>
+                      <td>{{equipment[4]}}</td>
+                      <td>{{equipment[5]}}</td>
+                      <td>{{equipment[6]}}</td>
+                      <td>
+                        <button class="buy">{{equipment[7]}}</button>
+                      </td>
                     </tr>
                     {% endfor %}
                 </table>

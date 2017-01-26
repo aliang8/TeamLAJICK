@@ -152,34 +152,33 @@ def updateStats(stats, level, multiplier):
     
 #makes random equipment for store
 def makeEquipment(user):
-    #level = getUserInfo(user)[3]
-    level = 1
+    level = getUserInfo(user)[2]
+    print(level)
     f = open('static/equipment.txt','r')
     equipmentList = f.read().split()[1:]
     n = random.randint(0,len(equipmentList)-1)
     equipment = equipmentList[n].split(',')
     name = equipment[0]
-    stats = equipment[1:]
+    stats = equipment[1:7]
+    pics = equipment[7].split(';')
+    n = random.randint(0,len(pics)-1)
+    src = "../static/sprites/equipment/" + pics[n] + ".png"
     n = random.randint(1,100)
     if(n >= 1 and n <=80):
-        print(0)
         stats = updateStats(stats, level, 0)
     if(n >= 81 and n <=95):
-        print(1)
         stats = updateStats(stats, level, 1)
     if(n >= 96 and n <=99):
-        print(2)
         stats = updateStats(stats, level, 2)
     elif(n==100):
-        print(3)
         stats = updateStats(stats, level, 5)
-    equipment[1:] = stats
+    equipment[1:8] = stats
+    equipment.append(src)
     return equipment
 
 def makeShop(user):
     equipments = [makeEquipment(user), makeEquipment(user), makeEquipment(user)]
     return equipments
-
 
 
 
