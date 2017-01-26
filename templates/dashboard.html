@@ -312,16 +312,17 @@
                 <h3>Look cool everyday.</h3>
                 <table class="table">
                   <thead>
-		    <td>Image</td>
-                    <td>Equipment</td>
+		    <td>Equipment</td>
+                    <td>Type</td>
                     <td>HP</td>
                     <td>ATK</td>
                     <td>ATK Speed</td>
                     <td>Speed</td>
                     <td>Def</td>
                     <td>Int</td>
-                    <td>Price</td>
-                    </thead>
+		    <td>Price</td>
+
+                  </thead>
                     {% for equipment in equipments %}
                     <tr>
 		      <td><img src={{equipment[8]}}></td>
@@ -349,16 +350,15 @@
 	    <h3>Upgrade yourself!!!</h3>
 	    <table class="table">
                   <thead>
-		    <td>Image</td>
-                    <td>Equipment</td>
+		    <td>Equipment</td>
+                    <td>Type</td>
                     <td>HP</td>
                     <td>ATK</td>
                     <td>ATK Speed</td>
                     <td>Speed</td>
                     <td>Def</td>
                     <td>Int</td>
-                    <td>Price</td>
-                    </thead>
+                  </thead>
                     {% for equipment in equipments %}
                     <tr>
 		      <td><img src={{equipment[8]}}></td>
@@ -369,9 +369,6 @@
                       <td>{{equipment[4]}}</td>
                       <td>{{equipment[5]}}</td>
                       <td>{{equipment[6]}}</td>
-                      <td>
-                        <button class="buy">{{equipment[7]}}</button>
-                      </td>
                     </tr>
                     {% endfor %}
                 </table>

@@ -72,7 +72,14 @@ def getUserGoals(user):
     goals = data.fetchall()
     return goals
     
-
+#returns the user's items for their inventory
+def getUserInventory(user):
+    db = sql.connect(DATA)
+    c = db.cursor()
+    userID = getUserID(user)
+    data = c.execute("SELECT * FROM inventory WHERE userID = ?", (userID,))
+    inventory = data.fetchall()
+    return inventory
 
 def insertToDo(user, goal):
     db = sql.connect(DATA)
