@@ -1,10 +1,9 @@
 #import flask
 import os
-from flask import Flask, render_template, session, redirect, url_for, request, jsonify
+from flask import Flask, render_template, session, redirect, url_for, request
 from utils import functions, login
 import sqlite3
 import hashlib
-
 
 app = Flask(__name__)
 app.secret_key = 'life^2'
@@ -59,20 +58,17 @@ def home():
 @app.route("/newtodo", methods=['POST'])
 def newtodo():
     user = session.get('username')
-    a,b = functions.insertToDo(user, request.form.get("addToDo"))
-    return jsonify(id=a, task=b)
+    return functions.insertToDo(user, request.form.get("addToDo"))
     
 @app.route("/newhabit", methods=['POST'])
 def newhabit():
     user = session.get('username')
-    a,b = functions.insertHabit(user, request.form.get("addHabit"))
-    return jsonify(id=a, task=b)
-    
+    return functions.insertHabit(user, request.form.get("addHabit"))
+
 @app.route("/newgoal", methods=['POST'])
 def newgoal():
     user = session.get('username')
-    a,b =  functions.insertGoal(user, request.form.get("addGoal"))
-    return jsonify(id=a, task=b)
+    return functions.insertGoal(user, request.form.get("addGoal"))
     
 @app.route("/buy", methods=['POST'])
 def buy():
@@ -107,4 +103,4 @@ def logout():
 if __name__ == "__main__":
     app.debug = True
     login.initializeTables()
-    app.run()
+    app.run(host=os.getenv('IP', '0.0.0.0'),port=int(os.getenv('PORT', 8080)))

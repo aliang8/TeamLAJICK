@@ -133,6 +133,11 @@
 	outline: #999 solid 1px;
 }
 
+.hero-stats .experience .bar{
+	background: #ffcc35;
+	border-color: #8a6700;
+}
+
 .hero-stats .meter-text{
 	position: absolute;
 	top: 0;
@@ -363,6 +368,11 @@
 	margin-top: 9px;
 	margin-bottom: 3px;
 	margin-left: 4px;
+}
+
+/* LEADERBOARD */
+.sort {
+	position: relative;
 }
 
 

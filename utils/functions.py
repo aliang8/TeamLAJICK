@@ -217,4 +217,24 @@ def makeEquipment(user):
 def makeShop(user):
     equipments = [makeEquipment(user), makeEquipment(user), makeEquipment(user),makeEquipment(user), makeEquipment(user), makeEquipment(user),makeEquipment(user), makeEquipment(user), makeEquipment(user),makeEquipment(user)]
     return equipments
-    
+
+
+def exp(user, experience):
+    db = sql.connect(DATA)
+    c = db.cursor()
+    data = c.execute("SELECT level, exp FROM accounts WHERE username = ?", (user,))
+    data = data.fetchone()
+    level = data[0]
+    exp = data[1] + int(experience)
+    if(exp >= 150):
+        level += 1
+        exp -= 150
+    data = c.execute("UPDATE accounts SET exp = ? WHERE username = ?", (exp, user,))
+    data = c.execute("UPDATE accounts SET level = ? WHERE username = ?", (level, user,))
+    db.commit()
+    db.close()
+    print(exp)
+    print(level)
+
+
+
