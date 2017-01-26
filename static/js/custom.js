@@ -13,8 +13,8 @@ var purchase = function(e){
     }
     else{
 	var transaction = initial - price;
-	balance.innerHTML = transaction.toString();
-	this.parentNode.remove();
+  	balance.innerHTML = transaction.toString();
+  	this.parentNode.remove();
     }
 }
 
@@ -129,3 +129,8 @@ habit.addEventListener("click", newHabit);
 
 var goal = document.getElementById("newgoal");
 goal.addEventListener("click", newGoal);
+
+var shop = document.getElementsByClassName("purchase");
+for(var i = 0; i < purchase.length; i++){
+    purchase[i].addEventListener("click", purchase)
+}

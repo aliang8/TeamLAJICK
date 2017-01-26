@@ -331,21 +331,7 @@
         <!-- STORE -->
         <div id="store" role="tabpanel" class="tab-pane fade">
             <h3>Store</h3>
-            <p>Buy our equipment. Make your own rewards.</p>
-            <div class="container" id="myC">
-                <div id="myCarousel" class="carousel slide">
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators">
-                        <li class="item1 active"></li>
-                        <li class="item2"></li>
-                        <li class="item3"></li>
-                    </ol>
-
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner" role="listbox">
-
-                        <div class="item active">
-
+            <center>
                           <h2>Equipment</h2>
 			  <table>
 			    <tr>
@@ -358,41 +344,21 @@
 			      <th>Int</th>
 			      <th>Price</th>
 			    </tr>
-			    <tr>
-			      {{equipment1}}
-			    </tr>
-			    <tr>
-			      {{equipment2}}
-			    </tr>
-			    <tr>
-			      {{equipment3}}
-			    </tr>
+			    {% for equipment in equipments %}
+                            <tr>
+                              <td>{{equipment[0]}}</td>
+			      <td>{{equipment[1]}}</td>
+			      <td>{{equipment[2]}}</td>
+			      <td>{{equipment[3]}}</td>
+			      <td>{{equipment[4]}}</td>
+			      <td>{{equipment[5]}}</td>
+			      <td>{{equipment[6]}}</td>
+			      <td><button class="purchase">{{equipment[7]}}</button></td>
+                            </tr>
+                            {% endfor %}
 			  </table>
-                          
-                        </div>
-                        <div class="item">
-                            <h2>Rewards</h2>a
-                            <input id="reward_name" type="text">Reward</input>
-                            <input id="reward_cost" type="text" value="0">Price</input>
-                            <button id="add_reward">New Reward</button>
-                            <ul id="rewards">
-                            </ul>
-                        </div>
-                        <div class="item">
-                            <h2>IRL</h2>
-                        </div>
-                    </div>
-                    <!-- Left and right controls -->
-                    <a class="left carousel-control" href="#myCarousel" role="button">
-
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="right carousel-control" href="#myCarousel" role="button">
-
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-            </div>
+                          </center>
+                        
         </div>
 
         <!-- WORKSHOP -->

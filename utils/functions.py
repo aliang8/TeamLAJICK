@@ -152,7 +152,8 @@ def updateStats(stats, level, multiplier):
     
 #makes random equipment for store
 def makeEquipment(user):
-    level = getUserInfo(user)[3]
+    #level = getUserInfo(user)[3]
+    level = 1
     f = open('static/equipment.txt','r')
     equipmentList = f.read().split()[1:]
     n = random.randint(0,len(equipmentList)-1)
@@ -175,14 +176,10 @@ def makeEquipment(user):
     equipment[1:] = stats
     return equipment
 
-def makeTR(equipment):
-    tr = ""
-    price = equipment.pop()
-    print(equipment)
-    for x in equipment:
-        print(x)
-        tr += "<td>" + x + "</td>"
-    tr += "<td><button id='purchase'>" + price + " Gold</button></td>"
-    return tr
+def makeShop(user):
+    equipments = [makeEquipment(user), makeEquipment(user), makeEquipment(user)]
+    return equipments
+
+
 
 

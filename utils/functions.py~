@@ -153,7 +153,7 @@ def updateStats(stats, level, multiplier):
 #makes random equipment for store
 def makeEquipment(user):
     level = getUserInfo(user)[3]
-    f = open('../static/equipment.txt','r')
+    f = open('static/equipment.txt','r')
     equipmentList = f.read().split()[1:]
     n = random.randint(0,len(equipmentList)-1)
     equipment = equipmentList[n].split(',')
