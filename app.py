@@ -79,6 +79,13 @@ def buy():
     user = session.get('username')
     price = request.form.get("price")
     return functions.buyItem(user, price)
+    
+@app.route("/complete", methods=['POST'])
+def complete():
+    user = session.get('username')
+    level,exp = functions.exp(user, 20)
+    return jsonify(level=level, exp=exp)
+
 
 
 @app.route("/authenticate/", methods = ['POST','GET'])

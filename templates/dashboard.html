@@ -300,6 +300,33 @@
                             <div class="row">
                                 <div class="col-sm-6 col-md-3">
                                     <div class="task-column habits">
+                                        <h2 class="task-column_title habit-title">To Dos</h2>
+                                        <form action="/added_habits" method="POST" class="task-add" id="todoform">
+                                            <input type="text" placeholder="New To Do" name="addToDo">
+                                            <button type="button" id="newtodo" class="glyphicon glyphicon-plus"></button>
+                                        </form>
+                                        <ul class="main-list" id="todolist" style="padding-left: 0px;">
+                                            <li class="task color-neutral">
+                                                <div class="task-meta-controls">
+                                                    <button class="glyphicon glyphicon-pencil"></button>
+                                                    <button class="glyphicon glyphicon-trash"></button>
+                                                    <div class="task-controls">
+                                                        <div class="complete">
+                                                            <button class="glyphicon glyphicon-plus"></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="test" class="task-text">
+                                                    Hello
+                                                </div>
+                                            </li>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="task-column habits">
                                         <h2 class="task-column_title habit-title">Habits</h2>
                                         <form action="/added_habits" method="POST" class="task-add" id="habitform">
                                             <input type="text" placeholder="New Habit" name="addHabit">
@@ -320,34 +347,7 @@
                                                     Hello
                                                 </div>
                                             </li>
-                                            <li class="task habit color-neutral">What</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-6 col-md-3">
-                                    <div class="task-column habits">
-                                        <h2 class="task-column_title habit-title">Todos</h2>
-                                        <form action="/added_habits" method="POST" class="task-add" id="habitform">
-                                            <input type="text" placeholder="New Habit" name="addHabit">
-                                            <button type="button" id="newhabit" class="glyphicon glyphicon-plus"></button>
-                                        </form>
-                                        <ul class="main-list" id="habitlist" style="padding-left: 0px;">
-                                            <li class="task color-neutral">
-                                                <div class="task-meta-controls">
-                                                    <button class="glyphicon glyphicon-pencil"></button>
-                                                    <button class="glyphicon glyphicon-trash"></button>
-                                                    <div class="task-controls">
-                                                        <div class="complete">
-                                                            <button class="glyphicon glyphicon-plus"></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div id="test" class="task-text">
-                                                    Hello
-                                                </div>
-                                            </li>
-                                            <li class="task habit color-neutral">What</li>
+                                           
                                         </ul>
                                     </div>
                                 </div>
@@ -355,11 +355,11 @@
                                 <div class="col-sm-6 col-md-3">
                                     <div class="task-column habits">
                                         <h2 class="task-column_title habit-title">Goals</h2>
-                                        <form action="/added_habits" method="POST" class="task-add" id="habitform">
-                                            <input type="text" placeholder="New Habit" name="addHabit">
-                                            <button type="button" id="newhabit" class="glyphicon glyphicon-plus"></button>
+                                        <form action="/added_habits" method="POST" class="task-add" id="goalform">
+                                            <input type="text" placeholder="New Goal" name="addGoal">
+                                            <button type="button" id="newgoal" class="glyphicon glyphicon-plus"></button>
                                         </form>
-                                        <ul class="main-list" id="habitlist" style="padding-left: 0px;">
+                                        <ul class="main-list" id="goallist" style="padding-left: 0px;">
                                             <li class="task color-neutral">
                                                 <div class="task-meta-controls">
                                                     <button class="glyphicon glyphicon-pencil"></button>
@@ -374,7 +374,7 @@
                                                     Hello
                                                 </div>
                                             </li>
-                                            <li class="task habit color-neutral">What</li>
+                                            
                                         </ul>
                                     </div>
                                 </div>

@@ -104,7 +104,7 @@ var taskTemplate = `
 <div class="task-meta-controls">
     <form>
         <button class="glyphicon glyphicon-pencil edittask"></button>
-        <button class="glyphicon glyphicon-trash deletetask"></button>
+        <button class="glyphicon glyphicon-trash deletetask" onclick="this.parentNode.parentNode.parentNode.remove();"></button>
         <div class="task-controls">
             <div class="complete">
                 <button class="glyphicon glyphicon-plus completetask"></button>
@@ -210,7 +210,21 @@ var del = function(e){
     
 }
 
-var todoitems = document.getElementsByClassName("deletetask");
-for (var i = 0; i < shop.length; i++) {
+var todoitems = document.getElementsByClassName("glyphicon-trash");
+for (var i = 0; i < todoitems.length; i++) {
     todoitems[i].addEventListener("click", del);
 }
+
+var completeTask = function(e){
+    var button = this;
+    $.ajax({
+        url: "/complete",
+        type: 'POST',
+        datatype: 'json',
+    }).done(function(result) {
+       //Here
+    }).fail(function() {
+        console.log("Oops");
+    });
+    
+};

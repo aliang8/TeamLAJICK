@@ -233,8 +233,10 @@ def exp(user, experience):
     data = c.execute("UPDATE accounts SET level = ? WHERE username = ?", (level, user,))
     db.commit()
     db.close()
-    print(exp)
-    print(level)
+    
+    data = c.execute("SELECT level, exp FROM accounts WHERE username = ?", (user,))
+    data = data.fetchone()
+    return data[0], data[1]
 
 
 
