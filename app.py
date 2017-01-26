@@ -49,8 +49,10 @@ def home():
         
         return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lbL=lbL, lbM=lbM, lbE=lbE, equipments=equipments, inventory=inventory, stats=stats)
     else:
-        lb = functions.getAllUserInfo('events_completed')
-        return render_template('dashboard.html', logged = 0, lb=lb)
+        lbM = functions.getAllUserInfo('money')
+        lbL = functions.getAllUserInfo('level')
+        lbE = functions.getAllUserInfo('events_completed')
+        return render_template('dashboard.html', logged = 0, lbL=lbL, lbM=lbM, lbE=lbE)
 
 
 @app.route("/newtodo", methods=['POST'])
