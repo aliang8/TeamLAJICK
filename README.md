@@ -33,4 +33,21 @@
 
   7. Learn more about the game and the team in the About page. 
 
-  --- 
+  ---
+  
+  
+## Features
+ - Nicely styled and formatted webpage
+ - Tabs that use ajax calls to avoid constant refreshing of page
+ - Working leaderboard with multiple sorts implemented
+ - Profile bar featuring user’s avatar, health, exp bar, user-label, and level-label
+ - Click on the user avatar to see the player’s stats
+ - Task tab allows user to add new tasks and remove old ones
+ - Purchase equipment from the store. The store updates with new/random equipment upon refresh
+
+## Features that didn’t work and minor issues:
+ - Exp bar does not update
+ - Browser incompatibility (some features work in one browser but not the other - task works on Firefox and leaderboard works on Chrome)
+ - Store purchases do not appear in inventory
+ - Workshop does not work as intended
+
