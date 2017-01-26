@@ -98,11 +98,27 @@
             <div class="herobox-wrap main-herobox">
                 <figure class="herobox">
                     <div class="avatar-name">{{userInfo[0]}}</div>
-                    <img src="/static/sprites/user.png" alt="Image" class="avatar">
+                    <button type="button" class="stat-list" data-toggle="modal" data-target="#stat-list"><img src="/static/sprites/user.png" alt="Image" class="avatar"></button>
                     <div class="avatar-level">
                         <span>{{userInfo[2]}}</span>
                     </div>
                 </figure>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="stat-list">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="text">{{userInfo[0]}}'s Stats</div>
+                        </div>
+                        <div class="modal-body">
+                            
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- STAT BARS -->
             <div class="hero-stats">
@@ -303,7 +319,6 @@
             </div>
         </div>
         {% endif %}
-
         <!-- STORE -->
         {% if logged %}
         <div id="store" role="tabpanel" class="tab-pane fade">
@@ -342,35 +357,33 @@
             </div>
         </div>
 
-        {% endif %}
-
-	{% if logged %}
-	<div id="inventory" role="tabpanel" class="tab-pane fade">
-	  <div class="text">
-	    <h1>INVENTORY</h1>
-	    <h3>Upgrade yourself!!!</h3>
-	    <table class="table">
-                  <thead>
-		    <td>Equipment</td>
-                    <td>Type</td>
-                    <td>HP</td>
-                    <td>ATK</td>
-                    <td>ATK Speed</td>
-                    <td>Speed</td>
-                    <td>Def</td>
-                    <td>Int</td>
-                  </thead>
+        {% endif %} {% if logged %}
+        <div id="inventory" role="tabpanel" class="tab-pane fade">
+            <div class="text">
+                <h1>INVENTORY</h1>
+                <h3>Upgrade yourself!!!</h3>
+                <table class="table">
+                    <thead>
+                        <td>Equipment</td>
+                        <td>Type</td>
+                        <td>HP</td>
+                        <td>ATK</td>
+                        <td>ATK Speed</td>
+                        <td>Speed</td>
+                        <td>Def</td>
+                        <td>Int</td>
+                    </thead>
                     {% for item in inventory %}
                     <tr>
-		      <td><img src={{item[1]}}></td>
-                      <td>{{item[2]}}</td>
-                      <td>{{item[3]}}</td>
-                      <td>{{item[4]}}</td>
-                      <td>{{item[5]}}</td>
-                      <td>{{item[6]}}</td>
-                      <td>{{item[7]}}</td>
-		      <td>{{item[8]}}</td>
-		    </tr>
+                        <td><img src={{item[1]}}></td>
+                        <td>{{item[2]}}</td>
+                        <td>{{item[3]}}</td>
+                        <td>{{item[4]}}</td>
+                        <td>{{item[5]}}</td>
+                        <td>{{item[6]}}</td>
+                        <td>{{item[7]}}</td>
+                        <td>{{item[8]}}</td>
+                    </tr>
                     {% endfor %}
                 </table>
             </div>
@@ -473,9 +486,7 @@
                     <br>
                     <br> The Team: Jerry Chang (Project Manager), Issac Kim, and Anthony Liang
                     <br>
-                    <br> Life2” is an app that gamifies habits, to-do’s and goals to keep users on top of their game. Upon registering, users will be given an avatar for which they can nurture, level, and pimp out by keeping in line with their habits
-                    and goals. A user can create a list of habits to follow and a set of goals to achieve by creating their own or choosing from presets. By completing these ‘quests’, the user receives bonuses and rewards that they can thade in for items.
-                    On the community side, users can check a global leaderboard for their placement. They can also share their custom quests so that other users can use them.
+                    <br> Life2” is an app that gamifies habits, to-do’s and goals to keep users on top of their game. Upon registering, users will be given an avatar for which they can nurture, level, and pimp out by keeping in line with their habits and goals. A user can create a list of habits to follow and a set of goals to achieve by creating their own or choosing from presets. By completing these ‘quests’, the user receives bonuses and rewards that they can thade in for items. On the community side, users can check a global leaderboard for their placement. They can also share their custom quests so that other users can use them.
                 </div>
             </div>
         </div>
@@ -492,32 +503,32 @@
     <script>
         $('#login').modal('hide');
         $('#signup').modal('hide');
-        $(document).ready(function() {
+        $(document).ready(function () {
             // Activate Carousel
             $("#myCarousel").carousel({
                 interval: false
             });
 
             // Enable Carousel Indicators
-            $(".item1").click(function() {
+            $(".item1").click(function () {
                 $("#myCarousel").carousel(0);
             });
-            $(".item2").click(function() {
+            $(".item2").click(function () {
                 $("#myCarousel").carousel(1);
             });
-            $(".item3").click(function() {
+            $(".item3").click(function () {
                 $("#myCarousel").carousel(2);
             });
 
             // Enable Carousel Controls
-            $(".left").click(function() {
+            $(".left").click(function () {
                 $("#myCarousel").carousel("prev");
             });
-            $(".right").click(function() {
+            $(".right").click(function () {
                 $("#myCarousel").carousel("next");
             });
         });
-        $('.carousel-indicators li').each(function() {
+        $('.carousel-indicators li').each(function () {
             $(this).carousel('pause');
         });
         $('.carousel-indicators .active').removeClass('active')

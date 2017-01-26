@@ -23,6 +23,19 @@ def home():
         goals = functions.getUserGoals(user)
         equipments = functions.makeShop(user)
         inventory = functions.getUserInventory(user)
+
+        stats = [0,0,0,0,0,0]
+        '''
+        for item in inventory:
+            stats[0] += item[3]
+            stats[1] += item[4]
+            stats[2] += item[5]
+            stats[3] += item[6]
+            stats[4] += item[7]
+            stats[5] += item[6]
+        '''
+        print stats
+
         #Check for all ajax requests here
         #All of POST type
         gold = functions.getUserInfo(user)[1]
