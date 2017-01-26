@@ -7,7 +7,6 @@ import hashlib
 
 app = Flask(__name__)
 app.secret_key = 'life^2'
-
     
 @app.route("/", methods=['POST','GET'])
 def home():
@@ -27,20 +26,7 @@ def home():
         #All of POST type
         gold = functions.getUserInfo(user)[1]
         if request.method == 'POST':
-            multi_dict = request.args
-            for key in multi_dict:
-                print multi_dict.get(key)
-                print "1"
-           
-            if "addToDo" in request.form:
-                functions.insertToDo(user, request.form.get("addToDo"))
-                
-            if "addHabit" in request.form:
-                print "hi"
-                print request.form.get("addHabit")
-                functions.insertHabit(user, request.form.get("addHabit"))
-            if "addGoal" in request.form:
-                functions.insertGoal(user, request.form.get("addGoal"))
+             return   
         '''
             if sort == "level":
                 lb = functions.getAllUserInfo('level')
@@ -60,6 +46,31 @@ def home():
     else:
         lb = functions.getAllUserInfo('events_completed')
         return render_template('dashboard.html', logged = 0, lb=lb)
+
+
+@app.route("/newtodo", methods=['POST'])
+def newtodo():
+    user = session.get('username')
+    return functions.insertToDo(user, request.form.get("addToDo"))
+    
+@app.route("/newhabit", methods=['POST'])
+def newhabit():
+    user = session.get('username')
+    return functions.insertHabit(user, request.form.get("addHabit"))
+
+@app.route("/newgoal", methods=['POST'])
+def newgoal():
+    user = session.get('username')
+    return functions.insertGoal(user, request.form.get("addGoal"))
+    
+@app.route("/buy", methods=['POST'])
+def buy():
+    user = session.get('username')
+    price = request.form.get("price")
+    return functions.buyItem(user, price)
+
+    
+    
 
 @app.route("/authenticate/", methods = ['POST','GET'])
 def authenticate():

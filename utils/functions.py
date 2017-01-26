@@ -144,6 +144,24 @@ def updateInfo(user,infoType,update):
         data = c.execute("INSERT INTO accounts (" + infoType + ") VALUES (?) WHERE username = ?", (update,user,)) 
     db.commit()
     db.close()
+    
+def buyItem(user,price):
+    db = sql.connect(DATA)
+    c = db.cursor()
+    exists = c.execute("SELECT money from accounts WHERE username = ?", (user,))
+    exist = exists.fetchone()
+    
+    if price <= exist[0]:
+        data = c.execute("UPDATE accounts SET money = ? WHERE username = ?", (exist[0] - price, user,))
+        db.commit()
+        db.close()
+        return "Item bought"
+
+    else:
+        db.commit()
+        db.close()
+        return "Too expensive!"
+    
 
 #edits equipment stats
 def updateStats(stats, level, multiplier):
@@ -192,6 +210,3 @@ def makeEquipment(user):
 def makeShop(user):
     equipments = [makeEquipment(user), makeEquipment(user), makeEquipment(user),makeEquipment(user), makeEquipment(user), makeEquipment(user),makeEquipment(user), makeEquipment(user), makeEquipment(user),makeEquipment(user)]
     return equipments
-
-
-

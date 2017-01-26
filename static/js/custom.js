@@ -16,20 +16,24 @@ var purchase = function(e) {
         balance.innerHTML = transaction.toString();
         this.parentNode.remove();
     }
-}
+};
 
-var buy = function(e) {
-    var balance = document.getElementById("balance");
-    var initial = parseInt(balance.innerHTML);
-    var price = parseInt(this.innerHTML);
-    if (price > balance) {
-        alert("This Reward Is Too Expensive");
-    }
-    else {
-        var transaction = initial - price;
-        balance.innerHTML = transaction.toString();
-        this.parentNode.parentNode.remove();
-    }
+var buy = function(button) {
+    var price = parseInt(button.innerHTML);
+    $.ajax({
+        url: "/buy",
+        type: 'POST',
+        data: {"price" : price}
+    }).done(function(result) {
+        var balance = document.getElementById("balance");
+        var initial = parseInt(balance.innerHTML);
+        balance.innerHTML = initial - price;
+        
+        button.parentElement.parentElement.remove();
+        
+    }).fail(function() {
+        console.log("Ooops");
+    });
 }
 
 var addReward = function(e) {
@@ -77,10 +81,40 @@ $.fn.serializeObject = function(e) {
     return o;
 };
 
+// Format a string
+String.prototype.format = function() {
+    var args = arguments;
+    return this.replace(/{(\d+)}/g, function(match, number) {
+        return typeof args[number] != 'undefined'
+            ? args[number]
+            : match
+        ;
+    });
+};
+
+var taskTemplate = `
+<div class="task-meta-controls">
+    <form>
+        <button class="glyphicon glyphicon-pencil edittask"></button>
+        <button class="glyphicon glyphicon-trash deletetask"></button>
+        <div class="task-controls">
+            <div class="complete">
+                <button class="glyphicon glyphicon-plus completetask"></button>
+            </div>
+        </div>
+        <input type="hidden" value="{0}">
+        
+    </form>
+</div>
+<div id="test" class="task-text">
+    {1}
+</div>
+`;
+
 var newToDo = function(e) {
 
     $.ajax({
-        url: "/home",
+        url: "/newtodo",
         type: 'POST',
         data: $("#todoform").serializeObject()
     }).done(function(result) {
@@ -101,7 +135,7 @@ var newHabit = function(e) {
 
 
     $.ajax({
-        url: "/home",
+        url: "/newhabit",
         type: 'POST',
         data: $("#habitform").serializeObject()
     }).done(function(result) {
@@ -121,7 +155,7 @@ var newGoal = function(e) {
 
 
     $.ajax({
-        url: "/home",
+        url: "/newgoal",
         type: 'POST',
         data: $("#goalform").serializeObject()
     }).done(function(result) {
@@ -147,5 +181,5 @@ goal.addEventListener("click", newGoal);
 
 var shop = document.getElementsByClassName("buy");
 for (var i = 0; i < shop.length; i++) {
-    shop[i].addEventListener("click", buy);
+    shop[i].addEventListener("click", buy(this));
 }
