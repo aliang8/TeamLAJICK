@@ -1,11 +1,5 @@
 # Life<sup>2</sup>
 ## by Team LAJICK (Anthony Liang, Issac Kim, Jerry Chang)
-  <h1> IMPORTANT NOTE!!!! </h1>
-  We realized towards the end that our javascript is incompatible with various browsers. Some of our features work on Firefox but not
-
-  Chrome and vice versa. For example, our task list functions properly in Firefox, while our leaderboard functions properly in Chrome.
-
-  This is something to keep in mind when using Life<sup>2</sup>.
 
   <h3> A Brief Overview </h3>
   ---  
