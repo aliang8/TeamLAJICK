@@ -19,15 +19,13 @@ def home(message,sort=None):
     if session.get('username') != None:
         user = session.get('username')
         userInfo = functions.getUserInfo(user)
-<<<<<<< HEAD
+
         #If not a request, load everything
         todos = functions.getUserToDos(user)
         habits = functions.getUserHabits(user)
         goals = functions.getUserGoals(user)
         equipments = functions.makeShop(user)
-=======
 
->>>>>>> ff423db5668610b38ad89ea08f9b5cc34c30c987
         #Check for all ajax requests here
         #All of POST type
         gold = functions.getUserInfo(user)[1]
@@ -46,9 +44,9 @@ def home(message,sort=None):
                 functions.insertHabit(user, request.form.get("addHabit"))
             if "addGoal" in request.form:
                 functions.insertGoal(user, request.form.get("addGoal"))
+        '''
             if sort == "level":
                 lb = functions.getAllUserInfo('level')
-<<<<<<< HEAD
                 return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb, equipments = equipments)
             elif sort == "money":
                 lb = functions.getAllUserInfo('money')
@@ -58,18 +56,8 @@ def home(message,sort=None):
                 return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb, equipments = equipments)
         else:
             lb = functions.getAllUserInfo('events_completed')
-=======
-            elif sort == "money":
-                lb = functions.getAllUserInfo('money')
-            elif sort == "events_completed":
-                lb = functions.getAllUserInfo('events_completed')
+        '''
         lb = functions.getAllUserInfo('events_completed')
-
-        #If not a request, load everything
-        todos = functions.getUserToDos(user)
-        habits = functions.getUserHabits(user)
-        goals = functions.getUserGoals(user)
->>>>>>> ff423db5668610b38ad89ea08f9b5cc34c30c987
         
         return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb, equipments = equipments)
     else:

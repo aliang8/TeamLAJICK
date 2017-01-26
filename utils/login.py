@@ -10,8 +10,8 @@ def initializeTables():
     c = db.cursor()
     c.execute("CREATE TABLE IF NOT EXISTS accounts (username TEXT NOT NULL, password TEXT NOT NULL, money INTEGER, level INTEGER, exp INTEGER, events_completed INTEGER, hp INTEGER, userID INTEGER PRIMARY KEY autoincrement)")
     c.execute("CREATE TABLE IF NOT EXISTS events (goalID INTEGER PRIMARY KEY autoincrement, userID INTEGER, todo INTEGER, habit INTEGER, goal INTEGER, content TEXT NOT NULL)")
-    c.execute("CREATE TABLE IF NOT EXISTS inventory (userID INTEGER, item TEXT NOT NULL, hp INTEGER, atk INTEGER, atkspeed INTEGER, speed INTEGER, def INTEGER, int INTEGER)")
-    c.execute("CREATE TABLE IF NOT EXISTS shop (userID INTEGER, item TEXT NOT NULL, hp INTEGER, atk INTEGER, atkspeed INTEGER, speed INTEGER, def INTEGER, int INTEGER, shop INTEGER)")
+    c.execute("CREATE TABLE IF NOT EXISTS inventory (userID INTEGER, item TEXT NOT NULL, health INTEGER, atk INTEGER, atkspeed INTEGER, speed INTEGER, def INTEGER, int INTEGER)")
+    c.execute("CREATE TABLE IF NOT EXISTS shop (userID INTEGER, item TEXT NOT NULL, hp INTEGER, atk INTEGER, atkspeed INTEGER, speed INTEGER, def INTEGER, int INTEGER, price INTEGER)")
     db.commit()
     db.close()
     

@@ -25,7 +25,7 @@ def home(message,sort=None):
         habits = functions.getUserHabits(user)
         goals = functions.getUserGoals(user)
         equipments = functions.makeShop(user)
-
+        inventory = functions.getUserInventory(user)
         #Check for all ajax requests here
         #All of POST type
         gold = functions.getUserInfo(user)[1]
@@ -59,7 +59,7 @@ def home(message,sort=None):
         '''
         lb = functions.getAllUserInfo('events_completed')
         
-        return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb, equipments = equipments)
+        return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb, equipments = equipments, inventory = inventory)
     else:
         return redirect(url_for('root'))
 
