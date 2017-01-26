@@ -17,12 +17,12 @@ def initializeTables():
     
 def register(username, password):
     hashpass = hashlib.sha224(password).hexdigest()
-    creds = (username,hashpass,500,1,0,0)
+    creds = (username,hashpass,500,1,0,0,50)
     db = sql.connect(DATA)
     c = db.cursor()
     users = c.execute("SELECT username FROM accounts WHERE username = ?", (username,))
     if len(c.fetchall()) == 0 and len(password) >= 3:
-        c.execute("INSERT INTO accounts (username,password,money,level,exp,events_completed) VALUES (?,?,?,?,?,?)", creds)
+        c.execute("INSERT INTO accounts (username,password,money,level,exp,events_completed,hp) VALUES (?,?,?,?,?,?)", creds)
         db.commit()
         return True
     else:
