@@ -2,19 +2,54 @@ ENTRY FORMAT:
 firstL -- TIMESTAMP
 <CHANGES>
 
+issacK -- 2017-01-13 9:30 PM
+started working on store 
+
+jerryC -- 2017-01-14 3:20 PM
+started bootstrapping basic web template
+
 anthonyL -- 2017-01-15 10:10 PM
 started basic html page with login implemented
 
 anthonyL -- 2017-01-16 2:52 PM
 working on creating the tabs (leaderboard, store, etc)
 
+jerryC -- 2017-01-16 5:40 PM
+worked on backend functions to insert/delete and update goals and habits
+
+issacK -- 2018-01-17 6:13 PM
+started adding js functions to store
+updated store to use bootstrap's carousel
+carousel not functioning properly
+
 anthonyL -- 2017-01-18 5:16 PM
 added a leaderboards tab
 created backend functions to retrieve userInfo and sort them for leaderboard
 
+issacK -- 2017-01-18 6:20 PM
+continue working with carousel
+
+jerryC -- 2017-01-18 7:30 PM
+finished different tabs with javascript
+updated the sql database
+
 anthonyL -- 2017-01-19 2:20 PM
 working on CSS template for page
 added a basic profile bar to display user stats (health bar, exp bar, level, name)
+
+jerryC -- 2017-01-19 10:30 PM
+working on backend ajax calls to make the tasks lists work
+added eventListener to add tasks
+
+issacK -- 2017-01-19 11:00 PM
+fix carousel
+
+issacK -- 2017-01-20 3:15 PM
+wrote js for adding rewards to the store
+
+jerryC -- 2017-01-20 3:30 PM
+formatted strings properly 
+began formatting store js into ajax
 
 anthonyL -- 2017-01-21 3:40 PM
 finished styling templates, added avatar image and coin image
@@ -24,10 +59,25 @@ anthonyL --2017-1-22 2:25 PM
 linked up the inventory with the profile stats
 created methods to update health and exp for user
 
+jerryC -- 2017-01-22 11:10 PM
+added function to append DOM elements to the task lists
+made remove meta control work properly
+
 anthonyL -- 2017-1-24 6:10 PM
 styled about page and created text bubbles for each tab
 worked on some backend function calls to get events and insert events
 
+issacK -- 2017-01-24 10:00 PM
+get purchasing to work for store
+edit store html to work with jinja
+
+jerryC -- 2017-01-24 11:20 PM
+continued work on tasks
+added eventListener to update user experience and level
+
 anthonyL -- 2017-1-25 12:15 PM
 finalized styling for pages, fixed bug with pre-login display
 robustified the function to display health and exp
+
+issacK -- 2017-01-25 9:00 PM
+create equipment store

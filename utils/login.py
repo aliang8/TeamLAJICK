@@ -12,6 +12,7 @@ def initializeTables():
     c.execute("CREATE TABLE IF NOT EXISTS events (goalID INTEGER PRIMARY KEY autoincrement, userID INTEGER, todo INTEGER, habit INTEGER, goal INTEGER, content TEXT NOT NULL)")
     c.execute("CREATE TABLE IF NOT EXISTS inventory (userID INTEGER, image TEXT NOT NULL, item TEXT NOT NULL, health INTEGER, atk INTEGER, atkspeed INTEGER, speed INTEGER, def INTEGER, int INTEGER)")
     c.execute("CREATE TABLE IF NOT EXISTS shop (userID INTEGER, item TEXT NOT NULL, hp INTEGER, atk INTEGER, atkspeed INTEGER, speed INTEGER, def INTEGER, int INTEGER, price INTEGER)")
+    c.execute("CREATE TABLE IF NOT EXISTS userSuggested (goalID INTEGER PRIMARY KEY autoincrement, userID INTEGER, todo INTEGER, habit INTEGER, goal INTEGER, content TEXT NOT NULL)")
     db.commit()
     db.close()
     
