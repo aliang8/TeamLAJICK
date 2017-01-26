@@ -276,15 +276,15 @@
 }
 
 .task-add button{
-	float: left;
+	float: right;
 	width: 20%;
-	height: 2.618em;
+	height: 1.3em;
 	border-width: 1px;
 	border-top-style: solid;
 	border-right-style: solid;
 	border-bottom-style: solid;
 	border-left: none;
-	border-radius: 0 .382em .382em, 0;
+	border-radius: 0 .382em .382em 0;
 }
 
 .task-add .glyphicon{

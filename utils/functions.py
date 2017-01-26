@@ -79,7 +79,7 @@ def insertToDo(user, goal):
     c = db.cursor()
     userID = getUserID(user)
     
-    data = c.execute("INSERT INTO events VALUES (?,1,0,0,?)", (userID, goal,))
+    data = c.execute("INSERT INTO events (userID, todo, habit, goal, content) VALUES (?,1,0,0,?)", (userID, goal,))
     
     db.commit()
     db.close()
@@ -90,7 +90,7 @@ def insertHabit(user, goal):
     c = db.cursor()
     userID = getUserID(user)
     
-    data = c.execute("INSERT INTO events VALUES (?,0,1,0,?)", (userID, goal,))
+    data = c.execute("INSERT INTO events (userID, todo, habit, goal, content) VALUES (?,0,1,0,?)", (userID, goal,))
     
     db.commit()
     db.close()
@@ -102,7 +102,7 @@ def insertGoal(user, goal):
     c = db.cursor()
     userID = getUserID(user)
 
-    data = c.execute("INSERT INTO events VALUES (?,0,0,1,?)", (userID, goal,))
+    data = c.execute("INSERT INTO events (userID, todo, habit, goal, content) VALUES (?,0,0,1,?)", (userID, goal,))
 
     db.commit()
     db.close()

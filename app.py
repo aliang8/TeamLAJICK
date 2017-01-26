@@ -13,16 +13,19 @@ def root():
     lb = functions.getAllUserInfo('events_completed')
     return render_template('dashboard.html', logged = 0, lb=lb)
     
+@app.route("/<message>", methods=['POST','GET'])
 @app.route("/<message>/<sort>", methods=['POST','GET'])
-def home(message,sort):
+def home(message,sort=None):
     if session.get('username') != None:
         user = session.get('username')
         userInfo = functions.getUserInfo(user)
+
         #If not a request, load everything
         todos = functions.getUserToDos(user)
         habits = functions.getUserHabits(user)
         goals = functions.getUserGoals(user)
         equipments = functions.makeShop(user)
+
         #Check for all ajax requests here
         #All of POST type
         gold = functions.getUserInfo(user)[1]
@@ -33,14 +36,17 @@ def home(message,sort):
                 print "1"
            
             if "addToDo" in request.form:
-                print request.form.get("addToDo")
-                return functions.insertToDo(user, request.form.get("addToDo"))
+                functions.insertToDo(user, request.form.get("addToDo"))
+                
             if "addHabit" in request.form:
-                return functions.insertHabit(user, request.form.get("addHabit"))
+                print "hi"
+                print request.form.get("addHabit")
+                functions.insertHabit(user, request.form.get("addHabit"))
             if "addGoal" in request.form:
-                return functions.insertGoal(user, request.form.get("addGoal"))
+                functions.insertGoal(user, request.form.get("addGoal"))
             if sort == "level":
                 lb = functions.getAllUserInfo('level')
+
                 return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb, equipments = equipments)
             elif sort == "money":
                 lb = functions.getAllUserInfo('money')
