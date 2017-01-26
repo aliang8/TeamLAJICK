@@ -79,6 +79,13 @@
 
 /* PROFILE BAR */
 
+.stats{
+	font-family: Lato, sans-serif;
+	font-size: 20px;
+	width: 75% !important;
+	margin-left: 68px;
+}
+
 .stat-list{
 	border: none;
 	outline: none;

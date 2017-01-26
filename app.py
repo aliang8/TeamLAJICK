@@ -25,16 +25,14 @@ def home():
         inventory = functions.getUserInventory(user)
 
         stats = [0,0,0,0,0,0]
-        '''
+    
         for item in inventory:
             stats[0] += item[3]
             stats[1] += item[4]
             stats[2] += item[5]
             stats[3] += item[6]
             stats[4] += item[7]
-            stats[5] += item[6]
-        '''
-        print stats
+            stats[5] += item[8]
 
         #Check for all ajax requests here
         #All of POST type
@@ -69,7 +67,7 @@ def home():
         '''
         lb = functions.getAllUserInfo('events_completed')
         
-        return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb, equipments = equipments, inventory = inventory)
+        return render_template('dashboard.html', logged = 1, message=message,todos=todos, habits=habits, goals=goals, balance=gold, userInfo=userInfo, lb=lb, equipments=equipments, inventory=inventory, stats=stats)
     else:
         lb = functions.getAllUserInfo('events_completed')
         return render_template('dashboard.html', logged = 0, lb=lb)
